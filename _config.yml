@@ -1,6 +1,1 @@
-source: ./docs
-
-exclude:
-  - ./README.md
-
-timezone: Europe/Kiev
+source: ./public
