@@ -1,4 +1,4 @@
 //@ts-check
 window.addEventListener("load", () => {
-	document.getElementById("content").insertAdjacentText("beforebegin", "loaded 👏");
+	document.getElementById("content").insertAdjacentText("beforeend", " loaded 👏");
 });
