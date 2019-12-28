@@ -62,21 +62,20 @@ window.CurrDOM = window.CurrDOM || {
 	},
 
 	createRateNode(code) {
-		let node = window.document.querySelector(`[data-code=${ code }]`);
+		let rateNode = window.document.querySelector(`[data-code=${ code }]`);
+		const exists = !!rateNode;
 
-		if (!node) {
-			node = window.document.createElement("p");
+		if (exists)
+			window.CurrDOM.clearNode(rateNode);
+
+		else {
+			rateNode = window.document.createElement("p");
 	
-			node.classList.add("rate");
-			node.setAttribute("data-code", code);
+			rateNode.classList.add("rate");
+			rateNode.setAttribute("data-code", code);
 		}
 
-		else window.CurrDOM.clearNode(node);
-
-		return {
-			rateNode: node,
-			exists: !!node,
-		};
+		return { rateNode, exists };
 	},
 
 	async showRate(code) {
