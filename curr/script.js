@@ -69,7 +69,7 @@ window.CurrDOM = window.CurrDOM || {
 			window.CurrDOM.clearNode(rateNode);
 
 		else {
-			rateNode = window.document.createElement("p");
+			rateNode = window.document.createElement("pre");
 	
 			rateNode.classList.add("rate");
 			rateNode.setAttribute("data-code", code);
