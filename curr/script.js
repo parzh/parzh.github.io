@@ -109,7 +109,7 @@ window.CurrDOM = window.CurrDOM || {
 
 	await Promise.all(currencyCodes.map(showRate));
 
-	const expressionConverted = `\t(${ toUAH("USD", 50) } + ${ toUAH("EUR", 15) }) / 3 + ${ toUAH("EUR", 10) } - 500 UAH`;
+	const expressionConverted = `(${ toUAH("USD", 50) } + ${ toUAH("EUR", 15) }) / 3 + ${ toUAH("EUR", 10) } - 500 UAH`;
 	const result = eval(expressionConverted.replace(/ UAH/g, ""));
 
 	setNodeText(expressionNode, EXPRESSION);
