@@ -9,13 +9,12 @@ void 0;
  * @public
  * @param {boolean} condition
  * @param {string} message
- * @param {any[]} data
  */
-function assert(condition, message, ...data) {
-	if (!condition)
+function assert(condition, message) {
+	if (!condition) {
 		process.nextTick(process.exit, 1);
-
-	console.assert(condition, message, ...data);
+		throw new Error([ "AssertionError", message ].join(": "));
+	}
 }
 
 /**
