@@ -1,0 +1,7 @@
+exclude:
+  - package*.json
+  - jsconfig.json
+  - '*.ts'
+  - test-dom.js
+  - '*.spec.js'
+  - '*.test.js'
