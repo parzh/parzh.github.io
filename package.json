@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "tsc --build ./jsconfig.json"
   },
   "repository": "github:parzh/parzh.github.io",
   "keywords": [],
@@ -13,5 +13,8 @@
   "bugs": {
     "url": "https://github.com/parzh/parzh.github.io/issues"
   },
-  "homepage": "https://github.com/parzh/parzh.github.io#readme"
+  "homepage": "https://github.com/parzh/parzh.github.io#readme",
+  "devDependencies": {
+    "typescript": "3.7.4"
+  }
 }
