@@ -62,14 +62,16 @@ window.CurrDOM = window.CurrDOM || {
 
 	createRateNode(code) {
 		let rateNode = window.document.querySelector(`[data-code=${ code }]`);
-		const exists = !!rateNode;
+		let exists = false;
 
-		if (!!rateNode)
+		if (!!rateNode) {
 			window.CurrDOM.clearNode(rateNode);
+			exists = true;
+		}
 
 		else {
 			rateNode = window.document.createElement("pre");
-	
+
 			rateNode.classList.add("rate");
 			rateNode.setAttribute("data-code", code);
 		}

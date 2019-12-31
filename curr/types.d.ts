@@ -1,3 +1,8 @@
+interface CreateRateNodeResult {
+	rateNode: Element;
+	exists: boolean;
+}
+
 interface Window {
 	Curr: {
 		EXPRESSION: string;
@@ -19,10 +24,7 @@ interface Window {
 
 		clearNode(node: Element): void;
 		setNodeText(node: Element, text: string): void;
-		createRateNode(code: string): {
-			rateNode: Element;
-			exists: boolean;
-		};
+		createRateNode(code: string): CreateRateNodeResult;
 		showRate(code: string): Promise<void>;
 	};
 }
