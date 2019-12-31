@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "compile": "tsc --build ./jsconfig.json"
+    "compile": "tsc --project ./jsconfig.json"
   },
   "repository": "github:parzh/parzh.github.io",
   "keywords": [],
