@@ -1,2 +1,7 @@
 language: bash
-script: echo "build is done"
+
+install:
+  - npm ci
+
+script:
+  - npm run compile
