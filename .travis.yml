@@ -1,1 +1,2 @@
+language: bash
 script: echo "failing explicitly, on purpose" && exit 1
