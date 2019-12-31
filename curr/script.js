@@ -1,4 +1,3 @@
-// @ts-check
 /// <reference lib="dom" />
 /// <reference lib="es2017" />
 /// <reference path="./types.d.ts" />
@@ -65,7 +64,7 @@ window.CurrDOM = window.CurrDOM || {
 		let rateNode = window.document.querySelector(`[data-code=${ code }]`);
 		const exists = !!rateNode;
 
-		if (exists)
+		if (!!rateNode)
 			window.CurrDOM.clearNode(rateNode);
 
 		else {
