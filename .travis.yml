@@ -2,6 +2,21 @@ language: node_js
 node_js:
   - 10
 
+cache: npm
+
 sudo: false
 
-script: npm run compile
+before_install:
+  - gem install jekyll
+
+script:
+  - npm run compile
+  - npm test
+
+after_success: |
+  git worktree add _site master
+  jekyll build
+  cd _site
+  git add .
+  git commit --allow-empty -m "Build from $(git log --format=format:%H develop -1)"
+  git push origin master --no-verify
