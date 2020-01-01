@@ -1,6 +1,6 @@
 /// <reference lib="dom" />
 /// <reference lib="es2017" />
-/// <reference path="./types.d.ts" />
+/// <reference types="./types" />
 
 window.Curr = window.Curr || {
 	EXPRESSION: "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH",
@@ -12,8 +12,8 @@ window.Curr = window.Curr || {
 		return amount * (window.Curr.rates[code] || 1);
 	},
 
-	toUAH(code, amount) {
-		return `${ window.Curr.convert(code, amount).toFixed(2) } UAH`;
+	toUAH(code, amount, decimalDigits = 4) {
+		return `${ window.Curr.convert(code, amount).toFixed(decimalDigits) } UAH`;
 	},
 
 	async fetchRate(code) {
@@ -32,6 +32,7 @@ window.Curr = window.Curr || {
 			}
 
 			catch (error) {
+				console.error(error);
 				console.warn(`Could not fetch actual rate of the currency "${ code }"; fallback to 1.00`);
 			}
 
@@ -115,5 +116,5 @@ window.CurrDOM = window.CurrDOM || {
 
 	setNodeText(expressionNode, EXPRESSION);
 	setNodeText(expressionConvertedNode, expressionConverted);
-	setNodeText(resultNode, toUAH("", result));
+	setNodeText(resultNode, toUAH("", result, 2));
 })();
