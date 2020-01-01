@@ -34,6 +34,8 @@ async function goto(pageUrl, callback = () => {}) {
 	}
 
 	catch (error) {
+		console.error(error);
+
 		throw error;
 	}
 
