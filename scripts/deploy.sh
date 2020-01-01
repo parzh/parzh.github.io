@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # checkout `master` branch in `_site` folder
-echo 'git worktree add _site master'
+echo 'git worktree add ./_site master'
 git worktree add _site master
 
 # populate `_site`
