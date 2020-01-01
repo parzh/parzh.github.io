@@ -1,7 +1,7 @@
 # checkout `master` branch in `_site` folder
 git worktree add _site master
 # populate `_site`
-jekyll build
+bundle exec jekyll build
 # update `master`
 cd _site
 git add .
