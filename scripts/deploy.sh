@@ -17,3 +17,5 @@ echo 'git commit --allow-empty -m "Build from \$(git log --format=format:%H deve
 git commit --allow-empty -m "Build from $(git log --format=format:%H develop -1)"
 echo 'git push origin master --no-verify'
 git push origin master --no-verify
+echo 'cd ..'
+cd ..
