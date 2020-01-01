@@ -4,8 +4,6 @@ node_js:
 
 cache: npm
 
-sudo: false
-
 before_install:
   - gem install jekyll
 
