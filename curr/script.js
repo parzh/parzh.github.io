@@ -1,6 +1,6 @@
 /// <reference lib="dom" />
 /// <reference lib="es2017" />
-/// <reference path="./types.d.ts" />
+/// <reference types="./types" />
 
 window.Curr = window.Curr || {
 	EXPRESSION: "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH",
