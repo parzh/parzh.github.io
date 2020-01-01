@@ -32,6 +32,7 @@ window.Curr = window.Curr || {
 			}
 
 			catch (error) {
+				console.error(error);
 				console.warn(`Could not fetch actual rate of the currency "${ code }"; fallback to 1.00`);
 			}
 
