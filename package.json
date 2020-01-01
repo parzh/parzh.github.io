@@ -7,6 +7,7 @@
     "pretest": "echo TODO: run all *.spec.js files someday",
     "test": "node ./src/index.spec.js",
     "compile": "tsc --project ./jsconfig.json",
+    "dev": "npm run compile -- --watch",
     "deploy": "./scripts/deploy.sh"
   },
   "repository": "github:parzh/parzh.github.io",
