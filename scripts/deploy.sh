@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # checkout `master` branch in `_site` folder
+echo 'git fetch --all'
+git fetch --all
 echo 'git worktree add ./_site master'
 git worktree add _site master
 
