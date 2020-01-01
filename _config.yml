@@ -1,9 +1,5 @@
+source: ./src
+
 exclude:
-  - package*.json
-  - README.md
-  - jsconfig.json
   - '*.ts'
-  - '*.sh'
-  - test-dom.js
   - '*.spec.js'
-  - '*.test.js'

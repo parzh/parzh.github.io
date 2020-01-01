@@ -7,7 +7,7 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "exclude": [
-    "./_site/**/*"
+  "include": [
+    "src/**/*"
   ]
 }

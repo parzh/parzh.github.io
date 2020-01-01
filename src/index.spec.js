@@ -1,5 +1,5 @@
 const { pathToFileURL } = require("url");
-const { goto, assert } = require("./test-dom");
+const { goto, assert } = require("../test-dom");
 
 /** @private */
 const PAGE_URL = pathToFileURL(__dirname + "/index.html").toString();
