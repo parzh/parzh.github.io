@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "pretest": "echo TODO: run all *.spec.js files someday",
-    "test": "node ./index.spec.js",
+    "test": "node ./src/index.spec.js",
     "compile": "tsc --project ./jsconfig.json",
     "deploy": "./scripts/deploy.sh"
   },
