@@ -15,4 +15,4 @@ before_script:
   - npm test
 
 script:
-  - ./build-master.sh
+  - ./scripts/deploy.sh

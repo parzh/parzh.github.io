@@ -1,7 +1,11 @@
+#!/usr/bin/env bash
+
 # checkout `master` branch in `_site` folder
 git worktree add _site master
+
 # populate `_site`
 bundle exec jekyll build
+
 # update `master`
 cd _site
 git add .
