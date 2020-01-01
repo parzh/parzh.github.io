@@ -5,10 +5,8 @@
   "private": true,
   "scripts": {
     "compile": "tsc --project ./jsconfig.json",
-    "predev": "jekyll clean",
-    "dev": "jekyll",
-    "build": "npm run dev -- build",
-    "serve": "npm run dev -- serve"
+    "preserve": "jekyll clean",
+    "serve": "jekyll serve"
   },
   "repository": "github:parzh/parzh.github.io",
   "keywords": [],
