@@ -4,6 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
+    "pretest": "echo TODO: run all *.spec.js files someday",
+    "test": "node ./index.spec.js",
     "compile": "tsc --project ./jsconfig.json",
     "clean:jekyll": "rimraf _site/* .sass-cache/ .jekyll-cache/ .jekyll-metadata",
     "preserve": "npm run clean:jekyll",
