@@ -10,7 +10,7 @@ interface Window {
 		rates: Record<string, number>;
 
 		convert(code: string, amount: number): number;
-		toUAH(code: string, amount: number): string;
+		toUAH(code: string, amount: number, decimalDigits?: number): string;
 		fetchRate(code: string): Promise<number>;
 	};
 

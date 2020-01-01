@@ -12,8 +12,8 @@ window.Curr = window.Curr || {
 		return amount * (window.Curr.rates[code] || 1);
 	},
 
-	toUAH(code, amount) {
-		return `${ window.Curr.convert(code, amount).toFixed(2) } UAH`;
+	toUAH(code, amount, decimalDigits = 4) {
+		return `${ window.Curr.convert(code, amount).toFixed(decimalDigits) } UAH`;
 	},
 
 	async fetchRate(code) {
@@ -115,5 +115,5 @@ window.CurrDOM = window.CurrDOM || {
 
 	setNodeText(expressionNode, EXPRESSION);
 	setNodeText(expressionConvertedNode, expressionConverted);
-	setNodeText(resultNode, toUAH("", result));
+	setNodeText(resultNode, toUAH("", result, 2));
 })();
