@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 
 /** @typedef {import("puppeteer")} puppeteer */
 /** @typedef {{ response: puppeteer.Response | null; page: puppeteer.Page }} GotoResults */
-/** @typedef {(results: GotoResults) => any} Callback */
+/** @typedef {(results: GotoResults) => unknown} GotoCallback */
 void 0;
 
 /**
@@ -20,7 +20,7 @@ function assert(condition, message) {
 /**
  * @public
  * @param {string} pageUrl
- * @param {Callback} [callback]
+ * @param {GotoCallback} [callback]
  */
 async function goto(pageUrl, callback = () => {}) {
 	if (!pageUrl)
@@ -30,10 +30,7 @@ async function goto(pageUrl, callback = () => {}) {
 	const page = await browser.newPage();
 
 	try {
-		await callback({
-			response: await page.goto(pageUrl),
-			page,
-		});
+		await callback({ page, response: await page.goto(pageUrl) });
 	}
 
 	catch (error) {
