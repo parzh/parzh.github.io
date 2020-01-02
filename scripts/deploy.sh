@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# checkout `master` branch in `_site` folder
-git fetch --all && \
-git worktree add _site master && \
-
 # populate `_site`
 bundle exec jekyll build && \
 
