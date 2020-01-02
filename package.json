@@ -4,8 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "pretest": "echo TODO: run all *.spec.js files someday",
-    "test": "node ./src/index.spec.js",
+    "test": "bash ./scripts/test.sh",
     "compile": "tsc --project ./jsconfig.json",
     "dev": "npm run compile -- --watch",
     "deploy": "bash ./scripts/deploy.sh"
