@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 
 filenames="$(find . -name *.spec.js)"
 exit_code=0
