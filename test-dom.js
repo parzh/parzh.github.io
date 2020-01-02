@@ -7,11 +7,11 @@ void 0;
 
 /**
  * @public
- * @param {boolean} condition
+ * @param {any} value
  * @param {string} message
  */
-function assert(condition, message) {
-	if (!condition) {
+function assert(value, message) {
+	if (!value) {
 		process.nextTick(process.exit, 1);
 		throw new Error([ "AssertionError", message ].join(": "));
 	}
