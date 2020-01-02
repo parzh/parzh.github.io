@@ -1,10 +1,6 @@
-const { pathToFileURL } = require("url");
-const { goto, assert } = require("../test-dom");
+const { goto, assert } = require("../helpers/test-dom");
 
-/** @private */
-const PAGE_URL = pathToFileURL(__dirname + "/index.html").toString();
-
-goto(PAGE_URL, async ({ page }) => {
+goto("/", async ({ page }) => {
 	const contentNode = await page.$("#content");
 
 	if (!contentNode)

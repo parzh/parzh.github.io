@@ -1,9 +1,16 @@
 const puppeteer = require("puppeteer");
+const getIndexHtml = require("./get-index-html");
+
+require("./exception-listeners");
+
+// ***
 
 /** @typedef {import("puppeteer")} puppeteer */
 /** @typedef {{ response: puppeteer.Response | null; page: puppeteer.Page }} GotoResults */
 /** @typedef {(results: GotoResults) => unknown} GotoCallback */
 void 0;
+
+// ***
 
 /**
  * @public
@@ -13,18 +20,20 @@ void 0;
 function assert(value, message) {
 	if (!value) {
 		process.nextTick(process.exit, 1);
-		throw new Error([ "AssertionError", message ].join(": "));
+		throw new Error(`AssertionError: ${ message }`);
 	}
 }
 
 /**
  * @public
- * @param {string} pageUrl
+ * @param {string} path
  * @param {GotoCallback} [callback]
  */
-async function goto(pageUrl, callback = () => {}) {
+async function goto(path, callback = () => {}) {
+	const pageUrl = await getIndexHtml(path);
+
 	if (!pageUrl)
-		throw new Error("No page URL is provided");
+		throw new Error(`Path not found: "${ path }/index.html"`);
 
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();

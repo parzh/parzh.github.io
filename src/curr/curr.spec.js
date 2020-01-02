@@ -1,9 +1,5 @@
-const { pathToFileURL } = require("url");
-const { goto, assert } = require("../../test-dom");
+const { goto, assert } = require("../../helpers/test-dom");
 
-/** @private */
-const PAGE_URL = pathToFileURL(__dirname + "/index.html").toString();
-
-goto(PAGE_URL, async ({ page }) => {
+goto("/curr", async ({ page }) => {
 	assert(await page.$("#rates-container"), "Element '#rates-container' is not found");
 });
