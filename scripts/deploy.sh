@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
+set -o verbose
 
-# populate `_site`
+# build local `master`
+jekyll clean && \
+git worktree add -f _site master && \
 bundle exec jekyll build && \
 
-# update `master`
+# sync with remote `master`
 cd _site && \
 git add . && \
 git commit --allow-empty -m "$(echo Build from $(git log --format=format:%H develop -1))" && \
