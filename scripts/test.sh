@@ -12,19 +12,20 @@ do
 	time_start="$(node -pe "Date.now()")"
 	node "$filename"
 	node_exit_code=$?
-	time_took=$(node -pe "(Date.now() - $time_start) / 1e3")
+	time_total=$(node -pe "(Date.now() - $time_start) / 1e3")
 
 	# ***
 
 	if [ $node_exit_code -eq 0 ]
 	then
-		result="passed"
+		echo -ne "\e[1;42m PASS \e[0m "
 	else
-		result="failed"
+		echo -ne "\e[1;41m FAIL \e[0m "
 		exit_code=1
 	fi
 
-	echo -e "$result (in $time_took seconds)\n"
+	echo -e "(took $time_total seconds)"
+	echo -e ""
 done
 
 exit $exit_code
