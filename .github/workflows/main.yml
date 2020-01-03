@@ -18,6 +18,7 @@ jobs:
   deploy:
     name: Put page files to 'master' branch
     runs-on: ubuntu-18.04
+    needs: [test]
     steps:
       - uses: actions/checkout@v2
 
