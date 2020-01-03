@@ -15,4 +15,28 @@ jobs:
       - run: npm run compile
       - run: npm test
 
-  # TODO: deploy:
+  deploy:
+    name: Put page files to 'master' branch
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Ruby >= 2.4
+        uses: actions/setup-ruby@v1.0.0
+        with:
+          version: ">= 2.4"
+
+      - run: gem install jekyll
+
+      - name: Build local 'master'
+        run: |
+          jekyll clean
+          git worktree add -f _site master
+          bundle exec jekyll build
+
+      - name: Sync with remote 'master'
+        run: |
+          cd _site
+          git add --all
+          git commit --allow-empty -m Build from $(git log --format=format:%H develop -1)
+          git push origin master --no-verify
