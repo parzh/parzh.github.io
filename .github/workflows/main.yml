@@ -1,4 +1,4 @@
-name: Deploy parzh.github.io from
+name: Deploy https://parzh.github.io
 
 on:
   push:
