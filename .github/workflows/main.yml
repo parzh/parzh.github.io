@@ -16,11 +16,7 @@ jobs:
 
       - name: Install gems
         run: |
-          gem install jekyll bundler
-
-      - name: Install gems from Gemfile
-        run: |
-          bundle install
+          gem install jekyll
 
       - name: Install Node.js 10.x
         uses: actions/setup-node@v1.1.0
