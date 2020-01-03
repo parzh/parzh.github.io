@@ -22,6 +22,10 @@ jobs:
       - name: Install gems
         run: |
           gem install jekyll bundler
+
+      - name: Install gems from Gemfile
+        run: |
+          echo "PROCESS WORKING DIRECTORY: $(pwd)"
           bundle install
 
       - name: Install npm dependencies
