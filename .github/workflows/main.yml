@@ -5,46 +5,13 @@ on:
     branches: [develop]
 
 jobs:
-  install:
-    name: Install vendors
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Install Ruby >= 2.4
-        uses: actions/setup-ruby@v1.0.0
-        with:
-          version: ">= 2.4"
-
-      - name: Install gems
-        run: |
-          gem install jekyll
-
-      - name: Install Node.js 10.x
-        uses: actions/setup-node@v1.1.0
-        with:
-          version: "10.x"
-
-      - name: Install npm dependencies
-        run: |
-          npm ci
-
   test:
     name: Test the source
     runs-on: ubuntu-18.04
-    needs: [install]
     steps:
-      - name: Check typings
-        run: |
-          npm run compile
+      - uses: actions/checkout@v2
+      - run: "npm ci"
+      - run: "npm run compile"
+      - run: "npm test"
 
-      - name: Run tests
-        run: |
-          npm test
-
-  deploy:
-    name: Deploy pages
-    runs-on: ubuntu-18.04
-    needs: [test]
-    steps:
-      - run: |
-          chmod +x ./scripts/deploy.sh
-          bash ./scripts/deploy.sh
+  # TODO: deploy:
