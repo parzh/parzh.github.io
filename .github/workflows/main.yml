@@ -10,17 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Ruby >= 2.4
+        if: "false" # TODO: remove
         uses: actions/setup-ruby@v1.0.0
         with:
           version: ">= 2.4"
 
       - name: Install gems
+        if: "false" # TODO: remove
         run: |
           gem install jekyll bundler
 
       - name: Install gems from Gemfile
+        if: "false" # TODO: remove
         run: |
           bundle install
+
+      - name: Debug working directory
+        run: |
+          echo "PROCESS WORKING DIRECTORY: $(pwd)"
+          echo "$(ls)"
 
       - name: Install Node.js 10.x
         uses: actions/setup-node@v1.1.0
@@ -29,6 +37,8 @@ jobs:
 
       - name: Install npm dependencies
         run: |
+          ls
+          exit 1
           npm ci
 
   test:
