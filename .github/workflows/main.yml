@@ -7,7 +7,7 @@ on:
 jobs:
   install:
     name: Install vendors
-    runs-on: [linux]
+    runs-on: ubuntu-latest
     steps:
       - name: Install Ruby >= 2.4
         uses: actions/setup-ruby@v1.0.0
@@ -30,7 +30,7 @@ jobs:
 
   test:
     name: Test the source
-    runs-on: [linux]
+    runs-on: ubuntu-latest
     needs: [install]
     steps:
       - name: Check typings
@@ -43,7 +43,7 @@ jobs:
 
   deploy:
     name: Deploy pages
-    runs-on: [linux]
+    runs-on: ubuntu-latest
     needs: [test]
     steps:
       - run: |
