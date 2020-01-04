@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "bash ./scripts/test.sh",
-    "compile": "tsc --project ./jsconfig.json",
+    "compile": "tsc --project ./tsconfig.json",
     "dev": "npm run compile -- --watch",
     "deploy": "bash ./scripts/deploy.sh"
   },
