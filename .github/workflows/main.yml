@@ -43,3 +43,4 @@ jobs:
           git add --all
           git commit --allow-empty -m "Build from $GITHUB_SHA"
           git push origin master --no-verify
+          cd ..
