@@ -50,7 +50,7 @@ jobs:
             fetch-depth: 2
 
       - name: Prepare 'master' branch in '_site' dir
-        run: git worktree add -f _site master
+        run: git worktree add _site master
 
       - name: Build local 'master'
         run: jekyll build
