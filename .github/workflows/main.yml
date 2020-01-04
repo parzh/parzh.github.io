@@ -41,8 +41,7 @@ jobs:
           version: ">= 2.4"
 
       - name: Install Jekyll
-        run: |
-          gem install jekyll
+        run: gem install jekyll
 
       - name: Fetch 'master' branch
         uses: actions/checkout@v2
@@ -51,12 +50,10 @@ jobs:
             fetch-depth: 2
 
       - name: Prepare 'master' branch in '_site' dir
-        run: |
-          git worktree add -f _site master
+        run: git worktree add -f _site master
 
       - name: Build local 'master'
-        run: |
-          jekyll build
+        run: jekyll build
 
       - name: Track everything in '_step' dir
         run: |
