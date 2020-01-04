@@ -12,7 +12,8 @@ else
 	echo -e "PACKAGE_HOME=$PACKAGE_HOME\n"
 fi
 
-filenames="$(find $PACKAGE_HOME -name *.spec.js)"
+tests_dir="$PACKAGE_HOME/test"
+filenames="$(find $tests_dir -name *.spec.js)"
 filenames_array=(${filenames// / })
 echo -e "Found ${#filenames_array[@]} tests\n"
 
@@ -25,7 +26,7 @@ do
 	# ***
 
 	time_start="$(node -pe "Date.now()")"
-	node "$filename"
+	node --require "$PACKAGE_HOME/scripts/before-each.js" "$filename"
 	node_exit_code=$?
 	time_total=$(node -pe "(Date.now() - $time_start) / 1e3")
 

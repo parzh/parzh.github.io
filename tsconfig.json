@@ -4,11 +4,10 @@
     "checkJs": true,
     "module": "none",
     "noEmit": true,
-    "strict": true,
-    "esModuleInterop": true
+    "strict": true
   },
   "include": [
     "src/**/*",
-    "helpers/**/*"
+    "test/**/*"
   ]
 }
