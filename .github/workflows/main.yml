@@ -4,9 +4,6 @@ on:
   push:
     branches: [develop]
 
-env:
-  PAGES_DIST_DIR: _site
-
 jobs:
   test:
     name: Test the source
@@ -21,6 +18,8 @@ jobs:
   deploy:
     name: Deploy pages
     runs-on: ubuntu-18.04
+    env:
+      PAGES_DIST_DIR: _site
     needs: [test]
     steps:
       - uses: actions/checkout@v2
