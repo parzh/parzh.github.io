@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
-filenames="$(find . -name *.spec.js)"
+random_token=$RANDOM
+result_value=${NPM_SCRIPT:-$random_token}
+
+if [ $result_value = $random_token ]
+then
+	npm test
+	exit 0
+else
+	export PACKAGE_HOME=$(pwd)
+	echo -e "PACKAGE_HOME=$PACKAGE_HOME\n"
+fi
+
+filenames="$(find $PACKAGE_HOME -name *.spec.js)"
 exit_code=0
 
 for filename in $filenames
