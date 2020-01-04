@@ -13,10 +13,7 @@ jobs:
     steps:
       - name: Check that 'working-directory' can be set dynamically
         working-directory: ./${{ env.TARGET_DIR_NAME }}
-        shell: node
-        run: |
-          console.log(process.cwd());
-          console.assert(process.cwd().endsWith("/src"));
+        run: echo $(pwd)
 
   test:
     name: Test the source
