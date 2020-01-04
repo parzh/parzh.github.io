@@ -13,6 +13,9 @@ else
 fi
 
 filenames="$(find $PACKAGE_HOME -name *.spec.js)"
+filenames_array=(${filenames// / })
+echo -e "Found ${#filenames_array[@]} tests\n"
+
 exit_code=0
 
 for filename in $filenames
