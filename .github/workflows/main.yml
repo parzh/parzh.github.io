@@ -5,20 +5,8 @@ on:
     branches: [develop]
 
 jobs:
-  debug:
-    name: Debug
-    if: "false"
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-
-      - run: git fetch origin
-      - run: git branch
-      - run: git branch -r
-
   test:
     name: Test the source
-    if: "true"
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -29,7 +17,6 @@ jobs:
 
   deploy:
     name: Deploy pages
-    if: "true"
     runs-on: ubuntu-18.04
     needs: [test]
     steps:
