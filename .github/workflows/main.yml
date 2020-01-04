@@ -31,9 +31,12 @@ jobs:
         run: |
           gem install jekyll
 
-      - name: Build local 'master'
+      - name: Prepare 'master' branch in '_site' dir
         run: |
           git worktree add -f _site master
+
+      - name: Build local 'master'
+        run: |
           jekyll build
 
       - name: Sync local and remote 'master'
