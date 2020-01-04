@@ -5,7 +5,7 @@ exit_code=0
 
 for filename in $filenames
 do
-	echo -e "Running $filename ..."
+	echo "Running $filename ..."
 
 	# ***
 
@@ -24,8 +24,8 @@ do
 		exit_code=1
 	fi
 
-	echo -e "(took $time_total seconds)"
-	echo -e ""
+	echo "(took $time_total seconds)"
+	echo ""
 done
 
 exit $exit_code
