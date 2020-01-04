@@ -39,10 +39,17 @@ jobs:
         run: |
           jekyll build
 
+      - name: Track everything in '_step' dir
+        run: |
+          cd _site
+          git add _all
+
+      - name: Commit changed to local 'master'
+        run: |
+          cd _site
+          git commit --allow-empty -m "Build from $GITHUB_SHA"
+
       - name: Sync local and remote 'master'
         run: |
           cd _site
-          git add --all
-          git commit --allow-empty -m "Build from $GITHUB_SHA"
           git push origin master --no-verify
-          cd ..
