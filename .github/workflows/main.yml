@@ -33,7 +33,7 @@ jobs:
       - name: Configure Git for GitHub Actions
         run: |
           git config user.name "GitHub Actions User"
-          git config user.email "$GIT_AUTHOR_NAME"
+          git config user.email "$(git log --format='%ae' -1 $GITHUB_SHA)"
 
       - name: Prepare 'master' branch in '_site' dir
         run: |
