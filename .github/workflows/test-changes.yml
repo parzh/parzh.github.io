@@ -1,0 +1,23 @@
+name: Test changes
+
+on:
+  push:
+    paths:
+      - ".github/workflows/**"
+      - "helpers/**"
+      - "scripts/**"
+      - "src/**"
+      - "_config.yml"
+      - "jsconfig.json"
+      - "package*.json"
+
+jobs:
+  test:
+    name: Test the source
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: npm ci
+      - run: npm run compile
+      - run: npm test
