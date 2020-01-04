@@ -11,6 +11,7 @@ jobs:
     env:
       TARGET_DIR_NAME: src
     steps:
+      - uses: actions/checkout@v2
       - name: Check that 'working-directory' can be set dynamically
         working-directory: ./${{ env.TARGET_DIR_NAME }}
         run: echo $(pwd)
