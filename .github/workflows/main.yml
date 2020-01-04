@@ -5,6 +5,15 @@ on:
     branches: [develop]
 
 jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-18.04
+    if: "false" # TODO: remove
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: git branch
+
   test:
     name: Test the source
     runs-on: ubuntu-18.04
