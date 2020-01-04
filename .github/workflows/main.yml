@@ -12,7 +12,7 @@ jobs:
       TARGET_DIR_NAME: src
     steps:
       - name: Check that 'working-directory' can be set dynamically
-        working-directory: ./${{ $TARGET_DIR_NAME }}
+        working-directory: ./${{ env.TARGET_DIR_NAME }}
         shell: node
         run: |
           console.log(process.cwd());
