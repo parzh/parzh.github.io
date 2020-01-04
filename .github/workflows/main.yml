@@ -4,22 +4,13 @@ on:
   push:
     branches: [develop]
 
-jobs:
-  debug:
-    name: Debug
-    runs-on: ubuntu-18.04
-    env:
-      TARGET_DIR_NAME: src
-    steps:
-      - uses: actions/checkout@v2
-      - name: Check that 'working-directory' can be set dynamically
-        working-directory: ./${{ env.TARGET_DIR_NAME }}
-        run: echo $(pwd)
+env:
+  PAGES_DIST_DIR: _site
 
+jobs:
   test:
     name: Test the source
     runs-on: ubuntu-18.04
-    if: "false"
     steps:
       - uses: actions/checkout@v2
 
@@ -30,7 +21,6 @@ jobs:
   deploy:
     name: Deploy pages
     runs-on: ubuntu-18.04
-    if: "false"
     needs: [test]
     steps:
       - uses: actions/checkout@v2
@@ -48,22 +38,22 @@ jobs:
           git config user.name "GitHub Actions User"
           git config user.email "$(git log --format='%ae' -1 $GITHUB_SHA)"
 
-      - name: Prepare 'master' branch in '_site' dir
+      - name: Prepare 'master' branch in dist dir
         run: |
           git fetch origin
-          git worktree add _site master
+          git worktree add "$PAGES_DIST_DIR" master
 
       - name: Build local 'master'
         run: jekyll build
 
-      - name: Track everything in '_site' dir
-        working-directory: ./_site
+      - name: Track everything in dist dir
+        working-directory: ./${{ env.PAGES_DIST_DIR }}
         run: git add --all
 
       - name: Commit changed to local 'master'
-        working-directory: ./_site
+        working-directory: ./${{ env.PAGES_DIST_DIR }}
         run: git commit --allow-empty -m "Build from $GITHUB_SHA"
 
       - name: Sync local and remote 'master'
-        working-directory: ./_site
+        working-directory: ./${{ env.PAGES_DIST_DIR }}
         run: git push origin master --no-verify
