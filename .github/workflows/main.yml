@@ -12,12 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/checkout@v2
-        with:
-            ref: master
-            fetch-depth: 2
-
+      - run: git fetch origin
       - run: git branch
+      - run: git branch -r
 
   test:
     name: Test the source
