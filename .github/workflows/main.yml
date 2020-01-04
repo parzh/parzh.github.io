@@ -33,7 +33,6 @@ jobs:
 
       - name: Build local 'master'
         run: |
-          jekyll clean
           git worktree add -f _site master
           jekyll build
 
