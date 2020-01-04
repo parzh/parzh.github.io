@@ -54,7 +54,7 @@ jobs:
       - name: Track everything in '_step' dir
         run: |
           cd _site
-          git add _all
+          git add --all
 
       - name: Commit changed to local 'master'
         run: |
