@@ -16,7 +16,7 @@ jobs:
       - run: npm test
 
   deploy:
-    name: Put page files to 'master' branch
+    name: Deploy pages
     runs-on: ubuntu-18.04
     needs: [test]
     steps:
