@@ -27,7 +27,9 @@ jobs:
         with:
           version: ">= 2.4"
 
-      - run: gem install jekyll
+      - name: Install Jekyll
+        run: |
+          gem install jekyll
 
       - name: Build local 'master'
         run: |
