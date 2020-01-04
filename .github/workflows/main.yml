@@ -37,7 +37,7 @@ jobs:
           git worktree add -f _site master
           bundle exec jekyll build
 
-      - name: Sync with remote 'master'
+      - name: Sync local and remote 'master'
         run: |
           cd _site
           git add --all
