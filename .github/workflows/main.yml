@@ -43,7 +43,7 @@ jobs:
       - name: Build local 'master'
         run: jekyll build
 
-      - name: Track everything in '_step' dir
+      - name: Track everything in '_site' dir
         working-directory: ./_site
         run: git add --all
 
