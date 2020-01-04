@@ -6,7 +6,7 @@ result_value=${NPM_SCRIPT:-$random_token}
 if [ $result_value = $random_token ]
 then
 	npm test
-	exit 0
+	exit $?
 else
 	export PACKAGE_HOME=$(pwd)
 	echo -e "PACKAGE_HOME=$PACKAGE_HOME\n"
