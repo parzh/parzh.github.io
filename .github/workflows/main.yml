@@ -7,7 +7,7 @@ on:
 jobs:
   debug:
     name: Debug
-    if: "false"
+    if: "true"
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -16,6 +16,7 @@ jobs:
 
   test:
     name: Test the source
+    if: "false"
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -26,6 +27,7 @@ jobs:
 
   deploy:
     name: Deploy pages
+    if: "false"
     runs-on: ubuntu-18.04
     needs: [test]
     steps:
