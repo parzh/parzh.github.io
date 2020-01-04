@@ -41,5 +41,5 @@ jobs:
         run: |
           cd _site
           git add --all
-          git commit --allow-empty -m Build from $(git log --format=format:%H develop -1)
+          git commit --allow-empty -m "Build from $GITHUB_SHA"
           git push origin master --no-verify
