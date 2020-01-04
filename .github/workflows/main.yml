@@ -12,6 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: actions/checkout@v2
+        with:
+            ref: master
+            fetch-depth: 2
+
       - run: git branch
 
   test:
@@ -41,6 +46,12 @@ jobs:
       - name: Install Jekyll
         run: |
           gem install jekyll
+
+      - name: Fetch 'master' branch
+        uses: actions/checkout@v2
+        with:
+            ref: master
+            fetch-depth: 2
 
       - name: Prepare 'master' branch in '_site' dir
         run: |
