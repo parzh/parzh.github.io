@@ -50,4 +50,4 @@ jobs:
 
       - name: Sync local and remote 'master'
         working-directory: ./${{ env.PAGES_DIST_DIR }}
-        run: git push origin master --no-verify
+        run: git push origin master
