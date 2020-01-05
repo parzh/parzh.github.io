@@ -1,0 +1,14 @@
+name: Debug GitHub Actions
+
+on:
+  push:
+    branches:
+      - "debug-gh-actions/*"
+
+jobs:
+  debug:
+    name: Debug Job
+    runs-on: ubuntu-18.04
+
+    steps:
+      - run: echo "noop"
