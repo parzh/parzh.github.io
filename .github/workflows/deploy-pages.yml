@@ -34,10 +34,8 @@ jobs:
 
       - name: Authenticate the bot
         run: |
-          git_remote_new_url=$(git remote get-url origin | sed \
-            "s/:\/\/github.com/:\/\/$BOT_USERNAME:$BOT_TOKEN@github.com/")
-
-          git remote set-url "$GIT_REMOTE_NAME" "$git_remote_new_url"
+          git config --global credential.helper cache
+          curl -u $BOT_USERNAME:$BOT_TOKEN https://api.github.com/user
 
       - name: Configure Git for GitHub Actions
         run: |
