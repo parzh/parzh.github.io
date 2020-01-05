@@ -1,4 +1,5 @@
-const { goto, assert } = require("../helpers/test-dom");
+const goto = require("./helpers/goto");
+const assert = require("./helpers/assert");
 
 goto("/", async ({ page }) => {
 	const contentNode = await page.$("#content");

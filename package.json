@@ -4,8 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "bash ./scripts/test.sh",
-    "compile": "tsc --project ./jsconfig.json",
+    "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
+    "compile": "tsc --project ./tsconfig.json",
     "dev": "npm run compile -- --watch",
     "deploy": "bash ./scripts/deploy.sh"
   },
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/parzh/parzh.github.io#readme",
   "devDependencies": {
     "@types/puppeteer": "2.0.0",
+    "cross-env": "6.0.3",
     "mocha": "6.2.2",
     "puppeteer": "2.0.0",
     "rimraf": "3.0.0",

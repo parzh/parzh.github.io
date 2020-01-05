@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "checkJs": true,
-    "target": "es6",
     "module": "none",
     "noEmit": true,
-    "strict": true,
-    "esModuleInterop": true
+    "strict": true
   },
   "include": [
     "src/**/*",
-    "helpers/**/*"
+    "test/**/*"
   ]
 }

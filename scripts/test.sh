@@ -1,16 +1,32 @@
 #!/usr/bin/env bash
 
-filenames="$(find . -name *.spec.js)"
+random_token=$RANDOM
+result_value=${NPM_SCRIPT:-$random_token}
+
+if [ $result_value = $random_token ]
+then
+	npm test
+	exit $?
+else
+	export PACKAGE_HOME=$(pwd)
+	echo -e "PACKAGE_HOME=$PACKAGE_HOME\n"
+fi
+
+tests_dir="$PACKAGE_HOME/test"
+filenames="$(find $tests_dir -name *.spec.js)"
+filenames_array=(${filenames// / })
+echo -e "Found ${#filenames_array[@]} tests\n"
+
 exit_code=0
 
 for filename in $filenames
 do
-	echo -e "Running $filename ..."
+	echo "Running $filename ..."
 
 	# ***
 
 	time_start="$(node -pe "Date.now()")"
-	node "$filename"
+	node --require "$PACKAGE_HOME/scripts/before-each.js" "$filename"
 	node_exit_code=$?
 	time_total=$(node -pe "(Date.now() - $time_start) / 1e3")
 
@@ -24,8 +40,8 @@ do
 		exit_code=1
 	fi
 
-	echo -e "(took $time_total seconds)"
-	echo -e ""
+	echo "(took $time_total seconds)"
+	echo ""
 done
 
 exit $exit_code

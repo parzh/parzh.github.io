@@ -2,4 +2,3 @@ source: ./src
 
 exclude:
   - '*.ts'
-  - '*.spec.js'
