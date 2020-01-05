@@ -2,14 +2,8 @@ name: Test changes
 
 on:
   push:
-    paths:
-      - ".github/workflows/**"
-      - "helpers/**"
-      - "scripts/**"
-      - "src/**"
-      - "_config.yml"
-      - "jsconfig.json"
-      - "package*.json"
+    paths-ignore:
+      - README.md
 
 jobs:
   test:
