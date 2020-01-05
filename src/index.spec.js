@@ -21,6 +21,6 @@ goto("/", async ({ page }) => {
 
 	assert(
 		pagagraphNodes.length === 1,
-		"There should be only one <p> elemeте on the page",
+		"There should be only one <p> element on the page",
 	);
 });
