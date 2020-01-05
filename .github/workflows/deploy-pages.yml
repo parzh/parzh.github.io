@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       PAGES_DIST_DIR: _site
+      BOT_GIT_NAME: ${{ secrets.BOT_GIT_NAME }}
+      BOT_GIT_EMAIL: ${{ secrets.BOT_GIT_EMAIL }}
 
     steps:
       - uses: actions/checkout@v2
@@ -29,8 +31,8 @@ jobs:
 
       - name: Configure Git for GitHub Actions
         run: |
-          git config user.name "GitHub Actions User"
-          git config user.email "$(git log --format='%ae' -1 $GITHUB_SHA)"
+          git config user.name "$BOT_GIT_NAME"
+          git config user.email "$BOT_GIT_EMAIL"
 
       - name: Prepare 'master' branch in dist dir
         run: |
