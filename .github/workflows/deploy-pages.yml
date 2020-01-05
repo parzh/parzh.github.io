@@ -40,13 +40,6 @@ jobs:
       - name: Build local 'master'
         run: jekyll build
 
-      - name: Add private deploy key
-        run: |
-          mkdir ~/.ssh
-          cat > ~/.ssh/id_rsa << EOF
-          ${{ secrets.GH_ACTIONS_DEPLOY_KEY_PRIVATE }}
-          EOF
-
       - name: Track everything in dist dir
         working-directory: ./${{ env.PAGES_DIST_DIR }}
         run: git add --all
