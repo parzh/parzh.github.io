@@ -17,6 +17,8 @@ jobs:
       PAGES_DIST_DIR: _site
       BOT_GIT_NAME: Parzh (bot)
       BOT_GIT_EMAIL: ${{ secrets.BOT_GIT_EMAIL }}
+      BOT_USERNAME: parzhbot
+      BOT_TOKEN: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
       GIT_REMOTE_NAME: origin
 
     steps:
@@ -29,6 +31,13 @@ jobs:
 
       - name: Install Jekyll
         run: gem install jekyll
+
+      - name: Authenticate the bot
+        run: |
+          git_remote_new_url=$(git remote get-url origin | sed \
+            "s/:\/\/github.com/:\/\/$BOT_USERNAME:$BOT_TOKEN@github.com/")
+
+          git remote set-url "$GIT_REMOTE_NAME" "$git_remote_new_url"
 
       - name: Configure Git for GitHub Actions
         run: |
