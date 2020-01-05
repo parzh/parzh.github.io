@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       PAGES_DIST_DIR: _site
-      BOT_GIT_NAME: ${{ secrets.BOT_GIT_NAME }}
+      BOT_GIT_NAME: Parzh (bot)
       BOT_GIT_EMAIL: ${{ secrets.BOT_GIT_EMAIL }}
       GIT_REMOTE_NAME: origin
 
