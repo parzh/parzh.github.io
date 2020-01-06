@@ -3,6 +3,7 @@
     "allowJs": true,
     "checkJs": true,
     "module": "none",
+    "moduleResolution": "node",
     "noEmit": true,
     "strict": true
   },
