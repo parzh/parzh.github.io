@@ -14,7 +14,7 @@ jobs:
     name: Deploy pages
     runs-on: ubuntu-18.04
     env:
-      PAGES_DIST_DIR: _site
+      PAGES_DIST_DIR: dist
       GIT_REMOTE_NAME: origin
       BOT_USERNAME: parzhbot
       BOT_GIT_NAME: Parzh (bot)
@@ -25,13 +25,8 @@ jobs:
         with:
           token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
 
-      - name: Install Ruby >= 2.4
-        uses: actions/setup-ruby@v1.0.0
-        with:
-          version: ">= 2.4"
-
-      - name: Install Jekyll
-        run: gem install jekyll
+      - name: Install npm dependencies
+        run: npm ci
 
       - name: Configure Git for GitHub Actions
         run: |
@@ -44,7 +39,7 @@ jobs:
           git worktree add "$PAGES_DIST_DIR" master
 
       - name: Build local 'master'
-        run: jekyll build
+        run: npm run build
 
       - name: Track everything in dist dir
         working-directory: ./${{ env.PAGES_DIST_DIR }}
