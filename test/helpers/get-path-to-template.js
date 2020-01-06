@@ -7,7 +7,7 @@ const { pathToFileURL } = require("url");
 const fileExists = promisify(exists);
 
 /** @private */
-const resolveSrc = resolve.bind(null, process.env.PACKAGE_HOME, "src");
+const resolveSrc = resolve.bind(null, process.env.PACKAGE_HOME, "dist");
 
 /**
  * @internal

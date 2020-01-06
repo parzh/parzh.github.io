@@ -4,10 +4,11 @@
   "description": "",
   "private": true,
   "scripts": {
+    "build": "webpack",
+    "pretest": "npm run build",
     "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
     "compile": "tsc",
-    "dev": "npm run compile -- --watch",
-    "build": "webpack"
+    "dev": "npm run compile -- --watch"
   },
   "repository": "github:parzh/parzh.github.io",
   "keywords": [],
