@@ -2,6 +2,7 @@
  * @public
  * @param {any} value
  * @param {string} message
+ * @returns {void}
  */
 module.exports =
 function assert(value, message) {
