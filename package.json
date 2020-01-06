@@ -5,7 +5,6 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "pretest": "npm run build",
     "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
     "compile": "tsc",
     "dev": "npm run compile -- --watch"
