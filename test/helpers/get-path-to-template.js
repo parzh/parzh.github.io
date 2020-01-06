@@ -12,6 +12,7 @@ const resolveSrc = resolve.bind(null, process.env.PACKAGE_HOME, "src");
 /**
  * @internal
  * @param {string} path
+ * @returns {Promise<string>}
  */
 module.exports =
 async function getPathToTemplate(path) {

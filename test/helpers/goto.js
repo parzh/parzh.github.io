@@ -7,6 +7,7 @@ const getPathToTemplate = require("./get-path-to-template");
  * @public
  * @param {string} path
  * @param {goto.Callback} [callback]
+ * @returns {Promise<void>}
  */
 module.exports =
 async function goto(path, callback = () => { }) {
