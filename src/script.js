@@ -4,6 +4,5 @@
 	if (!content)
 		throw new Error("Element '#content' is not found!");
 
-	else
-		content.insertAdjacentText("beforeend", ", move along!");
+	content.insertAdjacentText("beforeend", ", move along!");
 }
