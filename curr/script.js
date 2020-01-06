@@ -5,6 +5,7 @@
 window.Curr = window.Curr || {
 	EXPRESSION: "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH",
 	URL_BASE: "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&valcode=",
+	MAX_FETCH_ATTEMPTS: 3,
 
 	rates: Object.create(null),
 
@@ -16,13 +17,15 @@ window.Curr = window.Curr || {
 		return `${ window.Curr.convert(code, amount).toFixed(decimalDigits) } UAH`;
 	},
 
-	async fetchRate(code) {
-		const { rates } = window.Curr;
+	async fetchRate(code, attempts = 0) {
+		const { rates, fetchRate, MAX_FETCH_ATTEMPTS } = window.Curr;
 
 		if (code in rates === false) {
 			let rate = 1;
 
 			try {
+				attempts++;
+
 				const response = await fetch(window.Curr.URL_BASE + code);
 
 				/** @type {RatesDataRaw} */
@@ -32,8 +35,16 @@ window.Curr = window.Curr || {
 			}
 
 			catch (error) {
+				console.warn(`Could not fetch actual rate of the currency "${ code }"`);
 				console.error(error);
-				console.warn(`Could not fetch actual rate of the currency "${ code }"; fallback to 1.00`);
+
+				if (attempts < MAX_FETCH_ATTEMPTS) {
+					console.log(`Fetching again after ${ attempts } failed attempts`);
+
+					return fetchRate(code, attempts);
+				}
+
+				console.warn(`Reached fetch attempts limit (${ attempts } out of ${ MAX_FETCH_ATTEMPTS }); fallback to 1.00`);
 			}
 
 			rates[code] = rate;
