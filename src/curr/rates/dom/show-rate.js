@@ -10,6 +10,9 @@ const ratesContainer = document.getElementById("rates-container");
  * @returns {Promise<void>}
  */
 export default async function showRate(code) {
+	if (!ratesContainer)
+		throw new Error("Element '#rates-container' is not found");
+
 	const rate = fetchRate(code);
 	const { rateNode, exists } = createRateNode(code);
 

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": [ "DOM" ],
+    "allowJs": true, // TODO: remove
+    "checkJs": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*",
+  ]
+}

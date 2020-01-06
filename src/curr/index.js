@@ -15,12 +15,6 @@ const DOM = {
 };
 
 (async () => {
-	const {
-		expressionNode,
-		expressionConvertedNode,
-		resultNode,
-	} = DOM;
-
 	/** @private */
 	const currencyCodes = [ "USD", "EUR" ];
 
@@ -31,7 +25,7 @@ const DOM = {
 	/** @type {number} */
 	const result = eval(expressionConverted.replace(/ UAH/g, ""));
 
-	setNodeText(expressionNode, EXPRESSION);
-	setNodeText(expressionConvertedNode, expressionConverted);
-	setNodeText(resultNode, toUAH("", result, 2));
+	setNodeText(DOM.expressionNode, EXPRESSION);
+	setNodeText(DOM.expressionConvertedNode, expressionConverted);
+	setNodeText(DOM.resultNode, toUAH("", result, 2));
 })();
