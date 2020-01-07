@@ -2,17 +2,17 @@ const goto = require("./helpers/goto");
 const assert = require("./helpers/assert");
 
 goto("/", async ({ page }) => {
-	const contentNode = await page.$("#content");
+	const containerNode = await page.$("p.container");
 
-	if (!contentNode)
-		assert(false, "Element '#content' is not found");
+	if (!containerNode)
+		assert(false, "Element 'p.container' is not found");
 
 	else {
-		const textContent = await contentNode.evaluate((element) => element.textContent);
+		const textContent = await containerNode.evaluate((element) => element.textContent);
 
 		assert(
 			textContent === "Nothing's here, move along!",
-			"Element '#content' holds incorrect text"
+			"Element 'p.container' holds incorrect text"
 		);
 	}
 
@@ -22,6 +22,6 @@ goto("/", async ({ page }) => {
 
 	assert(
 		pagagraphNodes.length === 1,
-		"There should be only one <p> element on the page",
+		"There should be exactly one <p> element on the page",
 	);
 });

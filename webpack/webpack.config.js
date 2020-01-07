@@ -21,9 +21,20 @@ const config = {
 		index: resolve("src"),
 		curr: resolve("src/curr"),
 	},
+	resolve: {
+		extensions: [ ".js", ".json", ".ts", ".tsx" ],
+	},
 	module: {
 		rules: [
-			{ test: /\.css$/, use: [ "style-loader", "css-loader" ] },
+			{
+				test: /\.css$/,
+				use: [ "style-loader", "css-loader" ]
+			},
+			{
+				test: /\.tsx?$/,
+				use: "ts-loader",
+				exclude: /node_modules/,
+			},
 		],
 	},
 	plugins: [

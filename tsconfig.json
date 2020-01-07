@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "module": "commonjs",
-    "lib": [ "DOM" ],
+    "outDir": "dist",
     "allowJs": true, // TODO: remove
     "checkJs": true,
-    "noEmit": true,
+    "sourceMap": true,
     "esModuleInterop": true,
+    "removeComments": true,
 
     "strict": true,
     "noUnusedLocals": true,
