@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack --mode=production",
+    "build": "webpack --config=webpack/webpack.config.js --mode=production",
     "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
     "compile": "tsc",
     "dev": "npm run compile -- --watch"

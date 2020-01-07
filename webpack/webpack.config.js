@@ -7,8 +7,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
  * @returns {string}
  */
 function resolve(...segments) {
-	return path.resolve(__dirname, ...segments);
+	return path.resolve(__dirname, "..", ...segments);
 }
+
+/** @private */
+const templatePath = resolve("src/template.html");
 
 /**
  * @type {import("webpack").Configuration}
@@ -25,11 +28,12 @@ const config = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: resolve("src/index.html"),
+			template: templatePath,
+			filename: resolve("dist/index.html"),
 			chunks: [ "index" ],
 		}),
 		new HtmlWebpackPlugin({
-			template: resolve("src/curr/index.html"),
+			template: templatePath,
 			filename: resolve("dist/curr/index.html"),
 			chunks: [ "curr" ],
 		}),
