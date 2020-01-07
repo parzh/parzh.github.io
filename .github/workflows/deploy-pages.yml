@@ -1,4 +1,4 @@
-name: Deploy https://parzh.github.io
+name: Deploy pages
 
 on:
   push:
