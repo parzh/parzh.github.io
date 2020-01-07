@@ -1,6 +1,6 @@
+//@ts-check
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const resolve = require("./resolve");
-const defaultTemplatePath = require("./default-template-path");
 
 /**
  * @type {import("webpack").Configuration}
@@ -29,13 +29,13 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: "GitHub Pages",
-			template: defaultTemplatePath,
+			template: "./index.ejs",
 			filename: resolve("dist/index.html"),
 			chunks: [ "index" ],
 		}),
 		new HtmlWebpackPlugin({
 			title: "Curr",
-			template: defaultTemplatePath,
+			template: "./index.ejs",
 			filename: resolve("dist/curr/index.html"),
 			chunks: [ "curr" ],
 		}),
