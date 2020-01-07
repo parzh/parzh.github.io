@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const resolve = path.resolve.bind(null, __dirname);
 
 /**
- * @type {import("webpack".Configuration)}
+ * @type {import("webpack").Configuration}
  */
 const config = {
 	entry: {
