@@ -4,9 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack --mode=production",
+    "build": "webpack --config=webpack/webpack.config.js --mode=production",
     "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
-    "compile": "tsc",
+    "compile": "tsc --noEmit",
     "dev": "npm run compile -- --watch"
   },
   "repository": "github:parzh/parzh.github.io",
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/parzh/parzh.github.io#readme",
   "devDependencies": {
+    "@types/html-webpack-plugin": "3.2.1",
     "@types/node": "13.1.4",
     "@types/puppeteer": "2.0.0",
+    "@types/react": "16.9.17",
+    "@types/react-dom": "16.9.4",
     "@types/webpack": "4.41.1",
     "clean-webpack-plugin": "3.0.0",
     "cross-env": "6.0.3",
@@ -28,9 +31,16 @@
     "mocha": "6.2.2",
     "puppeteer": "2.0.0",
     "rimraf": "3.0.0",
+    "source-map-loader": "0.2.4",
     "style-loader": "1.1.2",
+    "ts-loader": "6.2.1",
+    "ts-node": "8.5.4",
     "typescript": "3.7.4",
     "webpack": "4.41.5",
     "webpack-cli": "3.3.10"
+  },
+  "dependencies": {
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
   }
 }

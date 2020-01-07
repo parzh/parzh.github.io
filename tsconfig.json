@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "module": "commonjs",
-    "lib": [ "DOM" ],
-    "allowJs": true, // TODO: remove
-    "checkJs": true,
-    "noEmit": true,
+    "outDir": "dist",
+    "lib": [ "DOM", "es2018" ],
+    "sourceMap": true,
     "esModuleInterop": true,
+    "removeComments": true,
 
     "strict": true,
     "noUnusedLocals": true,
@@ -14,5 +15,6 @@
   "include": [
     "src/**/*",
     "test/**/*",
+    "webpack/**/*",
   ]
 }
