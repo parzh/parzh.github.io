@@ -2,8 +2,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-/** @private */
-const resolve = path.resolve.bind(null, __dirname);
+/**
+ * @param {string[]} segments
+ * @returns {string}
+ */
+function resolve(...segments) {
+	return path.resolve(__dirname, ...segments);
+}
 
 /**
  * @type {import("webpack").Configuration}
