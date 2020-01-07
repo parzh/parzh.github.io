@@ -1,8 +1,0 @@
-pre {
-	margin-left: 3rem;
-}
-
-pre.rate::before {
-	content: attr(data-code) ": ";
-	font: inherit;
-}
