@@ -9,8 +9,8 @@ const resolve = path.resolve.bind(null, __dirname);
  */
 const config = {
 	entry: {
-		index: resolve("src/index.js"),
-		curr: resolve("src/curr/index.js"),
+		index: resolve("src"),
+		curr: resolve("src/curr"),
 	},
 	module: {
 		rules: [

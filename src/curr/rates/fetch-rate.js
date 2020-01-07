@@ -1,4 +1,3 @@
-// @ts-check
 import rates from "./rates";
 
 /** @private */
