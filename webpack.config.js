@@ -1,6 +1,5 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 /** @private */
 const resolve = path.resolve.bind(null, __dirname);
@@ -19,7 +18,6 @@ const config = {
 		],
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: resolve("src/index.html"),
 			chunks: [ "index" ],

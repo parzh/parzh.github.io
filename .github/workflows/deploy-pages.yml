@@ -38,6 +38,9 @@ jobs:
           git fetch "$GIT_REMOTE_NAME"
           git worktree add "$PAGES_DIST_DIR" master
 
+      - name: Remove old contents of dist dir
+        run: rm -rf dist/*
+
       - name: Build local 'master'
         run: npm run build
 
