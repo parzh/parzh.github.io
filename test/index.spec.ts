@@ -1,5 +1,5 @@
-import goto from "../helpers/goto";
-import assert from "../helpers/assert";
+import goto from "./helpers/goto";
+import assert from "./helpers/assert";
 
 goto("/", async ({ page }) => {
 	const containerNode = await page.$("p.container");

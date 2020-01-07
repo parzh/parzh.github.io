@@ -1,7 +1,7 @@
-const { promisify } = require("util");
-const { exists } = require("fs");
-const { resolve, isAbsolute } = require("path");
-const { pathToFileURL } = require("url");
+import { promisify } from "util";
+import { exists } from "fs";
+import { resolve, isAbsolute } from "path";
+import { pathToFileURL } from "url";
 
 /** @private */
 const fileExists = promisify(exists);
@@ -9,13 +9,7 @@ const fileExists = promisify(exists);
 /** @private */
 const resolveSrc = resolve.bind(null, process.env.PACKAGE_HOME, "dist");
 
-/**
- * @internal
- * @param {string} path
- * @returns {Promise<string>}
- */
-module.exports =
-async function getPathToTemplate(path) {
+export default async function getPathToTemplate(path: string): Promise<string> {
 	const dir = isAbsolute(path) ? "." + path : path;
 	const indexFile = resolveSrc(dir, "index.html");
 
