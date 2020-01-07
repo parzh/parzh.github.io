@@ -11,7 +11,7 @@ goto("/", async ({ page }) => {
 		const textContent = await contentNode.evaluate((element) => element.textContent);
 
 		assert(
-			textContent === "Nothing to see here, move along!",
+			textContent === "Nothing's here, move along!",
 			"Element '#content' holds incorrect text"
 		);
 	}
