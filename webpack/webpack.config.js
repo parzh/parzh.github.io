@@ -1,4 +1,3 @@
-//@ts-check
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const resolve = require("./resolve");
 const defaultTemplatePath = require("./default-template-path");
