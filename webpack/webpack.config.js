@@ -1,17 +1,7 @@
 //@ts-check
-const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
-/**
- * @param {string[]} segments
- * @returns {string}
- */
-function resolve(...segments) {
-	return path.resolve(__dirname, "..", ...segments);
-}
-
-/** @private */
-const templatePath = resolve("src/template.ejs");
+const resolve = require("./resolve");
+const defaultTemplatePath = require("./default-template-path");
 
 /**
  * @type {import("webpack").Configuration}
@@ -40,13 +30,13 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: "GitHub Pages",
-			template: templatePath,
+			template: defaultTemplatePath,
 			filename: resolve("dist/index.html"),
 			chunks: [ "index" ],
 		}),
 		new HtmlWebpackPlugin({
 			title: "Curr",
-			template: templatePath,
+			template: defaultTemplatePath,
 			filename: resolve("dist/curr/index.html"),
 			chunks: [ "curr" ],
 		}),
