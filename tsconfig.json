@@ -3,8 +3,7 @@
     "jsx": "react",
     "module": "commonjs",
     "outDir": "dist",
-    "allowJs": true, // TODO: remove
-    "checkJs": true,
+    "lib": [ "DOM", "es2018" ],
     "sourceMap": true,
     "esModuleInterop": true,
     "removeComments": true,
