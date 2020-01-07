@@ -11,7 +11,7 @@ function resolve(...segments) {
 }
 
 /** @private */
-const templatePath = resolve("src/template.html");
+const templatePath = resolve("src/template.ejs");
 
 /**
  * @type {import("webpack").Configuration}
@@ -28,11 +28,13 @@ const config = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
+			title: "GitHub Pages",
 			template: templatePath,
 			filename: resolve("dist/index.html"),
 			chunks: [ "index" ],
 		}),
 		new HtmlWebpackPlugin({
+			title: "Curr",
 			template: templatePath,
 			filename: resolve("dist/curr/index.html"),
 			chunks: [ "curr" ],
