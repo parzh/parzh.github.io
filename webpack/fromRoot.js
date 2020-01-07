@@ -6,6 +6,6 @@ const path = require("path");
  * @returns {string}
  */
 module.exports =
-function resolve(...segments) {
+function fromRoot(...segments) {
 	return path.resolve(__dirname, "..", ...segments);
 }
