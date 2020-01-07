@@ -10,8 +10,8 @@ const resolve = path.resolve.bind(null, __dirname);
  */
 const config = {
 	entry: {
-		index: resolve("src", "index.js"),
-		curr: resolve("src", "curr", "index.js"),
+		index: resolve("src/index.js"),
+		curr: resolve("src/curr/index.js"),
 	},
 	module: {
 		rules: [
@@ -21,12 +21,12 @@ const config = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			template: resolve("src", "index.html"),
+			template: resolve("src/index.html"),
 			chunks: [ "index" ],
 		}),
 		new HtmlWebpackPlugin({
-			template: resolve("src", "curr", "index.html"),
-			filename: resolve("dist", "curr", "index.html"),
+			template: resolve("src/curr/index.html"),
+			filename: resolve("dist/curr/index.html"),
 			chunks: [ "curr" ],
 		}),
 	],
