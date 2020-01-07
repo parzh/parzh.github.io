@@ -7,7 +7,7 @@ import { pathToFileURL } from "url";
 const fileExists = promisify(exists);
 
 /** @private */
-const resolveSrc = resolve.bind(null, process.env.PACKAGE_HOME, "dist");
+const resolveSrc = resolve.bind(null, process.env.PACKAGE_HOME!, "dist");
 
 export default async function getPathToTemplate(path: string): Promise<string> {
 	const dir = isAbsolute(path) ? "." + path : path;

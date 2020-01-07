@@ -13,11 +13,11 @@ else
 fi
 
 tests_dir="$PACKAGE_HOME/test"
-filenames="$(find $tests_dir -name *.spec.js)"
+filenames="$(find $tests_dir -name *.spec.ts)"
 filenames_array=(${filenames// / })
 echo -e "Found ${#filenames_array[@]} tests\n"
 
-exit_code=0
+main_exit_code=0
 
 for filename in $filenames
 do
@@ -26,22 +26,22 @@ do
 	# ***
 
 	time_start="$(node -pe "Date.now()")"
-	node --require "$PACKAGE_HOME/scripts/before-each.js" "$filename"
-	node_exit_code=$?
+	node --require="ts-node/register" --require "$PACKAGE_HOME/scripts/before-each.js" "$filename"
+	test_exit_code=$?
 	time_total=$(node -pe "(Date.now() - $time_start) / 1e3")
 
 	# ***
 
-	if [ $node_exit_code -eq 0 ]
+	if [ $test_exit_code -eq 0 ]
 	then
 		echo -ne "\e[1;42m PASS \e[0m "
 	else
 		echo -ne "\e[1;41m FAIL \e[0m "
-		exit_code=1
+		main_exit_code=1
 	fi
 
 	echo "(took $time_total seconds)"
 	echo ""
 done
 
-exit $exit_code
+exit $main_exit_code
