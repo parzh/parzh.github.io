@@ -1,4 +1,3 @@
-// @ts-check
 import toUAH from "./rates/to-uah";
 import showRate from "./rates/dom/show-rate";
 import setNodeText from "./rates/dom/set-node-text";
