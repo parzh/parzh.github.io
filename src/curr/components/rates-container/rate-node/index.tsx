@@ -22,7 +22,7 @@ export default function RateNode({ code, className, onFetched = () => {}, ...pro
 	const value = rate === null ? "..." : rate;
 
 	return (
-		<pre {...props} className={`RateNode ${ className }`}>
+		<pre {...props} className={`RateNode ${ className || "" }`}>
 			{code}: {value}
 		</pre>
 	);
