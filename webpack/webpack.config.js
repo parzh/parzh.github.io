@@ -29,13 +29,13 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: "GitHub Pages",
-			template: "./index.ejs",
+			template: resolve("index.ejs"),
 			filename: resolve("dist/index.html"),
 			chunks: [ "index" ],
 		}),
 		new HtmlWebpackPlugin({
 			title: "Curr",
-			template: "./index.ejs",
+			template: resolve("index.ejs"),
 			filename: resolve("dist/curr/index.html"),
 			chunks: [ "curr" ],
 		}),
