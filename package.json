@@ -6,8 +6,7 @@
   "scripts": {
     "build": "webpack --config=webpack/webpack.config.js --mode=production",
     "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
-    "compile": "tsc --noEmit",
-    "dev": "npm run compile -- --watch"
+    "dev": "tsc --noEmit --watch"
   },
   "repository": "github:parzh/parzh.github.io",
   "keywords": [],
