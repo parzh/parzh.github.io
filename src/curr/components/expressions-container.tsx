@@ -3,14 +3,15 @@ import toUAH from "../api/to-uah";
 
 /** @private */
 interface Props {
-	allFetched: boolean;
+	/** Defaults to `true` */
+	ratesFetched?: boolean;
 	onConverted?: (convertedExpression: string) => unknown;
 }
 
-export default function ExpressionsContainer({ allFetched, onConverted = () => {} }: Props) {
+export default function ExpressionsContainer({ ratesFetched = true, onConverted = () => {} }: Props) {
 	let converted: string;
 
-	if (!allFetched)
+	if (!ratesFetched)
 		converted = "...";
 
 	else {
