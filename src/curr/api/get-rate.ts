@@ -4,7 +4,7 @@ import getRateFromNBU from "./get-rate-from-nbu";
 /** @private */
 const MAX_ATTEMPTS = 3;
 
-async function _fetchRate(code: string, attempts: number): Promise<number> {
+async function _getRate(code: string, attempts: number): Promise<number> {
 	if (code in rates === false) {
 		let rate = 1;
 
@@ -20,7 +20,7 @@ async function _fetchRate(code: string, attempts: number): Promise<number> {
 			if (attempts < MAX_ATTEMPTS) {
 				console.log(`Fetching again (${ attempts + 1 /* showing near future */ } / ${ MAX_ATTEMPTS })`);
 
-				return await _fetchRate(code, attempts);
+				return await _getRate(code, attempts);
 			}
 
 			console.warn(`Reached fetch attempts limit; fallback to 1.00`);
@@ -32,6 +32,6 @@ async function _fetchRate(code: string, attempts: number): Promise<number> {
 	return rates[code];
 }
 
-export default async function fetchRate(code: string): Promise<number> {
-	return await _fetchRate(code, 0);
+export default async function getRate(code: string): Promise<number> {
+	return await _getRate(code, 0);
 }

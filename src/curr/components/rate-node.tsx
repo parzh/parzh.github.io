@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import fetchRate from "../api/fetch-rate";
+import getRate from "../api/get-rate";
 
 /** @private */
 interface Props extends React.HTMLAttributes<HTMLPreElement> {
@@ -12,7 +12,7 @@ export default function RateNode({ code, className, onFetched = () => {}, ...pro
 
 	useEffect(() => {
 		(async () => {
-			const rate = await fetchRate(code);
+			const rate = await getRate(code);
 
 			setRate(rate);
 			onFetched(rate);
