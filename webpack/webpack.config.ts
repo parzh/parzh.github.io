@@ -1,6 +1,6 @@
 import { Configuration } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import fromRoot from "./fromRoot";
+import fromRoot from "./from-root";
 
 export default <Configuration> {
 	entry: {
