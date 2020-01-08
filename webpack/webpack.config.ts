@@ -1,11 +1,8 @@
-//@ts-check
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const fromRoot = require("./fromRoot");
+import { Configuration } from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import fromRoot from "./fromRoot";
 
-/**
- * @type {import("webpack").Configuration}
- */
-const config = {
+export default <Configuration> {
 	entry: {
 		index: fromRoot("src"),
 		curr: fromRoot("src/curr"),
@@ -45,5 +42,3 @@ const config = {
 		path: fromRoot("dist"),
 	},
 };
-
-module.exports = config;
