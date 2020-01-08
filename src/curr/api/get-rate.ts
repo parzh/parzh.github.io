@@ -4,6 +4,7 @@ import fetchRate from "./fetch-rate";
 /** @private */
 const MAX_ATTEMPTS = 3;
 
+/** @private */
 async function _getRate(code: string, attempts: number): Promise<number> {
 	if (code in rates === false) {
 		let rate = 1;
