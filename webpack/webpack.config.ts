@@ -2,6 +2,9 @@ import { resolve } from "path";
 import { Configuration } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
+/** @private */
+const template = resolve("./webpack/index.ejs");
+
 export default <Configuration> {
 	entry: {
 		index: resolve("./src"),
@@ -25,14 +28,14 @@ export default <Configuration> {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
+			template,
 			title: "GitHub Pages",
-			template: resolve("./webpack/index.ejs"),
 			filename: resolve("./dist/index.html"),
 			chunks: [ "index" ],
 		}),
 		new HtmlWebpackPlugin({
+			template,
 			title: "Curr",
-			template: resolve("./webpack/index.ejs"),
 			filename: resolve("./dist/curr/index.html"),
 			chunks: [ "curr" ],
 		}),
