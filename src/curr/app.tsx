@@ -5,13 +5,13 @@ import ExpressionsContainer from "./components/expressions-container";
 import ResultContainer from "./components/result-container";
 
 export default function App() {
-	const [ allFetched, setAllFetched ] = useState<boolean>(false);
+	const [ ratesFetched, setRatesFetched ] = useState<boolean>(false);
 	const [ converted, setConverted ] = useState<string | null>(null);
 
 	return (
 		<>
-			<RatesContainer codes={[ "USD", "EUR" ]} onAllFetched={() => setAllFetched(true)} />
-			<ExpressionsContainer allFetched={allFetched} onConverted={setConverted} />
+			<RatesContainer codes={[ "USD", "EUR" ]} onAllFetched={() => setRatesFetched(true)} />
+			<ExpressionsContainer ratesFetched={ratesFetched} onConverted={setConverted} />
 			<ResultContainer expression={converted} />
 		</>
 	);
