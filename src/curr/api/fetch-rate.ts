@@ -1,5 +1,5 @@
 import rates from "./rates";
-import getRate from "./get-rate";
+import getRateFromNBU from "./get-rate-from-nbu";
 
 /** @private */
 const MAX_ATTEMPTS = 3;
@@ -10,7 +10,7 @@ async function _fetchRate(code: string, attempts: number): Promise<number> {
 
 		try {
 			attempts++;
-			rate = await getRate(code);
+			rate = await getRateFromNBU(code);
 		}
 
 		catch (error) {
