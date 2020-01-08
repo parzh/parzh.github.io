@@ -1,5 +1,5 @@
 import React from "react";
-import toUAH from "../rates/to-uah";
+import toUAH from "../api/to-uah";
 
 /** @private */
 interface Props {

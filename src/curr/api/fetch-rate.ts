@@ -1,4 +1,4 @@
-import rates from ".";
+import rates from "./rates";
 import getRate from "./get-rate";
 
 /** @private */

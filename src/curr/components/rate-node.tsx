@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import fetchRate from "../rates/fetch-rate";
+import fetchRate from "../api/fetch-rate";
 
 /** @private */
 interface Props extends React.HTMLAttributes<HTMLPreElement> {

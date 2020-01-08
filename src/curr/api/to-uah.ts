@@ -1,4 +1,4 @@
-import rates from ".";
+import rates from "./rates";
 
 export default function toUAH(code: string, amount: number, decimalDigits?: number): string {
 	const converted = amount * (rates[code] | 1);
