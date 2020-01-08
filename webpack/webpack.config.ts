@@ -1,14 +1,14 @@
-//@ts-check
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const fromRoot = require("./fromRoot");
+import { resolve } from "path";
+import { Configuration } from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-/**
- * @type {import("webpack").Configuration}
- */
-const config = {
+/** @private */
+const template = resolve("./webpack/index.ejs");
+
+export default <Configuration> {
 	entry: {
-		index: fromRoot("src"),
-		curr: fromRoot("src/curr"),
+		index: resolve("./src"),
+		curr: resolve("./src/curr"),
 	},
 	resolve: {
 		extensions: [ ".js", ".json", ".ts", ".tsx" ],
@@ -28,22 +28,20 @@ const config = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
+			template,
 			title: "GitHub Pages",
-			template: fromRoot("webpack/index.ejs"),
-			filename: fromRoot("dist/index.html"),
+			filename: resolve("./dist/index.html"),
 			chunks: [ "index" ],
 		}),
 		new HtmlWebpackPlugin({
+			template,
 			title: "Curr",
-			template: fromRoot("webpack/index.ejs"),
-			filename: fromRoot("dist/curr/index.html"),
+			filename: resolve("./dist/curr/index.html"),
 			chunks: [ "curr" ],
 		}),
 	],
 	output: {
 		filename: "[name].bundle.js",
-		path: fromRoot("dist"),
+		path: resolve("./dist"),
 	},
 };
-
-module.exports = config;
