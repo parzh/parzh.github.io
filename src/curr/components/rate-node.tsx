@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import getRate from "../api/get-rate";
 
 /** @private */
-interface Props extends React.HTMLAttributes<HTMLPreElement> {
+interface Props {
 	code: string;
 	onFetched?: (rate: number) => unknown;
 }
 
-export default function RateNode({ code, className, onFetched = () => {}, ...props }: Props) {
+export default function RateNode({ code, onFetched = () => {} }: Props) {
 	const [ rate, setRate ] = useState<number | null>(null);
 
 	useEffect(() => {
@@ -21,9 +21,5 @@ export default function RateNode({ code, className, onFetched = () => {}, ...pro
 
 	const value = rate === null ? "..." : rate;
 
-	return (
-		<pre {...props} className={`RateNode ${ className || "" }`}>
-			{code}: {value}
-		</pre>
-	);
+	return <pre className="RateNode">{code}: {value}</pre>;
 }
