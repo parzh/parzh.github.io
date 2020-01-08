@@ -26,7 +26,7 @@ do
 	# ***
 
 	time_start="$(node -pe "Date.now()")"
-	node --require="ts-node/register" --require "$PACKAGE_HOME/scripts/before-each.js" "$filename"
+	node --require="ts-node/register" --unhandled-rejections=strict "$filename"
 	test_exit_code=$?
 	time_total=$(node -pe "(Date.now() - $time_start) / 1e3")
 
