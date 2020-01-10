@@ -7,10 +7,10 @@ interface Props {
 	onAllFetched?: () => unknown;
 }
 
-export default function RatesContainer({ codes, onAllFetched = () => {} }: Props) {
+export default function RatesContainer({ codes, onAllFetched = () => {} }: Props): JSX.Element {
 	const [ fetchedCount, setFetchedCount ] = useState<number>(0);
 
-	const addFetched = () => setFetchedCount((current) => current + 1);
+	const addFetched = (): unknown => setFetchedCount((current) => current + 1);
 
 	if (fetchedCount >= codes.length)
 		onAllFetched();

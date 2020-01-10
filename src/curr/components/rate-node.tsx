@@ -7,11 +7,11 @@ interface Props {
 	onFetched?: (rate: number) => unknown;
 }
 
-export default function RateNode({ code, onFetched = () => {} }: Props) {
+export default function RateNode({ code, onFetched = () => {} }: Props): JSX.Element {
 	const [ rate, setRate ] = useState<number | null>(null);
 
 	useEffect(() => {
-		(async () => {
+		(async (): Promise<void> => {
 			const rate = await getRate(code);
 
 			setRate(rate);

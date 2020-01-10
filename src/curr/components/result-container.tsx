@@ -6,7 +6,7 @@ interface Props {
 	expression: string | null;
 }
 
-export default function ResultContainer({ expression }: Props) {
+export default function ResultContainer({ expression }: Props): JSX.Element {
 	let result: string;
 
 	if (expression === null)

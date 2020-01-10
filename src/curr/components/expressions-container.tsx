@@ -8,7 +8,7 @@ interface Props {
 	onConverted?: (convertedExpression: string) => unknown;
 }
 
-export default function ExpressionsContainer({ ratesFetched = true, onConverted = () => {} }: Props) {
+export default function ExpressionsContainer({ ratesFetched = true, onConverted = noop }: Props): JSX.Element {
 	let converted: string;
 
 	if (!ratesFetched)
