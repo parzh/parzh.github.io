@@ -19,7 +19,7 @@ jobs:
       - run: npm run build
       - run: npm test
 
-  test:
+  lint:
     name: Check linting
     runs-on: ubuntu-18.04
     steps:
