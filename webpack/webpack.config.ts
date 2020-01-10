@@ -5,7 +5,8 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 /** @private */
 const template = resolve("./webpack/index.ejs");
 
-export default <Configuration> {
+/** @public */
+const config: Configuration = {
 	entry: {
 		index: resolve("./src"),
 		curr: resolve("./src/curr"),
@@ -45,3 +46,5 @@ export default <Configuration> {
 		path: resolve("./dist"),
 	},
 };
+
+export default config;
