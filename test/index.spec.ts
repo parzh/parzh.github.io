@@ -12,7 +12,7 @@ goto("/", async ({ page }) => {
 
 		assert(
 			textContent === "Nothing's here, move along!",
-			"Element 'p.container' holds incorrect text"
+			`Element 'p.container' holds incorrect text: "${ textContent }"`
 		);
 	}
 
