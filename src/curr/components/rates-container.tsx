@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import RateNode from "./rate-node";
 
 /** @private */
-interface Props {
-	codes: [ string, ...string[] ];
-	onAllFetched?: () => unknown;
+interface OnAllFetched {
+	(): unknown;
 }
 
-export default function RatesContainer({ codes, onAllFetched = () => {} }: Props): JSX.Element {
+/** @private */
+interface Props {
+	codes: [ string, ...string[] ];
+	onAllFetched?: OnAllFetched;
+}
+
+/** @private */
+const noop: OnAllFetched = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+
+export default function RatesContainer({ codes, onAllFetched = noop }: Props): JSX.Element {
 	const [ fetchedCount, setFetchedCount ] = useState<number>(0);
 
 	const addFetched = (): unknown => setFetchedCount((current) => current + 1);

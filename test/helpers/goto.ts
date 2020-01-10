@@ -12,7 +12,10 @@ interface Callback {
 	(results: Results): unknown;
 }
 
-export default async function goto(path: string, callback: Callback = () => { }): Promise<void> {
+/** @private */
+const noop: Callback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+
+export default async function goto(path: string, callback: Callback = noop): Promise<void> {
 	const pageUrl = await getPathToTemplate(path);
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
