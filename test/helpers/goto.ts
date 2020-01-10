@@ -9,7 +9,7 @@ interface Results {
 
 /** @private */
 interface Callback {
-	(results: Results): unknown
+	(results: Results): unknown;
 }
 
 export default async function goto(path: string, callback: Callback = () => { }): Promise<void> {
