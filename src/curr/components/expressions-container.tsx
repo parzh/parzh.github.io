@@ -2,13 +2,21 @@ import React from "react";
 import toUAH from "../api/to-uah";
 
 /** @private */
+interface OnConverted {
+	(convertedExpression: string): unknown;
+}
+
+/** @private */
 interface Props {
 	/** Defaults to `true` */
 	ratesFetched?: boolean;
-	onConverted?: (convertedExpression: string) => unknown;
+	onConverted?: OnConverted;
 }
 
-export default function ExpressionsContainer({ ratesFetched = true, onConverted = () => {} }: Props) {
+/** @private */
+const noop: OnConverted = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+
+export default function ExpressionsContainer({ ratesFetched = true, onConverted = noop }: Props): JSX.Element {
 	let converted: string;
 
 	if (!ratesFetched)

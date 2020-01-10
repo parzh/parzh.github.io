@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function App() {
-	return <p className="container">Nothing's here, move along!</p>;
+export default function App(): JSX.Element {
+	return <p className="container">Nothing&#39;s here, move along!</p>;
 }

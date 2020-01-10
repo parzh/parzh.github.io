@@ -18,3 +18,12 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
+
+  lint:
+    name: Check the style
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: npm ci
+      - run: npm run lint
