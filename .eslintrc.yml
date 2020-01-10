@@ -14,4 +14,6 @@ settings:
   react:
     version: detect
 
-rules: {}
+rules:
+  # I don't usually abuse non-null assertions
+  "@typescript-eslint/no-non-null-assertion": 0
