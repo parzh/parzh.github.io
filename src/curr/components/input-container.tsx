@@ -14,7 +14,18 @@ interface Props {
 /** @private */
 const noop: OnChange = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
+/** @private */
+const initial = {
+	rendered: false,
+	value: "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH",
+};
+
 export default function InputContainer({ onChange = noop }: Props): JSX.Element {
+	if (!initial.rendered) {
+		initial.rendered = true;
+		onChange(initial.value);
+	}
+
 	return (
 		<section className="InputContainer">
 			<header>
@@ -22,7 +33,11 @@ export default function InputContainer({ onChange = noop }: Props): JSX.Element 
 			</header>
 
 			{/* TODO: rectrict evaluable code here */}
-			<input type="text" onChange={(event): unknown => onChange(event.currentTarget.value)} />
+			<input
+				type="text"
+				defaultValue={initial.value}
+				onChange={(event): unknown => onChange(event.currentTarget.value)}
+			/>
 		</section>
 	);
 }
