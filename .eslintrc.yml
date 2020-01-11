@@ -1,6 +1,12 @@
+env:
+  es6: true
+  node: true
+  browser: true
+
 parser: "@typescript-eslint/parser"
 
 extends:
+  - "eslint:recommended"
   - "plugin:react/recommended"
   - "plugin:@typescript-eslint/recommended"
 
@@ -19,3 +25,5 @@ root: true
 rules:
   # I don't usually abuse non-null assertions
   "@typescript-eslint/no-non-null-assertion": 0
+
+  no-trailing-spaces: 2
