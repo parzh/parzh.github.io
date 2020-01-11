@@ -8,19 +8,26 @@ interface OnAllFetched {
 
 /** @private */
 interface Props {
-	codes: [ string, ...string[] ];
+	input: string | null;
 	onAllFetched?: OnAllFetched;
 }
 
 /** @private */
 const noop: OnAllFetched = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
-export default function RatesContainer({ codes, onAllFetched = noop }: Props): JSX.Element {
-	const [ fetchedCount, setFetchedCount ] = useState<number>(0);
+/** @private */
+const KEY_RANDOM = Math.random();
 
-	const addFetched = (): unknown => setFetchedCount((current) => current + 1);
+export default function RatesContainer({ input, onAllFetched = noop }: Props): JSX.Element {
+	const currsMatch = input?.match(/(?<=\d )[A-Z]{3}/g);
+	const currsFound = !!currsMatch;
+	const currs = Array.from(currsMatch || []);
 
-	if (fetchedCount >= codes.length)
+	const [ currsFetched, setCurrsFetched ] = useState<number>(0);
+
+	const addFetched = (): unknown => setCurrsFetched((current) => current + 1);
+
+	if (currsFound && currsFetched >= currs.length)
 		onAllFetched();
 
 	return (
@@ -29,9 +36,17 @@ export default function RatesContainer({ codes, onAllFetched = noop }: Props): J
 				<h3>Rates</h3>
 			</header>
 
-			{codes.map((code) => (
-				<RateNode key={code} code={code} onFetched={addFetched} />
-			))}
+			{((): JSX.Element[] => {
+				if (!currsFound)
+					return [<pre key={KEY_RANDOM}>...</pre>];
+
+				if (!currs.length)
+					return [<pre key={KEY_RANDOM}>No currencies provided</pre>];
+
+				return currs.map((code) => (
+					<RateNode key={code} code={code} onFetched={addFetched} />
+				));
+			})()}
 		</section>
 	);
 }
