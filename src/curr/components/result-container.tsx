@@ -12,11 +12,11 @@ export default function ResultContainer({ expression }: Props): JSX.Element {
 	useEffect(() => {
 		if (expression === null)
 			setResult(null);
-	
+
 		else try {
 			const math = expression.replace(/ UAH/g, "");
 			const amount = eval(math) as number; // FIXME: vulnerability
-	
+
 			setResult(toUAH("", amount, 2));
 		}
 
