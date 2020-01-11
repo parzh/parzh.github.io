@@ -9,7 +9,7 @@ interface Token {
 }
 
 /** @private */
-const moneyExpression = /(?<input>(?<amountRaw>\d+(?:[.,]\d+)?)s\+(?<currency>[A-Z]{3}))/g;
+const moneyExpression = /(?<input>(?<amountRaw>\d+(?:[.,]\d+)?)\s+(?<currency>[A-Z]{3}))/g;
 
 /** @private */
 const outputs = new Map<string, string>();
