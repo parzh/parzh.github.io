@@ -14,7 +14,7 @@ export default function App(): JSX.Element {
 		<>
 			<InputContainer onChange={setInput} />
 			<RatesContainer input={input} onAllFetched={(): unknown => setRatesFetched(true)} />
-			<ConvertedContainer ratesFetched={ratesFetched} onConverted={setConverted} />
+			<ConvertedContainer expression={input} ratesFetched={ratesFetched} onConverted={setConverted} />
 			<ResultContainer expression={converted} />
 		</>
 	);

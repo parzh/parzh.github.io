@@ -1,5 +1,5 @@
-import React from "react";
-import toUAH from "../api/to-uah";
+import React, { useState, useEffect } from "react";
+import convert from "../api/convert";
 
 /** @private */
 interface OnConverted {
@@ -8,6 +8,8 @@ interface OnConverted {
 
 /** @private */
 interface Props {
+	expression: string | null;
+
 	/** Defaults to `true` */
 	ratesFetched?: boolean;
 	onConverted?: OnConverted;
@@ -16,16 +18,27 @@ interface Props {
 /** @private */
 const noop: OnConverted = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
-export default function ConvertedContainer({ ratesFetched = true, onConverted = noop }: Props): JSX.Element {
-	let converted: string;
+export default function ConvertedContainer({ expression, ratesFetched = true, onConverted = noop }: Props): JSX.Element {
+	const [ converted, setConverted ] = useState<string | null>(null);
 
-	if (!ratesFetched)
-		converted = "...";
+	useEffect(() => {
+		(async (): Promise<void> => {
+			if (!expression || !ratesFetched)
+				setConverted(null);
 
-	else {
-		converted = `(${ toUAH("USD", 50) } + ${ toUAH("EUR", 15) }) / 3 + ${ toUAH("EUR", 10) } - 500 UAH`;
-		onConverted(converted);
-	}
+			else try {
+				const value = await convert(expression);
+
+				setConverted(value);
+				onConverted(value);
+			}
+
+			catch (error) {
+				setConverted(null);
+				console.error(error);
+			}
+		})();
+	}, [ expression, ratesFetched ]);
 
 	return (
 		<section className="ExpressionsContainer">
@@ -33,9 +46,7 @@ export default function ConvertedContainer({ ratesFetched = true, onConverted = 
 				<h3>Expressions</h3>
 			</header>
 
-			{/* TODO: try calculating expressions dynamically someday? */}
-			<pre>(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH</pre>
-			<pre>{converted}</pre>
+			<pre>{converted ?? "..."}</pre>
 		</section>
 	);
 }
