@@ -15,7 +15,7 @@ export default function ResultContainer({ expression }: Props): JSX.Element {
 	
 		else try {
 			const math = expression.replace(/ UAH/g, "");
-			const amount = eval(math) as number;
+			const amount = eval(math) as number; // FIXME: vulnerability
 	
 			setResult(toUAH("", amount, 2));
 		}
