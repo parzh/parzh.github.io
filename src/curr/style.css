@@ -1,7 +1,12 @@
 :root {
-	--indentation: 3rem;
+	--indentation: 1rem;
+	--indentation-left: calc(var(--indentation) * 3);
 }
 
 pre, input {
-	margin-left: var(--indentation);
+	margin-left: var(--indentation-left);
+}
+
+section {
+	margin: var(--indentation);
 }
