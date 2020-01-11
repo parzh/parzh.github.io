@@ -22,6 +22,13 @@ export default function RatesContainer({ input, onAllFetched = noop }: Props): J
 	const currsMatch = input?.match(/(?<=\d )[A-Z]{3}/g);
 	const currs = Array.from(new Set(currsMatch || []));
 
+	{
+		const index = currs.indexOf("UAH");
+
+		if (index !== -1)
+			currs.splice(index, 1);
+	}
+
 	const [ currsFetched, setCurrsFetched ] = useState<number>(0);
 
 	const addFetched = (): unknown => setCurrsFetched((current) => current + 1);
