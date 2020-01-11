@@ -13,7 +13,7 @@ interface Callback {
 }
 
 /** @private */
-const noop: Callback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+const noop: Callback = () => {};
 
 export default async function goto(path: string, callback: Callback = noop): Promise<void> {
 	const pageUrl = await getPathToTemplate(path);

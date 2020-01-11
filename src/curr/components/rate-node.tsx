@@ -12,7 +12,7 @@ interface Props {
 	onFetched?: OnFetched;
 }
 /** @private */
-const noop: OnFetched = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+const noop: OnFetched = () => {};
 
 export default function RateNode({ code, onFetched = noop }: Props): JSX.Element {
 	const [ rate, setRate ] = useState<number | null>(null);
