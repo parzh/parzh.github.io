@@ -21,6 +21,7 @@ export default function InputContainer({ onChange = noop }: Props): JSX.Element 
 				<h3>Input</h3>
 			</header>
 
+			{/* TODO: rectrict evaluable code here */}
 			<input type="text" onChange={(event): unknown => onChange(event.currentTarget.value)} />
 		</section>
 	);
