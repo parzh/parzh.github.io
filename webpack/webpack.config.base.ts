@@ -8,7 +8,7 @@ const template = resolve("./webpack/index.ejs");
 /** @public */
 const config: Configuration = {
 	entry: {
-		index: resolve("./src"),
+		main: resolve("./src"),
 		curr: resolve("./src/curr"),
 	},
 	resolve: {
@@ -32,7 +32,7 @@ const config: Configuration = {
 			template,
 			title: "GitHub Pages",
 			filename: resolve("./dist/index.html"),
-			chunks: [ "index" ],
+			chunks: [ "main" ],
 		}),
 		new HtmlWebpackPlugin({
 			template,
