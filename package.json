@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack --config=webpack/webpack.config.ts --mode=production",
+    "build": "webpack --config=webpack/webpack.config.ts",
     "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
     "lint": "eslint --ext \"ts\" --ext \"tsx\" src test webpack --fix",
     "dev": "tsc --noEmit --watch"

@@ -7,6 +7,7 @@ const template = resolve("./webpack/index.ejs");
 
 /** @public */
 const config: Configuration = {
+	mode: "production",
 	entry: {
 		index: resolve("./src"),
 		curr: resolve("./src/curr"),
