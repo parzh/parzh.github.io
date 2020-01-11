@@ -1,3 +1,7 @@
+:root {
+	--indentation: 3rem;
+}
+
 pre, input {
-	margin-left: 3rem;
+	margin-left: var(--indentation);
 }
