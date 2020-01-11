@@ -1,0 +1,4 @@
+input {
+	font-family: 'Courier New', Courier, monospace;
+	width: calc(100vw - var(--indentation-left) * 2);
+}

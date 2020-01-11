@@ -26,7 +26,5 @@ export default function RateNode({ code, onFetched = noop }: Props): JSX.Element
 		})();
 	}, [ code ]);
 
-	const value = rate === null ? "..." : rate;
-
-	return <pre className="RateNode">{code}: {value}</pre>;
+	return <pre className="RateNode">{code}: {rate ?? "..."}</pre>;
 }

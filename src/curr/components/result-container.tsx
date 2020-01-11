@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import toUAH from "../api/to-uah";
 
 /** @private */
@@ -7,20 +7,26 @@ interface Props {
 }
 
 export default function ResultContainer({ expression }: Props): JSX.Element {
-	let result: string;
+	const [ result, setResult ] = useState<string | null>(null);
 
-	if (expression === null)
-		result = "...";
+	useEffect(() => {
+		if (expression === null)
+			setResult(null);
+	
+		else try {
+			const math = expression.replace(/ UAH/g, "");
+			const amount = eval(math) as number;
+	
+			setResult(toUAH("", amount, 2));
+		}
 
-	else if (!expression)
-		result = "Error!";
+		catch (error) {
+			setResult(null);
 
-	else {
-		const math = expression.replace(/ UAH/g, "");
-		const amount = eval(math) as number;
-
-		result = toUAH("", amount, 2);
-	}
+			if (error instanceof SyntaxError === false)
+				console.error(error);
+		}
+	}, [ expression ]);
 
 	return (
 		<section className="ResultContainer">
@@ -29,7 +35,7 @@ export default function ResultContainer({ expression }: Props): JSX.Element {
 			</header>
 
 			<strong>
-				<pre>{result}</pre>
+				<pre>{result ?? "..."}</pre>
 			</strong>
 		</section>
 	);
