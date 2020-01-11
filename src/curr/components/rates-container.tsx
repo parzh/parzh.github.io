@@ -13,7 +13,7 @@ interface Props {
 }
 
 /** @private */
-const noop: OnAllFetched = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+const noop: OnAllFetched = () => {};
 
 /** @private */
 const KEY_RANDOM = Math.random();

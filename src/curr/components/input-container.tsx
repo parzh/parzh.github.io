@@ -12,7 +12,7 @@ interface Props {
 }
 
 /** @private */
-const noop: OnChange = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+const noop: OnChange = () => {};
 
 /** @private */
 const initial = {
