@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "webpack --config=webpack/webpack.config.prod.ts",
-    "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
+    "test": "echo No tests defined && exit 1",
     "lint": "eslint --ext \"ts\" --ext \"tsx\" src test webpack --fix",
     "dev": "webpack-dev-server --config=webpack/webpack.config.dev.ts"
   },
@@ -29,7 +29,6 @@
     "@typescript-eslint/eslint-plugin": "2.15.0",
     "@typescript-eslint/parser": "2.15.0",
     "clean-webpack-plugin": "3.0.0",
-    "cross-env": "6.0.3",
     "css-loader": "3.4.1",
     "eslint": "6.8.0",
     "eslint-plugin-react": "7.17.0",
