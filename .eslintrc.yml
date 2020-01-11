@@ -26,4 +26,7 @@ rules:
   # I don't usually abuse non-null assertions
   "@typescript-eslint/no-non-null-assertion": 0
 
+  # Noops are often useful as default callbacks
+  "@typescript-eslint/no-empty-function": 0
+
   no-trailing-spaces: 2
