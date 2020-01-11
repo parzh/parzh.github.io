@@ -5,7 +5,7 @@ import base from "./webpack.config.base";
 /** @public */
 const config: Configuration = extend(base, {
 	mode: "development",
-	devtool: "hidden-source-map",
+	devtool: "inline-source-map",
 	devServer: {
 		contentBase: "./dist"
 	},
