@@ -16,7 +16,7 @@ interface Props {
 /** @private */
 const noop: OnConverted = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
-export default function ExpressionsContainer({ ratesFetched = true, onConverted = noop }: Props): JSX.Element {
+export default function ConvertedContainer({ ratesFetched = true, onConverted = noop }: Props): JSX.Element {
 	let converted: string;
 
 	if (!ratesFetched)

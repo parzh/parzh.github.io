@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import InputContainer from "./components/input-container";
 import RatesContainer from "./components/rates-container";
-import ExpressionsContainer from "./components/expressions-container";
+import ConvertedContainer from "./components/converted-container";
 import ResultContainer from "./components/result-container";
 
 export default function App(): JSX.Element {
@@ -14,7 +14,7 @@ export default function App(): JSX.Element {
 		<>
 			<InputContainer onChange={setInput} />
 			<RatesContainer input={input} onAllFetched={(): unknown => setRatesFetched(true)} />
-			<ExpressionsContainer ratesFetched={ratesFetched} onConverted={setConverted} />
+			<ConvertedContainer ratesFetched={ratesFetched} onConverted={setConverted} />
 			<ResultContainer expression={converted} />
 		</>
 	);
