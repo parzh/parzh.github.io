@@ -20,14 +20,13 @@ const KEY_RANDOM = Math.random();
 
 export default function RatesContainer({ input, onAllFetched = noop }: Props): JSX.Element {
 	const currsMatch = input?.match(/(?<=\d )[A-Z]{3}/g);
-	const currsFound = !!currsMatch;
-	const currs = Array.from(currsMatch || []);
+	const currs = Array.from(new Set(currsMatch || []));
 
 	const [ currsFetched, setCurrsFetched ] = useState<number>(0);
 
 	const addFetched = (): unknown => setCurrsFetched((current) => current + 1);
 
-	if (currsFound && currsFetched >= currs.length)
+	if (!!currsMatch && currsFetched >= currs.length)
 		onAllFetched();
 
 	return (
@@ -37,11 +36,8 @@ export default function RatesContainer({ input, onAllFetched = noop }: Props): J
 			</header>
 
 			{((): JSX.Element[] => {
-				if (!currsFound)
+				if (!currsMatch)
 					return [<pre key={KEY_RANDOM}>...</pre>];
-
-				if (!currs.length)
-					return [<pre key={KEY_RANDOM}>No currencies provided</pre>];
 
 				return currs.map((code) => (
 					<RateNode key={code} code={code} onFetched={addFetched} />
