@@ -32,7 +32,7 @@ export default function InputContainer({ onChange = noop }: Props): JSX.Element 
 				<h3>Input</h3>
 			</header>
 
-			{/* TODO: rectrict evaluable code here */}
+			{/* TODO: restrict evaluable code here */}
 			<input
 				type="text"
 				defaultValue={initial.value}
