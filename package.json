@@ -7,7 +7,7 @@
     "build": "webpack --config=webpack/webpack.config.prod.ts",
     "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
     "lint": "eslint --ext \"ts\" --ext \"tsx\" src test webpack --fix",
-    "dev": "tsc --noEmit --watch"
+    "dev": "webpack-dev-server --config=webpack/webpack.config.dev.ts"
   },
   "repository": "github:parzh/parzh.github.io",
   "keywords": [],
@@ -24,6 +24,7 @@
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
     "@types/webpack": "4.41.1",
+    "@types/webpack-dev-server": "3.9.0",
     "@types/webpack-merge": "4.1.5",
     "@typescript-eslint/eslint-plugin": "2.15.0",
     "@typescript-eslint/parser": "2.15.0",
@@ -43,6 +44,7 @@
     "typescript": "3.7.4",
     "webpack": "4.41.5",
     "webpack-cli": "3.3.10",
+    "webpack-dev-server": "3.10.1",
     "webpack-merge": "4.2.2"
   },
   "dependencies": {
