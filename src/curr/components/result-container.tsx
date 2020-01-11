@@ -13,14 +13,18 @@ export default function ResultContainer({ expression }: Props): JSX.Element {
 		if (expression === null)
 			setResult(null);
 	
-		else if (!expression)
-			setResult("Error!");
-	
-		else {
+		else try {
 			const math = expression.replace(/ UAH/g, "");
 			const amount = eval(math) as number;
 	
 			setResult(toUAH("", amount, 2));
+		}
+
+		catch (error) {
+			setResult(null);
+
+			if (error instanceof SyntaxError === false)
+				console.error(error);
 		}
 	}, [ expression ]);
 
