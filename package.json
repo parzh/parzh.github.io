@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config=webpack/webpack.config.prod.ts",
     "test": "echo No tests defined && exit 1",
-    "lint": "eslint --ext \"ts\" --ext \"tsx\" src test webpack --fix",
+    "lint": "eslint --ext \"ts\" --ext \"tsx\" src webpack --fix",
     "dev": "webpack-dev-server --config=webpack/webpack.config.dev.ts"
   },
   "repository": "github:parzh/parzh.github.io",
