@@ -28,7 +28,7 @@ export default async function convert(expression: string): Promise<string> {
 	}
 
 	if (!tokens.length)
-		throw new Error(`Couldn't find any money expression in the input: "${ expression }"`);
+		throw new SyntaxError(`Couldn't find any money expression in the input: "${ expression }"`);
 
 	await Promise.all(rates);
 

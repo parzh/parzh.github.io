@@ -35,7 +35,9 @@ export default function ConvertedContainer({ expression, ratesFetched = true, on
 
 			catch (error) {
 				setConverted(null);
-				console.error(error);
+
+				if (error instanceof SyntaxError === false)
+					console.error(error);
 			}
 		})();
 	}, [ expression, ratesFetched ]);
