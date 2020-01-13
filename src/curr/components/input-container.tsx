@@ -17,6 +17,17 @@ const noop: OnChange = () => {};
 /** @private */
 const INITIAL_VALUE = "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH";
 
+/** @private */
+const expressionRegex = /^[\d,.A-Z ()*/+-]+$/;
+
+/** @private */
+function handleChange(event: React.ChangeEvent<HTMLInputElement>, onChange: OnChange): unknown {
+	const { value } = event.currentTarget;
+	const verified = expressionRegex.test(value);
+
+	return onChange(verified ? value : null);
+}
+
 export default function InputContainer({ onChange = noop }: Props): JSX.Element {
 	return (
 		<section className="InputContainer">
@@ -24,12 +35,11 @@ export default function InputContainer({ onChange = noop }: Props): JSX.Element 
 				<h3>Input</h3>
 			</header>
 
-			{/* TODO: restrict evaluable code here */}
 			<input
 				type="text"
 				defaultValue={INITIAL_VALUE}
-				onChange={(event): unknown => onChange(event.currentTarget.value)}
-				onFocus={(event): unknown => onChange(event.currentTarget.value)}
+				onChange={(event): unknown => handleChange(event, onChange)}
+				onFocus={(event): unknown => handleChange(event, onChange)}
 				autoFocus
 			/>
 		</section>
