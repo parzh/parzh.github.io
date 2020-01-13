@@ -15,17 +15,9 @@ interface Props {
 const noop: OnChange = () => {};
 
 /** @private */
-const initial = {
-	rendered: false,
-	value: "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH",
-};
+const INITIAL_VALUE = "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH";
 
 export default function InputContainer({ onChange = noop }: Props): JSX.Element {
-	if (!initial.rendered) {
-		initial.rendered = true;
-		onChange(initial.value);
-	}
-
 	return (
 		<section className="InputContainer">
 			<header>
@@ -35,8 +27,10 @@ export default function InputContainer({ onChange = noop }: Props): JSX.Element 
 			{/* TODO: restrict evaluable code here */}
 			<input
 				type="text"
-				defaultValue={initial.value}
+				defaultValue={INITIAL_VALUE}
 				onChange={(event): unknown => onChange(event.currentTarget.value)}
+				onFocus={(event): unknown => onChange(event.currentTarget.value)}
+				autoFocus
 			/>
 		</section>
 	);
