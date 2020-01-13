@@ -7,28 +7,25 @@ const MAX_ATTEMPTS = 3;
 /** @private */
 async function _getRate(code: string, attempts: number): Promise<number> {
 	if (code in rates === false) {
-		let rate = 1;
+		let fetched: number | null = null;
 
-		try {
-			attempts++;
+		while (fetched == null && attempts < MAX_ATTEMPTS)
+			try {
+				if (attempts > 0)
+					console.log(`Fetching "${ code }" (${ attempts + 1 } / ${ MAX_ATTEMPTS })`);
 
-			if (attempts > 1)
-				console.log(`Fetching "${ code }" (${ attempts } / ${ MAX_ATTEMPTS })`);
+				attempts++;
+				fetched = await fetchRate(code);
+			}
 
-			rate = await fetchRate(code);
-		}
+			catch (error) {
+				console.warn(`Could not fetch actual rate of "${ code }": ${ error }`);
+			}
 
-		catch (error) {
-			console.warn(`Could not fetch actual rate of "${ code }"`);
-			console.error(error);
-
-			if (attempts < MAX_ATTEMPTS)
-				return await _getRate(code, attempts);
-
+		if (fetched == null)
 			console.warn(`Reached fetch attempts limit; fallback "${ code }" to 1.00`);
-		}
 
-		rates[code] = rate;
+		rates[code] = fetched ?? 1;
 	}
 
 	return rates[code];
