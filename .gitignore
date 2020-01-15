@@ -1,5 +1,9 @@
 node_modules
 dist/
+.cache/
+coverage/
+
+# TODO: outdated, remove
 _site/
 .jekyll-cache/
 .jekyll-metadata
