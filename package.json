@@ -29,13 +29,12 @@
 			"@testing-library/jest-dom/extend-expect"
 		],
 		"testMatch": [
-			"<rootDir>/src/**/*.spec.ts?(x)"
+			"**/*.spec.ts?(x)"
 		],
-		"moduleFileExtensions": [
-			"ts",
-			"tsx",
-			"js"
-		]
+		"collectCoverage": true,
+		"coverageDirectory": "<rootDir>/coverage",
+		"cacheDirectory": "<rootDir>/.cache/jest",
+		"errorOnDeprecated": true
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "4.2.4",
