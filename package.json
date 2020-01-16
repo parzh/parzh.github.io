@@ -32,6 +32,10 @@
 			"**/*.spec.ts?(x)"
 		],
 		"collectCoverage": true,
+		"collectCoverageFrom": [
+			"**/*.ts?(x)",
+			"!**/*.spec.ts?(x)"
+		],
 		"coverageDirectory": "<rootDir>/coverage",
 		"cacheDirectory": "<rootDir>/.cache/jest",
 		"errorOnDeprecated": true
