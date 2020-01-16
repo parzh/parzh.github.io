@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "build": "webpack --config=webpack/webpack.config.prod.ts",
-    "test": "cross-env NPM_SCRIPT=true bash ./scripts/test.sh",
-    "lint": "eslint --ext \"ts\" --ext \"tsx\" src test webpack --fix",
-    "dev": "webpack-dev-server --config=webpack/webpack.config.dev.ts"
+    "test": "jest",
+    "lint": "eslint --ext \"ts\" --ext \"tsx\" src webpack --fix",
+    "dev": "webpack-dev-server --config=webpack/webpack.config.dev.ts --open"
   },
   "repository": "github:parzh/parzh.github.io",
   "keywords": [],
@@ -17,10 +17,35 @@
     "url": "https://github.com/parzh/parzh.github.io/issues"
   },
   "homepage": "https://github.com/parzh/parzh.github.io#readme",
+  "jest": {
+    "rootDir": ".",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "\\.tsx?$": "ts-jest"
+    },
+    "setupFiles": [
+      "<rootDir>/src/setup-tests.ts"
+    ],
+    "testMatch": [
+      "**/*.spec.ts?(x)"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.ts?(x)",
+      "!**/*.spec.ts?(x)"
+    ],
+    "coverageDirectory": "<rootDir>/coverage",
+    "cacheDirectory": "<rootDir>/.cache/jest",
+    "errorOnDeprecated": true
+  },
   "devDependencies": {
+    "@types/enzyme": "3.10.4",
+    "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/html-webpack-plugin": "3.2.1",
+    "@types/jest": "24.9.0",
     "@types/node": "13.1.4",
-    "@types/puppeteer": "2.0.0",
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
     "@types/webpack": "4.41.1",
@@ -28,17 +53,16 @@
     "@types/webpack-merge": "4.1.5",
     "@typescript-eslint/eslint-plugin": "2.15.0",
     "@typescript-eslint/parser": "2.15.0",
-    "clean-webpack-plugin": "3.0.0",
-    "cross-env": "6.0.3",
     "css-loader": "3.4.1",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
     "eslint": "6.8.0",
     "eslint-plugin-react": "7.17.0",
     "html-webpack-plugin": "3.2.0",
-    "mocha": "6.2.2",
-    "puppeteer": "2.0.0",
+    "jest": "24.9.0",
     "rimraf": "3.0.0",
-    "source-map-loader": "0.2.4",
     "style-loader": "1.1.2",
+    "ts-jest": "24.3.0",
     "ts-loader": "6.2.1",
     "ts-node": "8.5.4",
     "typescript": "3.7.4",
