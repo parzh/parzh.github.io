@@ -16,7 +16,11 @@ jobs:
       - uses: actions/checkout@v2
 
       - run: npm ci
-      - run: npm test
+      - run: npm test -- --collect-coverage
+      - uses: actions/upload-artifact@v1
+        with:
+          name: coverage
+          path: ./coverage/lcov-report
 
   lint:
     name: Check the style
