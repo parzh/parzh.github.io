@@ -9,6 +9,10 @@ on:
 # This should ideally be enforced here:
 #   https://github.com/parzh/parzh.github.io/settings/branch_protection_rules/13738671
 
+env:
+  BOT_GIT_NAME: Parzh (bot)
+  BOT_GIT_EMAIL: ${{ secrets.BOT_GIT_EMAIL }}
+
 jobs:
   deploy:
     name: Deploy pages
@@ -16,8 +20,6 @@ jobs:
     env:
       PAGES_DIST_DIR: dist
       GIT_REMOTE_NAME: origin
-      BOT_GIT_NAME: Parzh (bot)
-      BOT_GIT_EMAIL: ${{ secrets.BOT_GIT_EMAIL }}
 
     steps:
       - uses: actions/checkout@v2
