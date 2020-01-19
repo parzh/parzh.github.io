@@ -31,6 +31,9 @@
     "testMatch": [
       "**/*.spec.ts?(x)"
     ],
+    "moduleNameMapper": {
+      "\\.css$": "<rootDir>/test/.mock-static-assets.ts"
+    },
     "collectCoverageFrom": [
       "**/*.ts?(x)",
       "!**/index.tsx",
