@@ -26,7 +26,7 @@
       "\\.tsx?$": "ts-jest"
     },
     "setupFiles": [
-      "<rootDir>/src/setup-tests.ts"
+      "<rootDir>/test/.setup.ts"
     ],
     "testMatch": [
       "**/*.spec.ts?(x)"
