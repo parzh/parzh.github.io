@@ -2,6 +2,9 @@ import React from "react";
 import "./input-container.css";
 
 /** @private */
+type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+
+/** @private */
 interface OnChange {
 	(input: string | null): unknown;
 }
@@ -21,7 +24,7 @@ const INITIAL_VALUE = "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH";
 const expressionRegex = /^[\d,.A-Z ()*/+-]+$/;
 
 /** @private */
-function handleChange(event: React.ChangeEvent<HTMLInputElement>, onChange: OnChange): unknown {
+function handleChange(event: ChangeEvent, onChange: OnChange): unknown {
 	const { value } = event.currentTarget;
 	const verified = expressionRegex.test(value);
 
@@ -29,6 +32,8 @@ function handleChange(event: React.ChangeEvent<HTMLInputElement>, onChange: OnCh
 }
 
 export default function InputContainer({ onChange = noop }: Props): JSX.Element {
+	const eventHandler = (event: ChangeEvent): unknown => handleChange(event, onChange);
+
 	return (
 		<section className="InputContainer">
 			<header>
@@ -38,8 +43,9 @@ export default function InputContainer({ onChange = noop }: Props): JSX.Element 
 			<input
 				type="text"
 				defaultValue={INITIAL_VALUE}
-				onChange={(event): unknown => handleChange(event, onChange)}
-				onFocus={(event): unknown => handleChange(event, onChange)}
+				onChange={eventHandler}
+				onBlur={eventHandler}
+				onFocus={eventHandler}
 				autoFocus
 			/>
 		</section>
