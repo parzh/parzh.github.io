@@ -52,7 +52,7 @@ jobs:
         working-directory: ./${{ env.PAGES_DIST_DIR }}
         run: git add --all
 
-      - name: Commit changed to local 'master'
+      - name: Commit changes to local 'master'
         working-directory: ./${{ env.PAGES_DIST_DIR }}
         run: git commit --allow-empty -m "Build from $GITHUB_SHA"
 
