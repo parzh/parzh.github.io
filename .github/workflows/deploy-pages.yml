@@ -35,41 +35,6 @@ jobs:
         with:
           token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
 
-  deploy:
-    name: Deploy pages
-    runs-on: ubuntu-18.04
-    env:
-      PAGES_DIST_DIR: dist
-      GIT_REMOTE_NAME: origin
-
-    steps:
-      - *checkout_main_repo
-      - *install_deps
-      - *configure_git
-
-      - name: Prepare 'master' branch in dist dir
-        run: |
-          git fetch "$GIT_REMOTE_NAME"
-          git worktree add "$PAGES_DIST_DIR" master
-
-      - name: Remove old contents of dist dir
-        run: rm -rf dist/*
-
-      - name: Build local 'master'
-        run: npm run build
-
-      - name: Track everything in dist dir
-        working-directory: ./${{ env.PAGES_DIST_DIR }}
-        run: git add --all
-
-      - name: Commit changes to local 'master'
-        working-directory: ./${{ env.PAGES_DIST_DIR }}
-        run: git commit --allow-empty -m "Build from $GITHUB_SHA"
-
-      - name: Sync local and remote 'master'
-        working-directory: ./${{ env.PAGES_DIST_DIR }}
-        run: git push "$GIT_REMOTE_NAME" master
-
   deploy-coverage:
     name: Deploy coverage-report to /coverage-report
     runs-on: ubuntu-18.04
@@ -110,3 +75,38 @@ jobs:
 
       - name: Publish coverage report
         run: git push origin master
+
+  deploy:
+    name: Deploy pages
+    runs-on: ubuntu-18.04
+    env:
+      PAGES_DIST_DIR: dist
+      GIT_REMOTE_NAME: origin
+
+    steps:
+      - *checkout_main_repo
+      - *install_deps
+      - *configure_git
+
+      - name: Prepare 'master' branch in dist dir
+        run: |
+          git fetch "$GIT_REMOTE_NAME"
+          git worktree add "$PAGES_DIST_DIR" master
+
+      - name: Remove old contents of dist dir
+        run: rm -rf dist/*
+
+      - name: Build local 'master'
+        run: npm run build
+
+      - name: Track everything in dist dir
+        working-directory: ./${{ env.PAGES_DIST_DIR }}
+        run: git add --all
+
+      - name: Commit changes to local 'master'
+        working-directory: ./${{ env.PAGES_DIST_DIR }}
+        run: git commit --allow-empty -m "Build from $GITHUB_SHA"
+
+      - name: Sync local and remote 'master'
+        working-directory: ./${{ env.PAGES_DIST_DIR }}
+        run: git push "$GIT_REMOTE_NAME" master
