@@ -15,16 +15,17 @@ interface Props {
 const noop: OnChange = () => {};
 
 /** @private */
-const initial = {
-	rendered: false,
-	value: "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH",
-};
+const INITIAL_VALUE = "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH";
+
+/** @private */
+const expressionRegex = /^[\d,.A-Z ()*/+-]+$/;
 
 export default function InputContainer({ onChange = noop }: Props): JSX.Element {
-	if (!initial.rendered) {
-		initial.rendered = true;
-		onChange(initial.value);
-	}
+	const eventHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+		const { value } = event.currentTarget;
+
+		onChange(expressionRegex.test(value) ? value : null);
+	};
 
 	return (
 		<section className="InputContainer">
@@ -32,11 +33,13 @@ export default function InputContainer({ onChange = noop }: Props): JSX.Element 
 				<h3>Input</h3>
 			</header>
 
-			{/* TODO: restrict evaluable code here */}
 			<input
 				type="text"
-				defaultValue={initial.value}
-				onChange={(event): unknown => onChange(event.currentTarget.value)}
+				defaultValue={INITIAL_VALUE}
+				onChange={eventHandler}
+				onBlur={eventHandler}
+				onFocus={eventHandler}
+				autoFocus
 			/>
 		</section>
 	);
