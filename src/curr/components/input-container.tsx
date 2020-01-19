@@ -21,7 +21,7 @@ const INITIAL_VALUE = "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH";
 const expressionRegex = /^[\d,.A-Z ()*/+-]+$/;
 
 export default function InputContainer({ onChange = noop }: Props): JSX.Element {
-	const eventHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
+	const eventHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
 		const { value } = event.currentTarget;
 
 		onChange(expressionRegex.test(value) ? value : null);
