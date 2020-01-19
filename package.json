@@ -36,6 +36,14 @@
       "!**/index.tsx",
       "!**/*.spec.ts?(x)"
     ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
     "coverageDirectory": "<rootDir>/coverage",
     "cacheDirectory": "<rootDir>/.cache/jest",
     "errorOnDeprecated": true
