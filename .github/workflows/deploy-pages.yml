@@ -59,3 +59,44 @@ jobs:
       - name: Sync local and remote 'master'
         working-directory: ./${{ env.PAGES_DIST_DIR }}
         run: git push "$GIT_REMOTE_NAME" master
+
+  deploy-coverage:
+    name: Deploy coverage-report to /coverage-report
+    runs-on: ubuntu-18.04
+    steps:
+      - *checkout_repo
+      - *install_deps
+
+      - name: Collect coverage (and also test)
+        run: npm test -- --collect-coverage
+      - uses: actions/upload-artifact@v1
+        with:
+          name: coverage
+          path: ./coverage/lcov-report
+
+      - uses: actions/checkout@v2
+        with:
+          repository: parzh/coverage-report
+          token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
+
+      - name: Prepare old content
+        run: rm -rf ./*
+
+      - uses: actions/download-artifact@v1
+        with:
+          name: coverage
+
+      - name: Move files to the root folder
+        run: |
+          mv coverage/* .
+          rmdir coverage
+
+      - *configure_git
+
+      - name: Commit and describe changes
+        run: |
+          git add --all
+          git commit --allow-empty -m "Coverage as of parzh/parzh.github.io@$GITHUB_SHA"
+
+      - name: Publish coverage report
+        run: git push origin master
