@@ -33,6 +33,7 @@
     ],
     "collectCoverageFrom": [
       "**/*.ts?(x)",
+      "!**/index.tsx",
       "!**/*.spec.ts?(x)"
     ],
     "coverageDirectory": "<rootDir>/coverage",
