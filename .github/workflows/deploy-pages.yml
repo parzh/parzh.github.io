@@ -9,33 +9,16 @@ env:
   BOT_GIT_EMAIL: ${{ secrets.BOT_GIT_EMAIL }}
 
 jobs:
-  noop:
-    name: Collection of useful steps (never runs)
-    if: "false"
-    runs-on: ubuntu-18.04
-
-    steps: # in no particular order
-      - &configure_git
-        name: Configure Git for GitHub Actions
-        run: |
-          git config user.name "$BOT_GIT_NAME"
-          git config user.email "$BOT_GIT_EMAIL"
-
-      - &install_deps
-        name: Install npm dependencies
-        run: npm ci
-
-      - &checkout_main_repo
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
-
   deploy-coverage:
     name: Deploy coverage-report to /coverage-report
     runs-on: ubuntu-18.04
     steps:
-      - *checkout_main_repo
-      - *install_deps
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
+
+      - name: Install npm dependencies
+        run: npm ci
 
       - name: Collect coverage (and also test)
         run: npm test -- --collect-coverage
@@ -62,7 +45,10 @@ jobs:
           mv coverage/* .
           rmdir coverage
 
-      - *configure_git
+      - name: Configure Git for GitHub Actions
+        run: |
+          git config user.name "$BOT_GIT_NAME"
+          git config user.email "$BOT_GIT_EMAIL"
 
       - name: Commit and describe changes
         run: |
@@ -81,9 +67,17 @@ jobs:
       GIT_REMOTE_NAME: origin
 
     steps:
-      - *checkout_main_repo
-      - *install_deps
-      - *configure_git
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Configure Git for GitHub Actions
+        run: |
+          git config user.name "$BOT_GIT_NAME"
+          git config user.email "$BOT_GIT_EMAIL"
 
       - name: Prepare 'master' branch in dist dir
         run: |
