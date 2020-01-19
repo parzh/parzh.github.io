@@ -19,16 +19,14 @@ jobs:
         name: Install npm dependencies
         run: npm ci
 
-      - &checkout_main_repo
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
-
   deploy-coverage:
     name: Deploy coverage-report to /coverage-report
     runs-on: ubuntu-18.04
     steps:
-      - *checkout_main_repo
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
+
       - *install_deps
 
       - name: Collect coverage (and also test)
@@ -78,7 +76,10 @@ jobs:
       GIT_REMOTE_NAME: origin
 
     steps:
-      - *checkout_main_repo
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
+
       - *install_deps
 
       - name: Configure Git for GitHub Actions
