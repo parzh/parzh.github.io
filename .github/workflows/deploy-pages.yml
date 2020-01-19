@@ -15,12 +15,6 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps: # in no particular order
-      - &configure_git
-        name: Configure Git for GitHub Actions
-        run: |
-          git config user.name "$BOT_GIT_NAME"
-          git config user.email "$BOT_GIT_EMAIL"
-
       - &install_deps
         name: Install npm dependencies
         run: npm ci
@@ -62,7 +56,10 @@ jobs:
           mv coverage/* .
           rmdir coverage
 
-      - *configure_git
+      - name: Configure Git for GitHub Actions
+        run: |
+          git config user.name "$BOT_GIT_NAME"
+          git config user.email "$BOT_GIT_EMAIL"
 
       - name: Commit and describe changes
         run: |
@@ -83,7 +80,11 @@ jobs:
     steps:
       - *checkout_main_repo
       - *install_deps
-      - *configure_git
+
+      - name: Configure Git for GitHub Actions
+        run: |
+          git config user.name "$BOT_GIT_NAME"
+          git config user.email "$BOT_GIT_EMAIL"
 
       - name: Prepare 'master' branch in dist dir
         run: |
