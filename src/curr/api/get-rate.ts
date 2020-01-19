@@ -11,10 +11,11 @@ async function _getRate(code: string, attempts: number): Promise<number> {
 
 		while (fetched == null && attempts < MAX_ATTEMPTS)
 			try {
-				if (attempts > 0)
-					console.log(`Fetching "${ code }" (${ attempts + 1 } / ${ MAX_ATTEMPTS })`);
-
 				attempts++;
+
+				if (attempts > 1)
+					console.log(`Fetching "${ code }" (${ attempts } / ${ MAX_ATTEMPTS })`);
+
 				fetched = await fetchRate(code);
 			}
 
