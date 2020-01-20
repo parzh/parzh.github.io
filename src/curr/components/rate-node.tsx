@@ -24,7 +24,7 @@ export default function RateNode({ code, onFetched = noop }: Props): JSX.Element
 			setRate(rate);
 			onFetched(rate);
 		})();
-	}, [ code ]);
+	}, [ code, onFetched ]);
 
 	return <pre className="RateNode">{code}: {rate ?? "..."}</pre>;
 }
