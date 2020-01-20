@@ -28,7 +28,8 @@
       "\\.tsx?$": "ts-jest"
     },
     "setupFiles": [
-      "<rootDir>/test/.setup.ts"
+      "<rootDir>/test/.use-enzyme.ts",
+      "<rootDir>/test/.forbid-fetch.ts"
     ],
     "testMatch": [
       "**/*.spec.ts?(x)"
