@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/parzh/parzh.github.io#readme",
   "jest": {
+    "verbose": true,
     "rootDir": ".",
     "roots": [
       "<rootDir>/src"
