@@ -18,6 +18,9 @@ const URL_BASE = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?j
 
 /** @internal */
 export default async function fetchRate(code: string): Promise<number> {
+	if (code === "UAH")
+		return 1;
+
 	const response = await fetch(URL_BASE + code);
 	const [ data ] = await response.json() as RatesDataRaw;
 
