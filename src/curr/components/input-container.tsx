@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./input-container.css";
 
 /** @private */
@@ -21,11 +21,13 @@ const INITIAL_VALUE = "(50 USD + 15 EUR) / 3 + 10 EUR - 500 UAH";
 const expressionRegex = /^[\d,.A-Z ()*/+-]+$/;
 
 export default function InputContainer({ onChange = noop }: Props): JSX.Element {
-	const eventHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-		const { value } = event.currentTarget;
+	const [ value, setValue ] = useState<string>(INITIAL_VALUE);
 
+	useEffect(() => {
 		onChange(expressionRegex.test(value) ? value : null);
-	};
+	}, [ value, onChange ]);
+
+	const extractValue: React.ChangeEventHandler<HTMLInputElement> = (event) => setValue(event.currentTarget.value);
 
 	return (
 		<section className="InputContainer">
@@ -33,14 +35,7 @@ export default function InputContainer({ onChange = noop }: Props): JSX.Element 
 				<h3>Input</h3>
 			</header>
 
-			<input
-				type="text"
-				defaultValue={INITIAL_VALUE}
-				onChange={eventHandler}
-				onBlur={eventHandler}
-				onFocus={eventHandler}
-				autoFocus
-			/>
+			<input type="text" value={value} onChange={extractValue} />
 		</section>
 	);
 }
