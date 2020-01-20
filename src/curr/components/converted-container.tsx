@@ -40,7 +40,7 @@ export default function ConvertedContainer({ expression, ratesFetched = true, on
 					console.error(error);
 			}
 		})();
-	}, [ expression, ratesFetched ]);
+	}, [ expression, onConverted, ratesFetched ]);
 
 	return (
 		<section className="ExpressionsContainer">
