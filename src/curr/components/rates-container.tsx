@@ -58,7 +58,8 @@ export default function RatesContainer({ input, onAllFetched = noop }: Props): J
 
 				return currs.map((code) => (
 					<RateNode key={code} code={code} onFetched={(): void => {
-						setFetched({ ...fetched, [code]: true });
+						if (!fetched[code])
+							setFetched({ ...fetched, [code]: true });
 					}} />
 				));
 			})()}
