@@ -6,6 +6,9 @@ env:
 
 parser: "@typescript-eslint/parser"
 
+plugins:
+  - react-hooks
+
 extends:
   - "eslint:recommended"
   - "plugin:react/recommended"
@@ -30,4 +33,5 @@ rules:
   # Noops are often useful as default callbacks
   "@typescript-eslint/no-empty-function": 0
 
+  react-hooks/exhaustive-deps: 2
   no-trailing-spaces: 2
