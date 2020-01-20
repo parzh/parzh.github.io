@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RateNode from "./rate-node";
+
+/** @private */
+type Input = string | null;
 
 /** @private */
 interface OnAllFetched {
@@ -7,8 +10,11 @@ interface OnAllFetched {
 }
 
 /** @private */
+type Fetched = Record<string, boolean>;
+
+/** @private */
 interface Props {
-	input: string | null;
+	input: Input;
 	onAllFetched?: OnAllFetched;
 }
 
@@ -16,25 +22,29 @@ interface Props {
 const noop: OnAllFetched = () => {};
 
 /** @private */
-const KEY_RANDOM = Math.random();
+const ellipsis = <pre key={Math.random()}>...</pre>;
+
+/** @private */
+const currsRegex = /(?<=\d )[A-Z]{3}/g;
+
+/** @private */
+function getCurrs(input: Input): string[] {
+	const set = new Set(input?.match(currsRegex) ?? []);
+
+	set.delete("UAH");
+
+	return Array.from(set);
+}
 
 export default function RatesContainer({ input, onAllFetched = noop }: Props): JSX.Element {
-	const currsMatch = input?.match(/(?<=\d )[A-Z]{3}/g);
-	const currs = Array.from(new Set(currsMatch || []));
+	const [ fetched, setFetched ] = useState<Fetched>(() => Object.create(null));
 
-	{
-		const index = currs.indexOf("UAH");
+	const currs = getCurrs(input);
 
-		if (index !== -1)
-			currs.splice(index, 1);
-	}
-
-	const [ currsFetched, setCurrsFetched ] = useState<number>(0);
-
-	const addFetched = (): unknown => setCurrsFetched((current) => current + 1);
-
-	if (!!currsMatch && currsFetched >= currs.length)
-		onAllFetched();
+	useEffect(() => {
+		if (currs.every((curr) => fetched[curr]))
+			onAllFetched();
+	}, [ input, currs, fetched, onAllFetched ]);
 
 	return (
 		<section className="RatesContainer">
@@ -43,11 +53,13 @@ export default function RatesContainer({ input, onAllFetched = noop }: Props): J
 			</header>
 
 			{((): JSX.Element[] => {
-				if (!currsMatch)
-					return [<pre key={KEY_RANDOM}>...</pre>];
+				if (!currs.length)
+					return [ellipsis];
 
 				return currs.map((code) => (
-					<RateNode key={code} code={code} onFetched={addFetched} />
+					<RateNode key={code} code={code} onFetched={(): void => {
+						setFetched({ ...fetched, [code]: true });
+					}} />
 				));
 			})()}
 		</section>
