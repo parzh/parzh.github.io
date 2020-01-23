@@ -33,7 +33,7 @@ jobs:
           repository: parzh/coverage-report
           token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
 
-      - name: Prepare old content
+      - name: Remove outdated content
         run: rm -rf ./*
 
       - uses: actions/download-artifact@v1
