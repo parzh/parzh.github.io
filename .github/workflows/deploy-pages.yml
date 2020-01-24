@@ -58,7 +58,7 @@ jobs:
       - name: Publish coverage report
         run: git push origin master
 
-  deploy:
+  deploy-pages:
     name: Deploy pages
     runs-on: ubuntu-18.04
     needs: deploy-coverage
