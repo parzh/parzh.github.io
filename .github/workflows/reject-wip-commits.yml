@@ -1,0 +1,29 @@
+name: Reject WIPs
+
+on:
+  pull_request:
+    branches: [develop]
+
+jobs:
+  reject-wips:
+    name: Reject WIPs
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Search commits containing "WIP" in the title, created after current tip of 'develop'
+        shell: bash
+        run: |
+          wips=`git rev-list develop..$GITHUB_SHA --grep '\bwip\b' --extended-regexp --regexp-ignore-case`
+
+          if [ -n "$wips" ]
+          then
+            echo >&2 -e "Commit messages must not include 'WIP' in the title.\nPlease remove all these commits from the tree:"
+
+            for commit in $wips
+            do
+              echo "    $(git rev-list --pretty=oneline $commit)"
+            done
+
+            exit 1
+          fi
+
+          exit 0
