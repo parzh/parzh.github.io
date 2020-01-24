@@ -32,7 +32,7 @@ jobs:
 
             for commit in $wips
             do
-              echo "    $(git rev-list --pretty=oneline $commit)"
+              echo "    $(git rev-list -n 1 --pretty=oneline $commit)"
             done
 
             exit 1
