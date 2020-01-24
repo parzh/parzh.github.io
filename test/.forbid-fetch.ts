@@ -1,3 +1,3 @@
 (global as any).fetch = () => {
-	throw new Error("'fetch()' calls must be mocked");
+	throw new Error("Calls to 'fetch()' in tests must be mocked");
 };
