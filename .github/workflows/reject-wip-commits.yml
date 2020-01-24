@@ -9,6 +9,8 @@ jobs:
     name: Reject WIPs
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
+
       - name: Search commits containing "WIP" in the title, created after current tip of 'develop'
         shell: bash
         run: |
