@@ -24,7 +24,7 @@ jobs:
       - name: Search commits, descendants of 'develop', containing "WIP" in the title
         shell: bash
         run: |
-          wips=`git rev-list develop..@ --grep '\bwip\b' --extended-regexp --regexp-ignore-case`
+          wips=`git rev-list origin/develop..@ --grep '\bwip\b' --extended-regexp --regexp-ignore-case`
 
           if [ -n "$wips" ]
           then
