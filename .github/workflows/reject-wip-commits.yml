@@ -15,7 +15,7 @@ jobs:
 
       - run: git fetch --all
 
-      - run: git brach --all -vv
+      - run: git branch -a -vv
 
       - name: Search commits containing "WIP" in the title, created after current tip of 'develop'
         shell: bash
