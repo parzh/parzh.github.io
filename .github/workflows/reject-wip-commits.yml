@@ -17,7 +17,7 @@ jobs:
 
       - run: git branch -a -vv
 
-      - name: Search commits containing "WIP" in the title, created after current tip of 'develop'
+      - name: Search commits, descendants of 'develop', containing "WIP" in the title
         shell: bash
         run: |
           gh_commit_message="$(git log $GITUB_SHA -1 --format='%s')"
