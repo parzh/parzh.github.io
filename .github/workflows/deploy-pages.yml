@@ -90,13 +90,11 @@ jobs:
       - name: Build local 'master'
         run: npm run build
 
-      - name: Track everything in dist dir
+      - name: Commit and describe changes
         working-directory: ./${{ env.PAGES_DIST_DIR }}
-        run: git add --all
-
-      - name: Commit changes to local 'master'
-        working-directory: ./${{ env.PAGES_DIST_DIR }}
-        run: git commit --allow-empty -m "Build from $GITHUB_SHA"
+        run: |
+          git add --all
+          git commit --allow-empty -m "Build from $GITHUB_SHA"
 
       - name: Sync local and remote 'master'
         working-directory: ./${{ env.PAGES_DIST_DIR }}
