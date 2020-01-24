@@ -14,15 +14,17 @@ jobs:
           depth: 0
 
       - run: git fetch --all
-
       - run: git branch -a -vv
+      - run: |
+          gh_commit_message="$(git log $GITUB_SHA -1 --format='%s')"
+          original_sha=$(echo $gh_commit_message | awk '{print $2}')
+
+          git checkout $original_sha
 
       - name: Search commits, descendants of 'develop', containing "WIP" in the title
         shell: bash
         run: |
-          gh_commit_message="$(git log $GITUB_SHA -1 --format='%s')"
-          target_sha=$(echo $gh_commit_message | awk '{print $2}')
-          wips=`git rev-list develop..$target_sha --grep '\bwip\b' --extended-regexp --regexp-ignore-case`
+          wips=`git rev-list develop..@ --grep '\bwip\b' --extended-regexp --regexp-ignore-case`
 
           if [ -n "$wips" ]
           then
