@@ -85,7 +85,7 @@ jobs:
           git worktree add "$PAGES_DIST_DIR" master
 
       - name: Remove old contents of dist dir
-        run: rm -rf dist/*
+        run: rm -rf $PAGES_DIST_DIR/*
 
       - name: Build local 'master'
         run: npm run build
