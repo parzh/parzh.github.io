@@ -14,7 +14,7 @@ jobs:
       - name: Search commits containing "WIP" in the title, created after current tip of 'develop'
         shell: bash
         run: |
-          wips=`git rev-list develop..$GITHUB_SHA --grep '\bwip\b' --extended-regexp --regexp-ignore-case`
+          wips=`git rev-list develop..$GITHUB_REF --grep '\bwip\b' --extended-regexp --regexp-ignore-case`
 
           if [ -n "$wips" ]
           then
