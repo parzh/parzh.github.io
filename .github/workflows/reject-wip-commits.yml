@@ -10,20 +10,13 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-        with:
-          depth: 0
 
-      - run: |
-          git fetch --all
-
-      - run: |
-          git branch -a -vv
+      - run: git fetch --all
 
       - name: Search commits containing "WIP" in the title, created after current tip of 'develop'
         shell: bash
         run: |
-          branch=$(git branch --show-current)
-          wips=`git rev-list develop..$branch --grep '\bwip\b' --extended-regexp --regexp-ignore-case`
+          wips=`git rev-list develop..$(echo $GITUB_SHA | awk '{print $2}') --grep '\bwip\b' --extended-regexp --regexp-ignore-case`
 
           if [ -n "$wips" ]
           then
