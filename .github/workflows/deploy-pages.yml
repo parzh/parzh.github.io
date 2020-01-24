@@ -93,7 +93,7 @@ jobs:
       - name: Commit and describe changes
         working-directory: ./${{ env.PAGES_DIST_DIR }}
         run: |
-          git add --all
+          git add .
           git commit --allow-empty -m "Build from $GITHUB_SHA"
 
       - name: Sync local and remote 'master'
