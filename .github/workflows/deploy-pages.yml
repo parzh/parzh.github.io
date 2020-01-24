@@ -58,7 +58,7 @@ jobs:
       - name: Publish coverage report
         run: git push origin master
 
-  deploy:
+  deploy-pages:
     name: Deploy pages
     runs-on: ubuntu-18.04
     needs: deploy-coverage
@@ -85,18 +85,16 @@ jobs:
           git worktree add "$PAGES_DIST_DIR" master
 
       - name: Remove old contents of dist dir
-        run: rm -rf dist/*
+        run: rm -rf $PAGES_DIST_DIR/*
 
       - name: Build local 'master'
         run: npm run build
 
-      - name: Track everything in dist dir
+      - name: Commit and describe changes
         working-directory: ./${{ env.PAGES_DIST_DIR }}
-        run: git add --all
-
-      - name: Commit changes to local 'master'
-        working-directory: ./${{ env.PAGES_DIST_DIR }}
-        run: git commit --allow-empty -m "Build from $GITHUB_SHA"
+        run: |
+          git add .
+          git commit --allow-empty -m "Build from $GITHUB_SHA"
 
       - name: Sync local and remote 'master'
         working-directory: ./${{ env.PAGES_DIST_DIR }}
