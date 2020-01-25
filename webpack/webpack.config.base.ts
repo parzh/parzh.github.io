@@ -7,6 +7,7 @@ const config: Configuration = {
 	entry: {
 		main: resolve("./src"),
 		curr: resolve("./src/curr"),
+		spa: resolve("./src/spa"),
 	},
 	resolve: {
 		extensions: [ ".js", ".json", ".ts", ".tsx" ],
@@ -27,6 +28,7 @@ const config: Configuration = {
 	plugins: [
 		createHTML("GitHub Pages", "/", [ "main" ]),
 		createHTML("Curr", "curr/", [ "curr" ]),
+		createHTML("SPA", "spa/", [ "spa" ]),
 		createHTML("Page not found", "404.html", []),
 	],
 	output: {
