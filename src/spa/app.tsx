@@ -1,10 +1,12 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, useHistory } from "react-router-dom";
 
 import UserPage from "./user-page";
 import HomePage from "./home-page";
 
 export default function App(): JSX.Element {
+	const { goBack, goForward } = useHistory();
+
 	return (
 		<>
 			<section className="links">
@@ -13,6 +15,12 @@ export default function App(): JSX.Element {
 				</p>
 				<p>
 					<Link to="/user">Go to /user</Link>
+				</p>
+				<p>
+					<a href="#" onClick={goBack}>Go back</a>
+				</p>
+				<p>
+					<a href="#" onClick={goForward}>Go forward</a>
 				</p>
 			</section>
 
