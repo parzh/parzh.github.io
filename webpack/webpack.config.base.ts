@@ -33,18 +33,27 @@ const config: Configuration = {
 			title: "GitHub Pages",
 			filename: resolve("./dist/index.html"),
 			chunks: [ "main" ],
+			minify: {
+				removeComments: true,
+			},
 		}),
 		new HtmlWebpackPlugin({
 			template,
 			title: "Curr",
 			filename: resolve("./dist/curr/index.html"),
 			chunks: [ "curr" ],
+			minify: {
+				removeComments: true,
+			},
 		}),
 		new HtmlWebpackPlugin({
 			template,
 			title: "Page not found",
 			filename: resolve("./dist/404.html"),
 			chunks: [],
+			minify: {
+				removeComments: true,
+			},
 		}),
 	],
 	output: {
