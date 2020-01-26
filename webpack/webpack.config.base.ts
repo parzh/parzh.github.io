@@ -1,13 +1,13 @@
 import { resolve } from "path";
 import { Configuration } from "webpack";
-import createHTML from "./helpers/create-html";
+import createHTML from "./create-html";
 
 /** @public */
 const config: Configuration = {
 	entry: {
-		main: resolve("./src"),
-		curr: resolve("./src/curr"),
-		spa: resolve("./src/spa"),
+		main: resolve("src"),
+		curr: resolve("src/curr"),
+		spa: resolve("src/spa"),
 	},
 	resolve: {
 		extensions: [ ".js", ".json", ".ts", ".tsx" ],
@@ -33,7 +33,7 @@ const config: Configuration = {
 	],
 	output: {
 		filename: "[name].bundle.js",
-		path: resolve("./dist"),
+		path: resolve("dist"),
 	},
 };
 

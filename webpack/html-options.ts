@@ -20,7 +20,7 @@ export default function htmlOptions(title: string, targetPath: string, chunks: s
 		title,
 		template,
 		chunks,
-		filename: resolve(__dirname, "../dist", ...targetFileChunks),
+		filename: resolve("dist", ...targetFileChunks),
 		minify: {
 			removeComments: true,
 		},
