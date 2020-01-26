@@ -10,7 +10,6 @@ const config: Configuration = {
 	entry: {
 		main: resolve("./src"),
 		curr: resolve("./src/curr"),
-		404: resolve("./src/404"),
 	},
 	resolve: {
 		extensions: [ ".js", ".json", ".ts", ".tsx" ],
@@ -45,7 +44,7 @@ const config: Configuration = {
 			template,
 			title: "Page not found",
 			filename: resolve("./dist/404.html"),
-			chunks: [ "404" ],
+			chunks: [],
 		}),
 	],
 	output: {
