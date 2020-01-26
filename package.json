@@ -4,6 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
+    "clean": "rimraf dist/*",
+    "prebuild": "npm run clean",
     "build": "webpack --config=webpack/webpack.config.prod.ts",
     "test": "jest",
     "test:cov": "npm test -- --collect-coverage",
