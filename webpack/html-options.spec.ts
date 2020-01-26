@@ -3,16 +3,16 @@ import htmlOptions from "./html-options";
 
 /** @private */
 const pathEqualityMapEntries = Object.entries({
-	[resolve(__dirname, "../dist/index.html")]: [
+	[resolve("dist/index.html")]: [
 		"/",
 		"index.html",
 		"/index.html",
 	],
-	[resolve(__dirname, "../dist/smth.html")]: [
+	[resolve("dist/smth.html")]: [
 		"smth.html",
 		"/smth.html",
 	],
-	[resolve(__dirname, "../dist/smth/index.html")]: [
+	[resolve("dist/smth/index.html")]: [
 		"smth/",
 		"/smth/",
 		"smth/index.html",
