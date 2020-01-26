@@ -43,7 +43,8 @@
     "collectCoverageFrom": [
       "**/*.ts?(x)",
       "!**/index.tsx",
-      "!**/*.spec.ts?(x)"
+      "!**/*.spec.ts?(x)",
+      "!**/webpack.*.ts"
     ],
     "coverageDirectory": "<rootDir>/coverage",
     "cacheDirectory": "<rootDir>/.cache/jest",
