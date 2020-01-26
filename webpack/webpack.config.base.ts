@@ -1,9 +1,6 @@
 import { resolve } from "path";
 import { Configuration } from "webpack";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-
-/** @private */
-const template = resolve("./webpack/index.ejs");
+import createHTML from "./helpers/create-html";
 
 /** @public */
 const config: Configuration = {
@@ -28,33 +25,9 @@ const config: Configuration = {
 		],
 	},
 	plugins: [
-		new HtmlWebpackPlugin({
-			template,
-			title: "GitHub Pages",
-			filename: resolve("./dist/index.html"),
-			chunks: [ "main" ],
-			minify: {
-				removeComments: true,
-			},
-		}),
-		new HtmlWebpackPlugin({
-			template,
-			title: "Curr",
-			filename: resolve("./dist/curr/index.html"),
-			chunks: [ "curr" ],
-			minify: {
-				removeComments: true,
-			},
-		}),
-		new HtmlWebpackPlugin({
-			template,
-			title: "Page not found",
-			filename: resolve("./dist/404.html"),
-			chunks: [],
-			minify: {
-				removeComments: true,
-			},
-		}),
+		createHTML("GitHub Pages", "/", [ "main" ]),
+		createHTML("Curr", "curr/", [ "curr" ]),
+		createHTML("Page not found", "404.html", []),
 	],
 	output: {
 		filename: "[name].bundle.js",
