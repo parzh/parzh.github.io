@@ -31,15 +31,3 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - run: cat '${{ toJson(github.event.pull_request) }}'
-
-  debug2:
-    name: Debug 2
-    runs-on: ubuntu-18.04
-    steps:
-      - run: cat '${{ toJson(github.event) }}'
-
-  debug3:
-    name: Debug 3
-    runs-on: ubuntu-18.04
-    steps:
-      - run: cat '${{ toJson(github) }}'
