@@ -1,0 +1,35 @@
+name: Debug PR event
+
+on:
+  pull_request:
+    branches:
+      - debug-gh-actions/base
+    types:
+      - assigned
+      - unassigned
+
+      - labeled
+      - unlabeled
+
+      - opened
+      - closed
+      - reopened
+
+      - locked
+      - unlocked
+
+      - edited
+      - synchronize
+
+      - ready_for_review
+      - review_requested
+      - review_request_removed
+
+jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo ${{ toJson(github.event.pull_request) }}
+      - run: echo ${{ toJson(github.event) }}
+      - run: echo ${{ toJson(github) }}
