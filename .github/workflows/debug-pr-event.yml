@@ -30,4 +30,4 @@ jobs:
     name: Debug 1
     runs-on: ubuntu-18.04
     steps:
-      - run: cat '${{ toJson(github.event.pull_request) }}'
+      - run: echo '${{ toJson(github.event.pull_request) }}'
