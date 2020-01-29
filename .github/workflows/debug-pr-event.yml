@@ -28,7 +28,7 @@ on:
 env:
   VAR_1: ${{ github.event.pull_request.merged }}
   VAR_2: ${{ github.event.type }}
-  VAR_2: ${{ toJson(github.event) }}
+  VAR_3: ${{ toJson(github.event) }}
 
 jobs:
   debug1:
