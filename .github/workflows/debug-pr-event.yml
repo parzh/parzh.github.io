@@ -27,7 +27,7 @@ on:
 
 env:
   VAR_1: ${{ github.event.action }}
-  VAR_2: "${{ contains(github.event.pull_request.labels.*.name, 'Domain: dev') }}"
+  VAR_2: "${{ toJson(github.event.pull_request.labels.*.name) }}"
 
 jobs:
   debug1:
