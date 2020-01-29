@@ -26,10 +26,20 @@ on:
       - review_request_removed
 
 jobs:
-  debug:
-    name: Debug
+  debug1:
+    name: Debug 1
     runs-on: ubuntu-18.04
     steps:
-      - run: echo ${{ toJson(github.event.pull_request) }}
-      - run: echo ${{ toJson(github.event) }}
-      - run: echo ${{ toJson(github) }}
+      - run: echo '${{ toJson(github.event.pull_request) }}'
+
+  debug2:
+    name: Debug 2
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo '${{ toJson(github.event) }}'
+
+  debug3:
+    name: Debug 3
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo '${{ toJson(github) }}'
