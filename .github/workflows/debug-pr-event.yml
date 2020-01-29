@@ -27,6 +27,7 @@ on:
 
 env:
   VAR_1: ${{ github.event.action }}
+  VAR_2: ${{ startsWith(github.event.pull_request.labels.*.name, 'Domain:') }}
 
 jobs:
   debug1:
@@ -34,4 +35,6 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - run: echo $VAR_1
+        if: always()
+      - run: echo $VAR_2
         if: always()
