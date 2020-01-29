@@ -26,9 +26,7 @@ on:
       - review_request_removed
 
 env:
-  VAR_1: ${{ github.event.pull_request.merged }}
-  VAR_2: ${{ github.event.type }}
-  VAR_3: ${{ toJson(github.event) }}
+  VAR_1: ${{ github.event.action }}
 
 jobs:
   debug1:
@@ -36,10 +34,4 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - run: echo $VAR_1
-        if: always()
-
-      - run: echo $VAR_2
-        if: always()
-
-      - run: echo $VAR_3
         if: always()
