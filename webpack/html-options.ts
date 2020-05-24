@@ -2,7 +2,7 @@ import type { Options } from "html-webpack-plugin";
 import { resolve } from "path";
 
 /** @private */
-const template = resolve(__dirname, "index.ejs");
+const template = resolve(__dirname, "template.ejs");
 
 export default (title: string, filename = "index.html"): Options => ({
 	title,
