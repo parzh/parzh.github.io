@@ -22,11 +22,11 @@ const pathEqualityMapEntries = Object.entries({
 
 /** @private */
 function getResolvedTemplatePath(path: string): string | undefined {
-	return htmlOptions("", path, []).filename;
+	return htmlOptions("", path).filename;
 }
 
 describe("htmlOptions (webpack helper)", () => {
-	const options = htmlOptions("Something", "some.html", []);
+	const options = htmlOptions("Something", "some.html");
 
 	it("produces options for HtmlWebpackPlugin constructor", () => {
 		expect(options.constructor).toBe(Object);

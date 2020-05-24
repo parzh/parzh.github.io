@@ -1,14 +1,13 @@
+import type { Configuration } from "webpack";
+import type { ConfigurationMergeFunction as Merge } from "webpack-merge";
+
+import { smart as merge } from "webpack-merge";
 import { resolve } from "path";
-import { Configuration } from "webpack";
 import createHTML from "./create-html";
 
-/** @public */
-const config: Configuration = {
+/** @private */
+const defaults: Configuration = {
 	mode: "production",
-	entry: {
-		main: resolve("src"),
-		curr: resolve("src/curr"),
-	},
 	resolve: {
 		extensions: [ ".js", ".json", ".ts", ".tsx" ],
 	},
@@ -16,7 +15,7 @@ const config: Configuration = {
 		rules: [
 			{
 				test: /\.css$/,
-				use: [ "style-loader", "css-loader" ]
+				use: [ "style-loader", "css-loader" ],
 			},
 			{
 				test: /\.tsx?$/,
@@ -25,15 +24,46 @@ const config: Configuration = {
 			},
 		],
 	},
-	plugins: [
-		createHTML("GitHub Pages", "/", [ "main" ]),
-		createHTML("Curr", "curr/", [ "curr" ]),
-		createHTML("Page not found", "404.html", []),
-	],
 	output: {
-		filename: "[name].bundle.js",
-		path: resolve("dist"),
+		filename: "bundle.js",
 	},
 };
+
+/** @private */
+const createConfig: Merge = (overrides) => merge(defaults, overrides);
+
+/** @public */
+const config: Configuration[] = [
+	createConfig({
+		entry: resolve("src"),
+		plugins: [
+			createHTML("GitHub Pages"),
+		],
+		output: {
+			path: resolve("dist"),
+		},
+	}),
+	createConfig({
+		entry: resolve("src/curr"),
+		plugins: [
+			createHTML("Curr"),
+		],
+		output: {
+			path: resolve("dist/curr"),
+		},
+	}),
+	/*
+	createConfig({
+		entry: resolve("src/404"),
+		plugins: [
+			createHTML("Page not found", "404.html"),
+		],
+		output: {
+			path: resolve("dist"),
+			filename: "404.bundle.js",
+		},
+	}),
+	*/
+];
 
 export default config;
