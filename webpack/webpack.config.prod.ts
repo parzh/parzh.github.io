@@ -1,10 +1,39 @@
+import { resolve } from "path";
 import { Configuration } from "webpack";
-import { smart as extend } from "webpack-merge";
-import base from "./webpack.config.base";
+import createHTML from "./create-html";
 
 /** @public */
-const config: Configuration = extend(base, {
+const config: Configuration = {
 	mode: "production",
-});
+	entry: {
+		main: resolve("src"),
+		curr: resolve("src/curr"),
+	},
+	resolve: {
+		extensions: [ ".js", ".json", ".ts", ".tsx" ],
+	},
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: [ "style-loader", "css-loader" ]
+			},
+			{
+				test: /\.tsx?$/,
+				use: "ts-loader",
+				exclude: /node_modules/,
+			},
+		],
+	},
+	plugins: [
+		createHTML("GitHub Pages", "/", [ "main" ]),
+		createHTML("Curr", "curr/", [ "curr" ]),
+		createHTML("Page not found", "404.html", []),
+	],
+	output: {
+		filename: "[name].bundle.js",
+		path: resolve("dist"),
+	},
+};
 
 export default config;
