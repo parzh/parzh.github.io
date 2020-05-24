@@ -7,7 +7,7 @@ const config: Configuration = extend(prod, {
 	mode: "development",
 	devtool: "source-map",
 	devServer: {
-		contentBase: "./dist"
+		hot: true,
 	},
 });
 
