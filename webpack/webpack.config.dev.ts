@@ -5,7 +5,7 @@ import prod from "./webpack.config.prod";
 /** @public */
 const config: Configuration = extend(prod, {
 	mode: "development",
-	devtool: "inline-source-map",
+	devtool: "source-map",
 	devServer: {
 		contentBase: "./dist"
 	},
