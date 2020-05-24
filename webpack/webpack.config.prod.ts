@@ -38,6 +38,7 @@ const config: Configuration[] = [
 		entry: resolve("src"),
 		plugins: [
 			createHTML("GitHub Pages"),
+			createHTML("Page not found", "404.html", []),
 		],
 		output: {
 			path: resolve("dist"),
@@ -52,18 +53,6 @@ const config: Configuration[] = [
 			path: resolve("dist/curr"),
 		},
 	}),
-	/*
-	createConfig({
-		entry: resolve("src/404"),
-		plugins: [
-			createHTML("Page not found", "404.html"),
-		],
-		output: {
-			path: resolve("dist"),
-			filename: "404.bundle.js",
-		},
-	}),
-	*/
 ];
 
 export default config;
