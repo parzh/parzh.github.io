@@ -10,9 +10,48 @@
 		crossorigin="anonymous">
 </head>
 <body>
-	<div id="root">
-		<!-- Should be overriden with the actual content at all non-404 pages -->
-		<p>Sorry, this page does not exits :&#39;(</p>
+	<div id="root"><!-- Should be overriden with the actual content at all non-404 pages -->
+		<style>
+			:root, body, #root {
+				height: 100vh;
+			}
+
+			@keyframes fade-in-to-100 {
+				from { opacity: 0% } to { opacity: 100% }
+			}
+
+			@keyframes fade-in-to-7 {
+				from { opacity: 0% } to { opacity: 7% }
+			}
+
+			#disclaimer-404 {
+				font-size: 4rem;
+				animation: fade-in-to-100 1s 1s both;
+			}
+
+			#disclaimer-404::before {
+				content: "😮";
+				position: absolute;
+				right: 20%;
+				top: 30%;
+				transform: translateY(-50%);
+				font-size: 12rem;
+				z-index: -1;
+				animation: fade-in-to-7 2s 2.5s both;
+			}
+
+			#homelink-404 {
+				animation: fade-in-to-100 1s 1.5s both;
+			}
+		</style>
+
+		<div class="container h-100 d-flex flex-column justify-content-center align-items-center">
+			<span id="disclaimer-404" class="lead">Sorry, this page does not exist</span>
+
+			<span id="homelink-404" class="lead">
+				<a href="/">Go to home page instead</a>
+			</span>
+		</div>
 	</div>
 </body>
 </html>
