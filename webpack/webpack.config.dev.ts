@@ -1,14 +1,17 @@
-import { Configuration } from "webpack";
-import { smart as extend } from "webpack-merge";
-import base from "./webpack.config.base";
+import type { Configuration } from "webpack";
+import { smart as merge } from "webpack-merge";
+import prod from "./webpack.config.prod";
+
+/** @private */
+const overrides: Configuration = {
+	mode: "development",
+	devtool: "source-map",
+	devServer: {
+		hot: true,
+	},
+};
 
 /** @public */
-const config: Configuration = extend(base, {
-	mode: "development",
-	devtool: "inline-source-map",
-	devServer: {
-		contentBase: "./dist"
-	},
-});
+const config = prod.map((config) => merge(config, overrides));
 
 export default config;
