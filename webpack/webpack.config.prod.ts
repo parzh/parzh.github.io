@@ -10,8 +10,8 @@ const SRC_PATH = resolve(__dirname, "../src");
 const config: Configuration = {
 	mode: "production",
 	entry: [
-		SRC_PATH,
 		"react-hot-loader/patch",
+		SRC_PATH,
 	],
 	resolve: {
 		extensions: [ ".js", ".json", ".ts", ".tsx" ],
