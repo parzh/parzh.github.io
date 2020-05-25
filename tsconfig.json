@@ -11,6 +11,14 @@
     "strict": true,
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "react-dom": [
+        "./node_modules/@hot-loader/react-dom",
+        "./node_modules/react-dom",
+      ],
+    },
   }
 }
