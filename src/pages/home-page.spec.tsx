@@ -1,5 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
+import { Link } from "react-router-dom";
 
 import HomePage from "./home-page";
 
@@ -11,10 +12,10 @@ describe("<HomePage />", () => {
 	});
 
 	it("shows link to /profile page", () => {
-		const link = component.find("a");
+		const link = component.find(Link);
 
 		expect(link.text()).toEqual("Go to profile page");
-		expect(link.prop("href")).toEqual("/profile");
+		expect(link.prop("to")).toEqual("/profile");
 	});
 
 	it("shows help icon", () => {
