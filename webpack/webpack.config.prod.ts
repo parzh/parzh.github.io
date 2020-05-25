@@ -1,6 +1,5 @@
 import type { Configuration } from "webpack";
 
-import { smart as merge } from "webpack-merge";
 import { resolve } from "path";
 import createHTML from "./create-html";
 
@@ -8,12 +7,10 @@ import createHTML from "./create-html";
 const SRC_PATH = resolve(__dirname, "../src");
 
 /** @private */
-const DIST_PATH = resolve(__dirname, "../dist");
-
-/** @private */
-const defaults: Configuration = {
+const config: Configuration = {
 	mode: "production",
 	entry: [
+		SRC_PATH,
 		"react-hot-loader/patch",
 	],
 	resolve: {
@@ -36,44 +33,14 @@ const defaults: Configuration = {
 			},
 		],
 	},
+	plugins: [
+		createHTML("GitHub Pages"),
+		createHTML("Page not found", "404.html", []),
+	],
 	output: {
+		path: resolve(__dirname, "../dist"),
 		filename: "bundle.js",
 	},
 };
-
-/** @private */
-interface Overrides extends Configuration {
-	entry: string[];
-}
-
-/** @private */
-const createConfig = (overrides: Overrides): Configuration => merge(defaults, overrides);
-
-/** @public */
-const config: Configuration[] = [
-	createConfig({
-		entry: [
-			SRC_PATH,
-		],
-		plugins: [
-			createHTML("GitHub Pages"),
-			createHTML("Page not found", "404.html", []),
-		],
-		output: {
-			path: DIST_PATH,
-		},
-	}),
-	createConfig({
-		entry: [
-			resolve(SRC_PATH, "curr"),
-		],
-		plugins: [
-			createHTML("Curr"),
-		],
-		output: {
-			path: resolve(DIST_PATH, "curr"),
-		},
-	}),
-];
 
 export default config;
