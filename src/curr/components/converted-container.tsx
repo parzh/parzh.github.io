@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import convert from "../api/convert";
+import convert from "../../api/curr/convert";
 
 /** @private */
 interface OnConverted {
