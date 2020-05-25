@@ -5,6 +5,12 @@ import { resolve } from "path";
 import createHTML from "./create-html";
 
 /** @private */
+const SRC_PATH = resolve(__dirname, "../src");
+
+/** @private */
+const DIST_PATH = resolve(__dirname, "../dist");
+
+/** @private */
 const defaults: Configuration = {
 	mode: "production",
 	entry: [
@@ -46,25 +52,25 @@ const createConfig = (overrides: Overrides): Configuration => merge(defaults, ov
 const config: Configuration[] = [
 	createConfig({
 		entry: [
-			resolve("src"),
+			SRC_PATH,
 		],
 		plugins: [
 			createHTML("GitHub Pages"),
 			createHTML("Page not found", "404.html", []),
 		],
 		output: {
-			path: resolve("dist"),
+			path: DIST_PATH,
 		},
 	}),
 	createConfig({
 		entry: [
-			resolve("src/curr"),
+			resolve(SRC_PATH, "curr"),
 		],
 		plugins: [
 			createHTML("Curr"),
 		],
 		output: {
-			path: resolve("dist/curr"),
+			path: resolve(DIST_PATH, "curr"),
 		},
 	}),
 ];
