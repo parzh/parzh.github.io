@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 /** @private */
 const styleFor: Record<string, React.CSSProperties> = {
@@ -19,7 +20,7 @@ export default function HomePage(): JSX.Element {
 				</span>
 
 				<span className="d-flex flex-row">
-					<a href="/profile">Go to profile page</a>
+					<Link to="/profile">Go to profile page</Link>
 
 					<i
 						className="material-icons ml-1 text-muted"
