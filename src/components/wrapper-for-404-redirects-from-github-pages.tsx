@@ -36,7 +36,7 @@ export default function WrapperFor404RedirectsFromGitHubPages({ children }: Prop
 		};
 	}, [ ready, setReady ]);
 
-	if (triedPath != null)
+	if (triedPath != null && triedPath !== window.location.pathname)
 		return <Redirect to={triedPath} />;
 
 	if (!ready)
