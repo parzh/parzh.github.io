@@ -22,20 +22,22 @@
 	</style>
 </head>
 <body>
-	<div id="root"><!-- Should be overriden with the actual content at all non-404 pages -->
+	<div id="root">
 		<script id="script_4834094162371463">
 			const root = document.getElementById("root");
 			const script = document.getElementById("script_4834094162371463");
 
 			document.addEventListener("readystatechange", function readyStateChangeListener() {
+				// React might not have been loaded yet
 				if (document.readyState !== "complete")
 					return;
 
-				else if (root.contains(script))
-					window.location.assign("/?tried=" + encodeURIComponent(location.pathname));
+				// React removes this script in src/index.tsx
+				// If script exists, React hasn't been loaded
+				if (root.contains(script))
+					return window.location.assign("/?tried=" + encodeURIComponent(location.pathname));
 
-				else
-					document.removeEventListener("readystatechange", readyStateChangeListener);
+				document.removeEventListener("readystatechange", readyStateChangeListener);
 			});
 		</script>
 	</div>
