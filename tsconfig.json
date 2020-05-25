@@ -19,6 +19,9 @@
         "./node_modules/@hot-loader/react-dom",
         "./node_modules/react-dom",
       ],
+      "api/*": [
+        "./src/api/*",
+      ],
     },
   }
 }

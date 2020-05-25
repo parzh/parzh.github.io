@@ -20,6 +20,7 @@ const defaults: Configuration = {
 		extensions: [ ".js", ".json", ".ts", ".tsx" ],
 		alias: {
 			"react-dom": "@hot-loader/react-dom",
+			"api": resolve(SRC_PATH, "api"),
 		},
 	},
 	module: {
