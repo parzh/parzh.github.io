@@ -6,10 +6,13 @@ interface Props {
 	children: JSX.Element;
 }
 
+/** @private */
+const isReady = (): boolean => document.readyState !== "loading";
+
 export default function WrapperFor404RedirectsFromGitHubPages({ children }: Props): JSX.Element {
 	const location = useLocation();
 	const [ triedPath, setTriedPath ] = useState<string>();
-	const [ isReady, setIsReady ] = useState(false);
+	const [ ready, setReady ] = useState(isReady());
 
 	useEffect(() => {
 		const tried = new URLSearchParams(location.search).get("tried");
@@ -19,9 +22,11 @@ export default function WrapperFor404RedirectsFromGitHubPages({ children }: Prop
 	}, [ location ]);
 
 	useEffect(() => {
+		if (ready)
+			return;
+
 		function readyStateChangeListener(): void {
-			if (!isReady)
-				setIsReady(document.readyState !== "loading");
+			setReady(isReady());
 		}
 
 		document.addEventListener("readystatechange", readyStateChangeListener);
@@ -29,12 +34,12 @@ export default function WrapperFor404RedirectsFromGitHubPages({ children }: Prop
 		return (): void => {
 			document.removeEventListener("readystatechange", readyStateChangeListener);
 		};
-	}, [ isReady, setIsReady ]);
+	}, [ ready, setReady ]);
 
 	if (triedPath != null)
 		return <Redirect to={triedPath} />;
 
-	if (!isReady)
+	if (!ready)
 		return <></>;
 
 	return children;
