@@ -23,6 +23,22 @@
 </head>
 <body>
 	<div id="root"><!-- Should be overriden with the actual content at all non-404 pages -->
+		<script id="script_4834094162371463">
+			const root = document.getElementById("root");
+			const script = document.getElementById("script_4834094162371463");
+
+			document.addEventListener("readystatechange", function readyStateChangeListener() {
+				if (document.readyState !== "complete")
+					return;
+
+				else if (root.contains(script))
+					window.location.assign("/?tried=" + encodeURIComponent(location.pathname));
+
+				else
+					document.removeEventListener("readystatechange", readyStateChangeListener);
+			});
+		</script>
+
 		<style>
 			@keyframes fade-in-to-100 {
 				from { opacity: 0% } to { opacity: 100% }
