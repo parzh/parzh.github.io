@@ -16,22 +16,17 @@
 <body>
 	<div id="root">
 		<script id="script_4834094162371463">
-			const root = document.getElementById("root");
-			const script = document.getElementById("script_4834094162371463");
+			const myself = document.getElementById("script_4834094162371463");
 
-			document.addEventListener("readystatechange", function readyStateChangeListener() {
-				// React might not have been loaded yet
-				if (document.readyState !== "complete")
-					return;
+			window.addEventListener("load", function loadListener() {
+				window.removeEventListener("load", loadListener);
 
 				// React removes this script in src/index.tsx
 				// If script exists, React hasn't been loaded
-				if (root.contains(script))
+				if (document.contains(myself))
 					return window.location.assign("/?tried=" + encodeURIComponent(location.pathname));
-
-				document.removeEventListener("readystatechange", readyStateChangeListener);
 			});
 		</script>
 	</div>
-<script type="text/javascript" src="bundle.js"></script></body>
+<script type="text/javascript" src="bundle.f399e7d24c32b25872ec.js"></script></body>
 </html>
