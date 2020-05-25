@@ -39,7 +39,7 @@ const config: Configuration = {
 	],
 	output: {
 		path: resolve(__dirname, "../dist"),
-		filename: "bundle.js",
+		filename: "bundle.[hash].js",
 	},
 };
 
