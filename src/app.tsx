@@ -3,7 +3,7 @@ import { hot } from "react-hot-loader/root";
 
 /** @private */
 const styleFor: Record<string, React.CSSProperties> = {
-	text: {
+	greeting: {
 		fontSize: "4rem",
 	},
 	icon: {
@@ -15,7 +15,7 @@ function App(): JSX.Element {
 	return (
 		<div className="container-fluid h-100">
 			<div className="container h-100 d-flex flex-column justify-content-center align-items-center">
-				<span style={styleFor.text} className="lead">
+				<span id="greeting" style={styleFor.greeting} className="lead">
 					Hello world!
 				</span>
 
