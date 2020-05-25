@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import getRate from "../api/get-rate";
+import getRate from "api/curr/get-rate";
 
 /** @private */
 interface OnFetched {

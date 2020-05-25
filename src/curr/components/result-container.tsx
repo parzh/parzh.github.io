@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import toUAH from "../api/to-uah";
+import toUAH from "api/curr/to-uah";
 
 /** @private */
 interface Props {
