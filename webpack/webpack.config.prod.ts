@@ -1,5 +1,4 @@
 import type { Configuration } from "webpack";
-import type { ConfigurationMergeFunction as Merge } from "webpack-merge";
 
 import { smart as merge } from "webpack-merge";
 import { resolve } from "path";
@@ -8,8 +7,14 @@ import createHTML from "./create-html";
 /** @private */
 const defaults: Configuration = {
 	mode: "production",
+	entry: [
+		"react-hot-loader/patch",
+	],
 	resolve: {
 		extensions: [ ".js", ".json", ".ts", ".tsx" ],
+		alias: {
+			"react-dom": "@hot-loader/react-dom",
+		},
 	},
 	module: {
 		rules: [
@@ -30,12 +35,19 @@ const defaults: Configuration = {
 };
 
 /** @private */
-const createConfig: Merge = (overrides) => merge(defaults, overrides);
+interface Overrides extends Configuration {
+	entry: string[];
+}
+
+/** @private */
+const createConfig = (overrides: Overrides): Configuration => merge(defaults, overrides);
 
 /** @public */
 const config: Configuration[] = [
 	createConfig({
-		entry: resolve("src"),
+		entry: [
+			resolve("src"),
+		],
 		plugins: [
 			createHTML("GitHub Pages"),
 			createHTML("Page not found", "404.html", []),
@@ -45,7 +57,9 @@ const config: Configuration[] = [
 		},
 	}),
 	createConfig({
-		entry: resolve("src/curr"),
+		entry: [
+			resolve("src/curr"),
+		],
 		plugins: [
 			createHTML("Curr"),
 		],
