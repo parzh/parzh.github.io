@@ -1,20 +1,21 @@
 import React from "react";
 import { shallow } from "enzyme";
+import { Link } from "react-router-dom";
 
-import App from "./app";
+import HomePage from "./home-page";
 
-describe("<App /> (index)", () => {
-	const component = shallow(<App />);
+describe("<HomePage />", () => {
+	const component = shallow(<HomePage />);
 
 	it("shows the correct greeting", () => {
 		expect(component.find("#greeting").text()).toEqual("Hello world!");
 	});
 
 	it("shows link to /profile page", () => {
-		const link = component.find("a");
+		const link = component.find(Link);
 
 		expect(link.text()).toEqual("Go to profile page");
-		expect(link.prop("href")).toEqual("/profile");
+		expect(link.prop("to")).toEqual("/profile");
 	});
 
 	it("shows help icon", () => {

@@ -1,0 +1,7 @@
+@keyframes fade-in-to-100 {
+	from { opacity: 0% } to { opacity: 100% }
+}
+
+@keyframes fade-in-to-7 {
+	from { opacity: 0% } to { opacity: 7% }
+}

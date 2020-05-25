@@ -22,44 +22,24 @@
 	</style>
 </head>
 <body>
-	<div id="root"><!-- Should be overriden with the actual content at all non-404 pages -->
-		<style>
-			@keyframes fade-in-to-100 {
-				from { opacity: 0% } to { opacity: 100% }
-			}
+	<div id="root">
+		<script id="script_4834094162371463">
+			const root = document.getElementById("root");
+			const script = document.getElementById("script_4834094162371463");
 
-			@keyframes fade-in-to-7 {
-				from { opacity: 0% } to { opacity: 7% }
-			}
+			document.addEventListener("readystatechange", function readyStateChangeListener() {
+				// React might not have been loaded yet
+				if (document.readyState !== "complete")
+					return;
 
-			#disclaimer-404 {
-				font-size: 4rem;
-				animation: fade-in-to-100 1s 1s both;
-			}
+				// React removes this script in src/index.tsx
+				// If script exists, React hasn't been loaded
+				if (root.contains(script))
+					return window.location.assign("/?tried=" + encodeURIComponent(location.pathname));
 
-			#disclaimer-404::before {
-				content: "😮";
-				position: absolute;
-				right: 20%;
-				top: 30%;
-				transform: translateY(-50%);
-				font-size: 12rem;
-				z-index: -1;
-				animation: fade-in-to-7 2s 2.5s both;
-			}
-
-			#homelink-404 {
-				animation: fade-in-to-100 1s 1.5s both;
-			}
-		</style>
-
-		<div class="container h-100 d-flex flex-column justify-content-center align-items-center">
-			<span id="disclaimer-404" class="lead text-center">Sorry, this page does not exist</span>
-
-			<span id="homelink-404">
-				<a href="/">Go to home page instead</a>
-			</span>
-		</div>
+				document.removeEventListener("readystatechange", readyStateChangeListener);
+			});
+		</script>
 	</div>
 </body>
 </html>
