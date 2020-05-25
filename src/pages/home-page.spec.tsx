@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import App from "./app";
+import HomePage from "./home-page";
 
-describe("<App /> (index)", () => {
-	const component = shallow(<App />);
+describe("<HomePage />", () => {
+	const component = shallow(<HomePage />);
 
 	it("shows the correct greeting", () => {
 		expect(component.find("#greeting").text()).toEqual("Hello world!");
