@@ -2,7 +2,7 @@ import React from "react";
 
 import Title from "src/components/title";
 
-export default function TodoList(): JSX.Element {
+export default function Profile(): JSX.Element {
 	return (
 		<>
 			<header>
