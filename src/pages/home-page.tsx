@@ -21,18 +21,18 @@ export default function HomePage(): JSX.Element {
 			<Title id="greeting">Hello world!</Title>
 
 			<div className="text-center">
-				<Link to="/todo">See the todo list</Link>
+				<Link to="/profile">Go to profile page</Link>
 
 				<span className="ml-1">or</span>
 
 				<span className="ml-1">
-					<Link to="/profile">go to profile page</Link>
+					<Link to="/launch">launch a rocket 🚀 to Mars</Link>
 
 					<span style={styleFor.iconContainer}>
 						<i
 							className="material-icons ml-1 text-muted"
 							style={styleFor.icon}
-							title="There's no profile page really, I'm just taking the opportunity to show 404 page"
+							title="No rockets for now, I'm just taking the opportunity to show 404 page"
 						>
 							help_outline
 						</i>

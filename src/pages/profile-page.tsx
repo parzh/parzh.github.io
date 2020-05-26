@@ -1,9 +1,9 @@
 import React from "react";
 
 import Page from "src/pages/page";
-import TodoList from "src/components/todo-list";
+import Profile from "src/components/profile";
 
-export default function TodoPage(): JSX.Element {
+export default function ProfilePage(): JSX.Element {
 	return (
 		<Page breadcrumbs={{
 			"home": {
@@ -11,10 +11,10 @@ export default function TodoPage(): JSX.Element {
 				link: "/",
 			},
 			"todo": {
-				text: "Todo list",
+				text: "Profile",
 			},
 		}}>
-			<TodoList />
+			<Profile />
 		</Page>
 	);
 }
