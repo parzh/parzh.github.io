@@ -5,7 +5,15 @@ import WrapperForPages from "src/components/wrapper-for-pages";
 
 export default function TodoPage(): JSX.Element {
 	return (
-		<WrapperForPages>
+		<WrapperForPages breadcrumbs={{
+			"home": {
+				text: "Home",
+				link: "/",
+			},
+			"todo": {
+				text: "Todo list",
+			},
+		}}>
 			<TodoList />
 		</WrapperForPages>
 	);
