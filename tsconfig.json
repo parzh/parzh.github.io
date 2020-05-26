@@ -12,6 +12,7 @@
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "downlevelIteration": true,
+    "skipLibCheck": true,
 
     "baseUrl": ".",
     "paths": {
