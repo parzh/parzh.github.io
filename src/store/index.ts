@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from "redux";
-import app from "./app/reducer";
+import user from "./user/reducer";
 
 export default createStore(combineReducers({
-	app,
+	user,
 }));
