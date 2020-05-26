@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import type { Breadcrumbs } from "src/components/breadcrumbs/breadcrumb-item";
+import type Breadcrumbs from "src/typings/breadcrumbs";
 import { createList } from "src/components/breadcrumbs/breadcrumb-item";
 
 /** @private */

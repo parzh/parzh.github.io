@@ -1,14 +1,10 @@
 import React from "react";
-
-import BreadcrumbSeparator from "./breadcrumb-separator";
 import { Link } from "react-router-dom";
 
-export interface Breadcrumb {
-	link?: string;
-	text: string;
-}
+import type Breadcrumb from "src/typings/breadcrumb";
+import type Breadcrumbs from "src/typings/breadcrumbs";
 
-export type Breadcrumbs = Record<string, Breadcrumb>;
+import BreadcrumbSeparator from "./breadcrumb-separator";
 
 export function createList(breadcrumbs: Breadcrumbs, withoutSeparators?: "without-separators"): JSX.Element[] {
 	const items: JSX.Element[] = [];
