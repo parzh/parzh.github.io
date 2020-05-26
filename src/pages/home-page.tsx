@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import WrapperForPages from "src/components/wrapper-for-pages"
+import Page from "src/pages/page";
 
 /** @private */
 const styleFor: Record<string, React.CSSProperties> = {
@@ -19,7 +19,7 @@ const styleFor: Record<string, React.CSSProperties> = {
 
 export default function HomePage(): JSX.Element {
 	return (
-		<WrapperForPages className="justify-content-center align-items-stretch">
+		<Page className="justify-content-center align-items-stretch">
 			<div
 				id="greeting"
 				className="lead text-center"
@@ -49,6 +49,6 @@ export default function HomePage(): JSX.Element {
 					</span>
 				</span>
 			</div>
-		</WrapperForPages>
+		</Page>
 	);
 }

@@ -1,11 +1,11 @@
 import React from "react";
 
+import Page from "src/pages/page";
 import TodoList from "src/components/todo-list";
-import WrapperForPages from "src/components/wrapper-for-pages";
 
 export default function TodoPage(): JSX.Element {
 	return (
-		<WrapperForPages breadcrumbs={{
+		<Page breadcrumbs={{
 			"home": {
 				text: "Home",
 				link: "/",
@@ -15,6 +15,6 @@ export default function TodoPage(): JSX.Element {
 			},
 		}}>
 			<TodoList />
-		</WrapperForPages>
+		</Page>
 	);
 }

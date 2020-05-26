@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import type { Breadcrumbs } from "./breadcrumbs/breadcrumb-item";
-import { createList } from "./breadcrumbs/breadcrumb-item";
+import type { Breadcrumbs } from "src/components/breadcrumbs/breadcrumb-item";
+import { createList } from "src/components/breadcrumbs/breadcrumb-item";
 
 /** @private */
 interface Props extends React.HTMLAttributes<"div"> {
@@ -11,7 +11,7 @@ interface Props extends React.HTMLAttributes<"div"> {
 /** @private */
 const empty: Breadcrumbs = Object.create(null);
 
-export default function WrapperForPages({
+export default function Page({
 	children,
 	className = "",
 	breadcrumbs = empty,
