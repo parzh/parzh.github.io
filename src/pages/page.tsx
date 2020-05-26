@@ -25,7 +25,7 @@ export default function Page({
 	return (
 		<>
 			<section className="d-flex flex-column h-100">
-				{breadcrumbItems.length === 0 ? null : (
+				{breadcrumbItems.length > 0 && (
 					<nav className="navbar navbar-light bg-light flex-shrink-0 justify-content-start">
 						{breadcrumbItems}
 					</nav>
