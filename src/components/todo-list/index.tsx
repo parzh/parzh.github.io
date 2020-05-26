@@ -1,5 +1,7 @@
 import React from "react";
 
+import Title from "src/components/title";
+
 import TodoListStats from "./todo-list-stats";
 import TodoListItem from "./todo-list-item";
 
@@ -7,7 +9,7 @@ export default function TodoList(): JSX.Element {
 	return (
 		<>
 			<header>
-				<h1>My Todo List</h1>
+				<Title>My Todo List</Title>
 				<TodoListStats />
 			</header>
 			<section>

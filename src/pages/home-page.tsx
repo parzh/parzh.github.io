@@ -2,12 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Page from "src/pages/page";
+import Title from "src/components/title";
 
 /** @private */
 const styleFor: Record<string, React.CSSProperties> = {
-	greeting: {
-		fontSize: "4rem",
-	},
 	iconContainer: {
 		verticalAlign: "middle",
 	},
@@ -20,18 +18,10 @@ const styleFor: Record<string, React.CSSProperties> = {
 export default function HomePage(): JSX.Element {
 	return (
 		<Page className="justify-content-center align-items-stretch">
-			<div
-				id="greeting"
-				className="lead text-center"
-				style={styleFor.greeting}
-			>
-				Hello world!
-			</div>
+			<Title id="greeting">Hello world!</Title>
 
 			<div className="text-center">
-				<Link to="/todo">
-					See the todo list
-				</Link>
+				<Link to="/todo">See the todo list</Link>
 
 				<span className="ml-1">or</span>
 
