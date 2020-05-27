@@ -1,13 +1,11 @@
 import React from "react";
 
-import Title from "src/components/title";
+import ProfileTitle from "./profile-title";
 
 export default function Profile(): JSX.Element {
 	return (
 		<>
-			<header>
-				<Title>My Profile</Title>
-			</header>
+			<ProfileTitle />
 			<section>
 				{/* ... */}
 			</section>
