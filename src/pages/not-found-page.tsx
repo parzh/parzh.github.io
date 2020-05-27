@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { createStyleFor } from "src/helpers/styles";
 
+import Page from "./page";
 import Title from "src/components/title";
 
 /** @private */
@@ -27,7 +28,7 @@ const styleFor = createStyleFor({
 
 export default function NotFoundPage(): JSX.Element {
 	return (
-		<div className="container h-100 d-flex flex-column justify-content-center align-items-center">
+		<Page className="justify-content-center align-items-center">
 			<Title style={styleFor.disclaimer}>
 				Sorry, this page does not exist
 			</Title>
@@ -37,6 +38,6 @@ export default function NotFoundPage(): JSX.Element {
 			<span style={styleFor.homelink}>
 				<Link to="/">Go to home page instead</Link>
 			</span>
-		</div>
+		</Page>
 	);
 }
