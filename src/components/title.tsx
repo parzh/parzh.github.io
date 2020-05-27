@@ -2,8 +2,7 @@ import React from "react";
 
 import { createStyleFor } from "src/helpers/styles";
 
-/** @private */
-const styleFor = createStyleFor({
+export const styleFor = createStyleFor({
 	title: {
 		fontSize: "4rem",
 	},
