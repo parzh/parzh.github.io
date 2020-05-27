@@ -3,7 +3,7 @@ import type { IconName } from "typed-md-icons";
 import { createStyleFor } from "src/helpers/styles";
 
 /** @private */
-interface Props extends React.HTMLAttributes<HTMLButtonElement> {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	icon?: IconName;
 }
 
@@ -19,7 +19,7 @@ export default function TinyButton({ icon, className = "", children, ...props }:
 		<button
 			type="button"
 			{...props}
-			className={"btn btn-link text-secondary py-0 " + className}
+			className={"btn btn-link " + className}
 		>
 			{icon != null && (
 				<i

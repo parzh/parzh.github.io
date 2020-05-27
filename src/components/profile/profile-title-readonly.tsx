@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import Title from "src/components/title";
-import TinyButton from "src/components/TinyButton";
+import TinyButton from "src/components/tiny-button";
 
 import * as user from "src/store/user/actions";
 import { useUserName } from "src/store/selectors";
@@ -22,12 +22,17 @@ export default function ProfileTitleReadonly({ onRename }: Props): JSX.Element {
 			<Title>Greetings, {username}!</Title>
 
 			<span className="text-muted text-center">
-				<TinyButton icon="create" onClick={onRename}>
+				<TinyButton
+					icon="create"
+					className="text-secondary py-0"
+					onClick={onRename}
+				>
 					Rename
 				</TinyButton>
 
 				<TinyButton
 					icon="cached"
+					className="text-secondary py-0"
 					onClick={(): void => {
 						dispatch(user.setName(getRandomName()));
 					}}
