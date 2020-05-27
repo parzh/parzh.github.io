@@ -25,7 +25,12 @@ export default function ProfileTitleEditable({
 	const [ name, setName ] = useState(useUserName());
 
 	return (
-		<form onSubmit={(): void => onSubmit(name)}>
+		<form
+			onSubmit={(event): void => {
+				event.preventDefault();
+				onSubmit(name);
+			}}
+		>
 			<input
 				name="username"
 				type="text"
