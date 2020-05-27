@@ -9,14 +9,10 @@ const SRC_PATH = resolve(__dirname, "../src");
 /** @private */
 const config: Configuration = {
 	mode: "production",
-	entry: [
-		"react-hot-loader/patch",
-		SRC_PATH,
-	],
+	entry: SRC_PATH,
 	resolve: {
 		extensions: [ ".js", ".json", ".ts", ".tsx" ],
 		alias: {
-			"react-dom": "@hot-loader/react-dom",
 			"src": resolve(SRC_PATH),
 		},
 	},

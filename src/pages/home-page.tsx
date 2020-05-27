@@ -1,36 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Page from "src/pages/page";
+
 /** @private */
 const styleFor: Record<string, React.CSSProperties> = {
-	greeting: {
-		fontSize: "4rem",
+	iconContainer: {
+		verticalAlign: "middle",
 	},
 	icon: {
 		cursor: "help",
+		fontSize: "small",
 	},
 };
 
 export default function HomePage(): JSX.Element {
 	return (
-		<div className="container-fluid h-100">
-			<div className="container h-100 d-flex flex-column justify-content-center align-items-center">
-				<span id="greeting" style={styleFor.greeting} className="lead">
-					Hello world!
-				</span>
+		<Page className="justify-content-center align-items-stretch">
+			<div className="text-center">
+				<Link to="/profile">Go to profile page</Link>
 
-				<span className="d-flex flex-row">
-					<Link to="/profile">Go to profile page</Link>
+				<span className="ml-1">or</span>
 
-					<i
-						className="material-icons ml-1 text-muted"
-						style={styleFor.icon}
-						title="There's no profile page really, I'm just taking the opportunity to show 404 page"
-					>
-						help_outline
-					</i>
+				<span className="ml-1">
+					<Link to="/launch">launch a rocket 🚀 to Mars</Link>
+
+					<span style={styleFor.iconContainer}>
+						<i
+							className="material-icons ml-1 text-muted"
+							style={styleFor.icon}
+							title="No rockets for now, I'm just taking the opportunity to show 404 page"
+						>
+							help_outline
+						</i>
+					</span>
 				</span>
 			</div>
-		</div>
+		</Page>
 	);
 }

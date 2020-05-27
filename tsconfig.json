@@ -12,13 +12,10 @@
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "downlevelIteration": true,
+    "skipLibCheck": true,
 
     "baseUrl": ".",
     "paths": {
-      "react-dom": [
-        "./node_modules/@hot-loader/react-dom",
-        "./node_modules/react-dom",
-      ],
       "src/*": [
         "src/*",
       ],
