@@ -2,7 +2,7 @@ import type { State, Action } from "./types";
 
 /** @private */
 const initial: State = {
-	name: null,
+	name: "My Profile",
 };
 
 export default function reducer(state = initial, action: Action): State {

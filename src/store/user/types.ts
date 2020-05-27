@@ -1,12 +1,12 @@
 import type { ActionTypeFrom, ActionFrom, ActionCreatorFrom } from "@parzh/typed-redux-actions";
 
 export interface State {
-	name: string | null;
+	name: string;
 }
 
 /** @private */
 interface PayloadMap {
-	USER$SET_NAME: State["name"];
+	USER$SET_NAME: string;
 }
 
 export type ActionType = ActionTypeFrom<PayloadMap>;
