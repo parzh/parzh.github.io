@@ -4,7 +4,8 @@ import { createStyleFor } from "src/helpers/styles";
 
 /** @private */
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	icon?: IconName;
+	icon?: IconName | null;
+	iconPosition?: "left" | "right";
 }
 
 /** @private */
@@ -14,23 +15,41 @@ const styleFor = createStyleFor({
 	},
 });
 
-export default function TinyButton({ icon, className = "", children, ...props }: Props): JSX.Element {
+export default function TinyButton({
+	icon,
+	iconPosition = "left",
+	className = "",
+	children,
+	...props
+}: Props): JSX.Element {
+	const nodes = [
+		icon == null ? null : (
+			<i
+				className={
+					"material-icons small " +
+					(iconPosition === "left" ? "mr-1" : "ml-1")
+				}
+				style={styleFor.icon}
+			>
+				{icon}
+			</i>
+		),
+		// eslint-disable-next-line react/jsx-key
+		<small>{children}</small>,
+	];
+
+	if (iconPosition === "right") nodes.reverse();
+
+	const [ first, second ] = nodes;
+
 	return (
 		<button
 			type="button"
 			{...props}
 			className={"btn btn-link " + className}
 		>
-			{icon != null && (
-				<i
-					className="material-icons small mr-1"
-					style={styleFor.icon}
-				>
-					{icon}
-				</i>
-			)}
-
-			<small>{children}</small>
+			{first}
+			{second}
 		</button>
 	);
 }
