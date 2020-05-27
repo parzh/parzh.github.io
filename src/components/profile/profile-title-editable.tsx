@@ -14,15 +14,18 @@ const styleFor = createStyleFor({
 
 /** @private */
 interface Props {
-	/** Fires once the new name is submitted */
-	onEdit(name: string): void;
+	onSubmit(name: string): void;
+	onCancel?(): void;
 }
 
-export default function ProfileTitleEditable({ onEdit }: Props): JSX.Element {
+export default function ProfileTitleEditable({
+	onSubmit,
+	onCancel,
+}: Props): JSX.Element {
 	const [name, setName] = useState(useUserName());
 
 	return (
-		<form onSubmit={(): void => onEdit(name)}>
+		<form onSubmit={(): void => onSubmit(name)}>
 			<input
 				name="username"
 				type="text"
@@ -31,12 +34,21 @@ export default function ProfileTitleEditable({ onEdit }: Props): JSX.Element {
 				className="form-control form-control-lg lead text-center border-top-0 border-right-0 border-left-0"
 				onInput={(event): void => setName(event.currentTarget.value)}
 			/>
-			<div className="form-text text-muted row">
-				<div className="col">
-					The new name is saved automatically. Press{" "}
-					<span className="text-monospace">Enter</span> to return to
-					normal mode.
-				</div>
+			<div className="form-text text-muted text-center">
+				<button
+					type="button"
+					className="btn btn-link text-secondary ml-1"
+					onClick={onCancel}
+				>
+					<small>Cancel</small>
+				</button>
+
+				<button
+					type="submit"
+					className="btn btn-link text-primary ml-1"
+				>
+					<small>Submit</small>
+				</button>
 			</div>
 		</form>
 	);
