@@ -24,7 +24,7 @@ export default function ProfileTitleEditable({ onEdit }: Props): JSX.Element {
 	return (
 		<form onSubmit={(): void => onEdit(name)}>
 			<input
-				name="profile-name"
+				name="username"
 				type="text"
 				defaultValue={name}
 				style={styleFor.input}
