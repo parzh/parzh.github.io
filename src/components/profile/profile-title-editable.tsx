@@ -26,11 +26,15 @@ export default function ProfileTitleEditable({
 }: Props): JSX.Element {
 	const [ name, setName ] = useState(useUserName());
 
+	const tooShort = !name;
+	const tooLong = name.length >= 32;
+	const isValid = !tooShort && !tooLong;
+
 	return (
 		<form
 			onSubmit={(event): void => {
 				event.preventDefault();
-				onSubmit(name);
+				if (isValid) onSubmit(name);
 			}}
 		>
 			<input
@@ -48,7 +52,14 @@ export default function ProfileTitleEditable({
 
 				<TinyButton
 					type="submit"
-					className="ml-1"
+					className={"ml-1 " + (!isValid ? "text-danger" : "")}
+					icon={!isValid ? "error" : null}
+					iconPosition="right"
+					title={tooLong ? (
+						"This name is 32+ characters long, which is too long"
+					) : tooShort ? (
+						"Please, specify a name that is at least 1 character long"
+					) : ""}
 				>
 					Submit
 				</TinyButton>
