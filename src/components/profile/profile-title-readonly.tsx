@@ -1,18 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import Title from "src/components/title";
-import { useUserName } from "src/store/selectors";
-import { createStyleFor } from "src/helpers/styles";
+import TinyButton from "src/components/tiny-button";
 
-/** @private */
-const styleFor = createStyleFor({
-	editText: {
-		cursor: "pointer",
-	},
-	editIcon: {
-		verticalAlign: "middle",
-	},
-});
+import * as user from "src/store/user/actions";
+import { useUserName } from "src/store/selectors";
+import getRandomName from "src/helpers/get-random-name";
 
 /** @private */
 interface Props {
@@ -20,25 +14,31 @@ interface Props {
 }
 
 export default function ProfileTitleReadonly({ onRename }: Props): JSX.Element {
-	const name = useUserName();
+	const username = useUserName();
+	const dispatch = useDispatch();
 
 	return (
 		<>
-			<Title>Hello, {name}!</Title>
+			<Title>Greetings, {username}!</Title>
 
-			<span className="text-muted text-center" onClick={onRename}>
-				<button
-					type="button"
-					className="btn btn-link text-secondary ml-1 py-0"
+			<span className="text-muted text-center">
+				<TinyButton
+					icon="create"
+					className="text-secondary py-0"
+					onClick={onRename}
 				>
-					<i
-						className="material-icons small mr-1"
-						style={styleFor.editIcon}
-					>
-						create
-					</i>
-					<small>Rename</small>
-				</button>
+					Rename
+				</TinyButton>
+
+				<TinyButton
+					icon="cached"
+					className="text-secondary py-0"
+					onClick={(): void => {
+						dispatch(user.setName(getRandomName()));
+					}}
+				>
+					Random
+				</TinyButton>
 			</span>
 		</>
 	);

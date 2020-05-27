@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import TinyButton from "src/components/tiny-button";
+
 import { styleFor as titleStyleFor } from "src/components/title";
 import { useUserName } from "src/store/selectors";
 import { createStyleFor } from "src/helpers/styles";
@@ -22,10 +24,19 @@ export default function ProfileTitleEditable({
 	onSubmit,
 	onCancel,
 }: Props): JSX.Element {
-	const [name, setName] = useState(useUserName());
+	const [ name, setName ] = useState(useUserName());
+
+	const tooShort = !name;
+	const tooLong = name.length >= 32;
+	const isValid = !tooShort && !tooLong;
 
 	return (
-		<form onSubmit={(): void => onSubmit(name)}>
+		<form
+			onSubmit={(event): void => {
+				event.preventDefault();
+				if (isValid) onSubmit(name);
+			}}
+		>
 			<input
 				name="username"
 				type="text"
@@ -35,20 +46,23 @@ export default function ProfileTitleEditable({
 				onInput={(event): void => setName(event.currentTarget.value)}
 			/>
 			<div className="form-text text-muted text-center">
-				<button
-					type="button"
-					className="btn btn-link text-secondary ml-1"
-					onClick={onCancel}
-				>
-					<small>Cancel</small>
-				</button>
+				<TinyButton className="text-secondary ml-1" onClick={onCancel}>
+					Cancel
+				</TinyButton>
 
-				<button
+				<TinyButton
 					type="submit"
-					className="btn btn-link text-primary ml-1"
+					className={"ml-1 " + (!isValid ? "text-danger" : "")}
+					icon={!isValid ? "error" : null}
+					iconPosition="right"
+					title={tooLong ? (
+						"This name is 32+ characters long, which is too long"
+					) : tooShort ? (
+						"Please, specify a name that is at least 1 character long"
+					) : ""}
 				>
-					<small>Submit</small>
-				</button>
+					Submit
+				</TinyButton>
 			</div>
 		</form>
 	);
