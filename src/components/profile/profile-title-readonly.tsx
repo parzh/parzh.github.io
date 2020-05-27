@@ -27,15 +27,18 @@ export default function ProfileTitleReadonly({ onRename }: Props): JSX.Element {
 			<Title>{name}</Title>
 
 			<span className="text-muted text-center" onClick={onRename}>
-				<i
-					className="material-icons small mr-1"
-					style={styleFor.editIcon}
+				<button
+					type="button"
+					className="btn btn-link text-secondary ml-1"
 				>
-					create
-				</i>
-				<u className="small" style={styleFor.editText}>
-					rename
-				</u>
+					<i
+						className="material-icons small mr-1"
+						style={styleFor.editIcon}
+					>
+						create
+					</i>
+					<small>Rename</small>
+				</button>
 			</span>
 		</>
 	);
