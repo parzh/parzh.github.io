@@ -16,10 +16,6 @@
 
     "baseUrl": ".",
     "paths": {
-      "react-dom": [
-        "./node_modules/@hot-loader/react-dom",
-        "./node_modules/react-dom",
-      ],
       "src/*": [
         "src/*",
       ],
