@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import * as user from "src/store/user/actions";
-import { useName } from "src/store/selectors";
+import { useUserName } from "src/store/selectors";
 
 import ProfileTitleReadonly from "./profile-title-readonly";
 import ProfileTitleEditable from "./profile-title-editable";
 
 export default function ProfileTitle(): JSX.Element {
-	const currentName = useName();
+	const currentName = useUserName();
 	const [ name, setName ] = useState(currentName);
 	const [ editable, setEditable ] = useState(false);
 	const dispatch = useDispatch();

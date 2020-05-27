@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { styleFor as titleStyleFor } from "src/components/title";
-import { useName } from "src/store/selectors";
+import { useUserName } from "src/store/selectors";
 import { createStyleFor } from "src/helpers/styles";
 
 /** @private */
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function ProfileTitleEditable({ onEdit }: Props): JSX.Element {
-	const [name, setName] = useState(useName());
+	const [name, setName] = useState(useUserName());
 
 	return (
 		<form onSubmit={(): void => onEdit(name)}>

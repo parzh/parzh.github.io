@@ -1,7 +1,7 @@
 import React from "react";
 
 import Title from "src/components/title";
-import { useName } from "src/store/selectors";
+import { useUserName } from "src/store/selectors";
 import { createStyleFor } from "src/helpers/styles";
 
 /** @private */
@@ -20,7 +20,7 @@ interface Props {
 }
 
 export default function ProfileTitleReadonly({ onRename }: Props): JSX.Element {
-	const name = useName();
+	const name = useUserName();
 
 	return (
 		<>
