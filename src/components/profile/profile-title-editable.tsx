@@ -22,7 +22,7 @@ export default function ProfileTitleEditable({
 	onSubmit,
 	onCancel,
 }: Props): JSX.Element {
-	const [name, setName] = useState(useUserName());
+	const [ name, setName ] = useState(useUserName());
 
 	return (
 		<form onSubmit={(): void => onSubmit(name)}>
