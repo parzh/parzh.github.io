@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import TinyButton from "src/components/tiny-button";
+
 import { styleFor as titleStyleFor } from "src/components/title";
 import { useUserName } from "src/store/selectors";
 import { createStyleFor } from "src/helpers/styles";
@@ -40,20 +42,16 @@ export default function ProfileTitleEditable({
 				onInput={(event): void => setName(event.currentTarget.value)}
 			/>
 			<div className="form-text text-muted text-center">
-				<button
-					type="button"
-					className="btn btn-link text-secondary ml-1"
-					onClick={onCancel}
-				>
-					<small>Cancel</small>
-				</button>
+				<TinyButton className="text-secondary ml-1" onClick={onCancel}>
+					Cancel
+				</TinyButton>
 
-				<button
+				<TinyButton
 					type="submit"
-					className="btn btn-link text-primary ml-1"
+					className="ml-1"
 				>
-					<small>Submit</small>
-				</button>
+					Submit
+				</TinyButton>
 			</div>
 		</form>
 	);
