@@ -31,13 +31,13 @@ export default function ProfileTitleEditable({ onEdit }: Props): JSX.Element {
 				className="form-control form-control-lg lead text-center border-top-0 border-right-0 border-left-0"
 				onInput={(event): void => setName(event.currentTarget.value)}
 			/>
-			<small className="form-text text-muted row">
+			<div className="form-text text-muted row">
 				<div className="col">
 					The new name is saved automatically. Press{" "}
 					<span className="text-monospace">Enter</span> to return to
 					normal mode.
 				</div>
-			</small>
+			</div>
 		</form>
 	);
 }
