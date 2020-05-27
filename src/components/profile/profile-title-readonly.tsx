@@ -29,7 +29,7 @@ export default function ProfileTitleReadonly({ onRename }: Props): JSX.Element {
 			<span className="text-muted text-center" onClick={onRename}>
 				<button
 					type="button"
-					className="btn btn-link text-secondary ml-1"
+					className="btn btn-link text-secondary ml-1 py-0"
 				>
 					<i
 						className="material-icons small mr-1"

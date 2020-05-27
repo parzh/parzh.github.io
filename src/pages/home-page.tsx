@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Page from "src/pages/page";
-import Title from "src/components/title";
 
 /** @private */
 const styleFor: Record<string, React.CSSProperties> = {
@@ -18,8 +17,6 @@ const styleFor: Record<string, React.CSSProperties> = {
 export default function HomePage(): JSX.Element {
 	return (
 		<Page className="justify-content-center align-items-stretch">
-			<Title id="greeting">Hello world!</Title>
-
 			<div className="text-center">
 				<Link to="/profile">Go to profile page</Link>
 

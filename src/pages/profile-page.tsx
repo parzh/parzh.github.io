@@ -6,7 +6,7 @@ import Profile from "src/components/profile";
 export default function ProfilePage(): JSX.Element {
 	return (
 		<Page
-			className="py-1"
+			className="justify-content-center align-items-center py-1"
 			breadcrumbs={{
 				home: {
 					text: "Home",
