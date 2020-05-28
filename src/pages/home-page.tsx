@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Page from "src/pages/page";
+import { createStyleFor } from "src/helpers/styles";
 
 /** @private */
-const styleFor: Record<string, React.CSSProperties> = {
+const styleFor = createStyleFor({
 	iconContainer: {
 		verticalAlign: "middle",
 	},
@@ -12,7 +13,7 @@ const styleFor: Record<string, React.CSSProperties> = {
 		cursor: "help",
 		fontSize: "small",
 	},
-};
+});
 
 export default function HomePage(): JSX.Element {
 	return (

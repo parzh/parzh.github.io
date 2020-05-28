@@ -5,3 +5,16 @@
 @keyframes fade-in-to-7 {
 	from { opacity: 0% } to { opacity: 7% }
 }
+
+@keyframes slide-up-from-bottom {
+	from {
+		position: fixed;
+		bottom: 0;
+		transform: translateY(100%);
+	}
+	to {
+		position: fixed;
+		bottom: 0;
+		transform: translateY(0);
+	}
+}
