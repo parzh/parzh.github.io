@@ -13,6 +13,7 @@ export default function WrapperFor404RedirectsFromGitHubPages({ children }: Prop
 	const location = useLocation();
 	const [ triedPath, setTriedPath ] = useState<string>();
 	const [ ready, setReady ] = useState(isReady());
+	const [ keepAlive, setKeepAlive ] = useState<number>();
 
 	useEffect(() => {
 		const tried = new URLSearchParams(location.search).get("tried");
@@ -29,7 +30,20 @@ export default function WrapperFor404RedirectsFromGitHubPages({ children }: Prop
 
 		if (ready !== actuallyReady)
 			setReady(actuallyReady);
-	}, [ ready, setReady ]);
+	}, [ ready, keepAlive ]);
+
+	useEffect(() => {
+		let timeoutID = setTimeout(function tick() {
+			setKeepAlive(Math.random());
+
+			if (!ready)
+				timeoutID = setTimeout(tick, 1000);
+		}, 1000);
+
+		return (): void => {
+			clearTimeout(timeoutID);
+		};
+	}, [ ready ]);
 
 	if (triedPath != null && triedPath !== window.location.pathname)
 		return <Redirect to={triedPath} />;
