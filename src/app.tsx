@@ -49,7 +49,7 @@ export default function App(): JSX.Element {
 					className="d-block"
 					href="https://github.com/parzh/parzh.github.io"
 				>
-					<button className="bg-transparent border-0 w-100 p-0 text-white my-4 lead">
+					<button className="bg-transparent border-0 w-100 p-0 text-white py-4 lead">
 						Visit the code repository of this site
 					</button>
 				</a>
