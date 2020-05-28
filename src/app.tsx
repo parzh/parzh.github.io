@@ -18,7 +18,7 @@ const styleFor = createStyleFor({
 		cursor: "pointer",
 		width: "90%",
 		margin: "0 5%",
-		animation: "slide-up-from-bottom 2s 3s both"
+		animation: "slide-up-from-bottom 2s 8s both"
 	},
 });
 
