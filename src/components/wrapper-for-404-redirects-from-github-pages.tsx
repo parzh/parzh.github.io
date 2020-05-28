@@ -25,15 +25,10 @@ export default function WrapperFor404RedirectsFromGitHubPages({ children }: Prop
 		if (ready)
 			return;
 
-		function readyStateChangeListener(): void {
-			setReady(isReady());
-		}
+		const actuallyReady = isReady();
 
-		document.addEventListener("readystatechange", readyStateChangeListener);
-
-		return (): void => {
-			document.removeEventListener("readystatechange", readyStateChangeListener);
-		};
+		if (ready !== actuallyReady)
+			setReady(actuallyReady);
 	}, [ ready, setReady ]);
 
 	if (triedPath != null && triedPath !== window.location.pathname)
