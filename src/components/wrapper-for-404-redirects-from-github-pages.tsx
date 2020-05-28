@@ -23,13 +23,8 @@ export default function WrapperFor404RedirectsFromGitHubPages({ children }: Prop
 	}, [ location ]);
 
 	useEffect(() => {
-		if (ready)
-			return;
-
-		const actuallyReady = isReady();
-
-		if (ready !== actuallyReady)
-			setReady(actuallyReady);
+		if (!ready && isReady())
+			setReady(true);
 	}, [ ready, keepAlive ]);
 
 	useEffect(() => {
