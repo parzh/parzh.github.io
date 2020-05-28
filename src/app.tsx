@@ -48,6 +48,8 @@ export default function App(): JSX.Element {
 				<a
 					className="d-block"
 					href="https://github.com/parzh/parzh.github.io"
+					target="_blank"
+					rel="noopener noreferrer"
 				>
 					<button className="bg-transparent border-0 w-100 p-0 text-white py-4 lead">
 						Visit the code repository of this site
